@@ -1,16 +1,16 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-03T15:27:34Z",
-  "bron_bijgewerkt_utc": "2026-08-03T13:42:32Z",
-  "aantal_brandpunten": 453,
-  "aantal_actief": 290,
-  "aantal_uitgedoofd": 162,
-  "aantal_status_onbekend": 1,
+  "opgehaald_utc": "2026-08-03T15:49:01Z",
+  "bron_bijgewerkt_utc": "2026-08-03T15:46:54Z",
+  "aantal_brandpunten": 447,
+  "aantal_actief": 297,
+  "aantal_uitgedoofd": 148,
+  "aantal_status_onbekend": 2,
   "aantallen_per_status": {
-    "niet_onder_controle": 83,
-    "onder_controle": 207,
-    "uitgedoofd": 162,
-    "onbekend": 1
+    "niet_onder_controle": 82,
+    "onder_controle": 215,
+    "uitgedoofd": 148,
+    "onbekend": 2
   },
   "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
   "bronpagina": "https://firemap.live/",
