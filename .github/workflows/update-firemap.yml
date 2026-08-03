@@ -1,0 +1,62 @@
+name: FireMap-gegevens dagelijks bijwerken
+
+on:
+  schedule:
+    # Dagelijks om 06:17 Belgische tijd. Een tijd buiten het hele uur
+    # verkleint de kans op vertraging in de GitHub Actions-wachtrij.
+    - cron: "17 6 * * *"
+      timezone: "Europe/Brussels"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: firemap-gegevens-bijwerken
+  cancel-in-progress: false
+
+jobs:
+  gegevens-bijwerken:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Repository ophalen
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: R instellen
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - name: R-afhankelijkheden installeren
+        uses: r-lib/actions/setup-r-dependencies@v2
+
+      - name: Lokale pijplijntests uitvoeren
+        run: Rscript tests/test_pipeline.R
+
+      - name: Actuele brandgegevens ophalen en exporteren
+        run: Rscript scripts/update_firemap.R
+
+      - name: Aangemaakte bestanden valideren
+        run: Rscript scripts/check_outputs.R
+
+      - name: Gewijzigde gegevens vastleggen
+        shell: bash
+        run: |
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Geen gegevenswijziging om te committen."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "gegevens: FireMap-momentopname bijwerken [skip ci]"
+
+          branch="${GITHUB_REF_NAME}"
+          git pull --rebase origin "${branch}"
+          git push origin "HEAD:${branch}"

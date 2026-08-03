@@ -1,0 +1,13 @@
+Package: firemapflourish
+Type: Project
+Title: Dagelijkse FireMap-Export voor Flourish
+Version: 0.1.0
+Authors@R: person("DSI", "Data", email = "noreply@example.com", role = c("aut", "cre"))
+Description: Haalt de openbare Europese zevendaagse GeoJSON-bron van
+    FireMap.live op, valideert de gegevens en maakt stabiele CSV-bestanden
+    voor Flourish.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+    httr2,
+    jsonlite

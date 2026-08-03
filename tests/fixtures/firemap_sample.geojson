@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "sample.1",
+      "geometry": {"type": "Point", "coordinates": [4.3517, 50.8503]},
+      "properties": {
+        "datetimenow": "2026-08-03T06:00:00.000Z",
+        "fire_status": "Out of Control",
+        "fire_id_source": "BE-1",
+        "size_ha": "12.5",
+        "active24hr": "4   ",
+        "ignition_date": "2026-08-02",
+        "duration_days": 1,
+        "lastupdate_hours": 2,
+        "fire_name": "BE  •  Brussel • 2026-08-02",
+        "fwi_daily": "Very High           "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sample.2",
+      "geometry": {"type": "Point", "coordinates": [2.3522, 48.8566]},
+      "properties": {
+        "datetimenow": "2026-08-03T06:05:00.000Z",
+        "fire_status": "Under Control",
+        "fire_id_source": "FR-2",
+        "size_ha": "3",
+        "fire_name": "FR  •  Paris • 2026-08-03",
+        "fwi_daily": "Moderate            "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sample.3",
+      "geometry": {"type": "Point", "coordinates": [-8.61, 41.15]},
+      "properties": {
+        "fire_status": "Out",
+        "fire_id_source": "PT-3",
+        "size_ha": null,
+        "fire_name": "PT  •  Porto • 2026-08-01"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sample.4",
+      "geometry": {"type": "Point", "coordinates": [23.72, 37.98]},
+      "properties": {
+        "fire_status": null,
+        "fire_name": null,
+        "fwi_daily": "Low                 "
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaversie": "1.0",
+  "opgehaald_utc": "2026-08-03T13:50:53Z",
+  "bron_bijgewerkt_utc": "2026-08-03T13:42:32Z",
+  "aantal_brandpunten": 453,
+  "aantal_actief": 290,
+  "aantal_uitgedoofd": 162,
+  "aantal_status_onbekend": 1,
+  "aantallen_per_status": {
+    "niet_onder_controle": 83,
+    "onder_controle": 207,
+    "uitgedoofd": 162,
+    "onbekend": 1
+  },
+  "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
+  "bronpagina": "https://firemap.live/",
+  "datalicentie": "https://creativecommons.org/licenses/by/4.0/",
+  "bronvermelding": "FireMap.live (EFFIS en NASA FIRMS)"
+}
