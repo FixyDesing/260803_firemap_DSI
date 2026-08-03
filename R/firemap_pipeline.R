@@ -62,7 +62,7 @@ status_details <- function(status) {
   if (status %in% c("Out of Control", "Fire of Note")) {
     return(list(
       label = "Niet onder controle",
-      color = "#FF7882",
+      color = "#AA3228",
       order = 1L,
       active = TRUE
     ))
@@ -71,7 +71,7 @@ status_details <- function(status) {
   if (status %in% c("Being Held", "Under Control")) {
     return(list(
       label = "Onder controle",
-      color = "#F5A623",
+      color = "#E07154",
       order = 2L,
       active = TRUE
     ))
@@ -80,7 +80,7 @@ status_details <- function(status) {
   if (identical(status, "Out")) {
     return(list(
       label = "Uitgedoofd",
-      color = "#7766ED",
+      color = "#FCD9BE",
       order = 3L,
       active = FALSE
     ))
@@ -92,6 +92,16 @@ status_details <- function(status) {
     order = 4L,
     active = NA
   )
+}
+
+calculate_marker_size <- function(size_ha) {
+  if (!is.finite(size_ha) || size_ha <= 0) {
+    return(2)
+  }
+
+  # Een logaritmische schaal houdt zeer grote branden zichtbaar zonder dat
+  # hun markeringen de kaart bedekken: 1 ha = 2, 10 ha = 4, ... 10.000 ha = 10.
+  round(min(10, max(2, 2 + 2 * log10(size_ha))), 2)
 }
 
 parse_fire_name <- function(fire_name) {
@@ -173,7 +183,7 @@ feature_to_row <- function(feature, row_number, retrieved_at_utc) {
     marker_color = status$color,
     is_active = status$active,
     size_ha = size_ha,
-    marker_size = if (is.finite(size_ha) && size_ha > 0) size_ha else 1,
+    marker_size = calculate_marker_size(size_ha),
     ignition_date = ignition_date,
     duration_days = duration_days,
     detections_24h = detections_24h,
@@ -295,7 +305,7 @@ build_status_summary <- function(data) {
       "Niet onder controle", "Onder controle", "Uitgedoofd", "Onbekend"
     ),
     status_order = 1:4,
-    marker_color = c("#FF7882", "#F5A623", "#7766ED", "#808080"),
+    marker_color = c("#AA3228", "#E07154", "#FCD9BE", "#808080"),
     stringsAsFactors = FALSE
   )
 

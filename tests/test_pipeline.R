@@ -14,13 +14,16 @@ stopifnot(identical(data$status_nl, c(
   "Niet onder controle", "Onder controle", "Uitgedoofd", "Onbekend"
 )))
 stopifnot(identical(data$marker_color, c(
-  "#FF7882", "#F5A623", "#7766ED", "#808080"
+  "#AA3228", "#E07154", "#FCD9BE", "#808080"
 )))
 stopifnot(identical(data$country_code[1:3], c("BE", "FR", "PT")))
 stopifnot(identical(data$location_name[[1L]], "Brussel"))
 stopifnot(identical(data$fire_weather_index[[1L]], "Very High"))
 stopifnot(isTRUE(all.equal(data$size_ha[[1L]], 12.5)))
-stopifnot(identical(data$marker_size[[3L]], 1))
+stopifnot(isTRUE(all.equal(data$marker_size[[1L]], 4.19)))
+stopifnot(identical(data$marker_size[[3L]], 2))
+stopifnot(identical(calculate_marker_size(1000000), 10))
+stopifnot(all(data$marker_size >= 2 & data$marker_size <= 10))
 stopifnot(identical(data$retrieved_at_utc[[1L]], "2026-08-03T07:00:00Z"))
 stopifnot(identical(source_last_updated(data), "2026-08-03T06:05:00Z"))
 validate_fire_data(data, min_rows = 4L)
