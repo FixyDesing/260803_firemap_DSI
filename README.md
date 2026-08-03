@@ -103,7 +103,7 @@ Gebruik de gevraagde vaste kleuren:
 - Onbekend: `#808080`
 
 `markergrootte` zet de oppervlakte logaritmisch om naar een begrensde waarde van
-0,1 tot en met 2. Daardoor blijven onderlinge verschillen zichtbaar, maar kunnen
+0,1 tot en met 3. Daardoor blijven onderlinge verschillen zichtbaar, maar kunnen
 zeer grote branden de kaart niet meer bedekken. In de huidige gegevens ligt de
 mediaan rond 0,94. Stel de beginuitsnede in Flourish in op Europa. Voeg als
 bronregel toe:
