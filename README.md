@@ -93,9 +93,9 @@ Kies de Flourish-template **Marker map** en gebruik deze koppelingen:
 | Category | `status` |
 | Color | `markerkleur` |
 | Size | `markergrootte` |
-| Info for popups | `oppervlakte_ha`, `ontstaansdatum`, `duur_dagen`, `brandgevaar`, `actief`, `bron`, `bron_url` |
+| Info for popups | `landnaam`, `status_uitleg`, `oppervlakte`, `ontstaansdatum`, `duur`, `status_bijgewerkt`, `brandgevaar`, `bron`, `bron_url` |
 
-Gebruik voor een VRT-achtige weergave deze vaste kleuren:
+Gebruik de gevraagde vaste kleuren:
 
 - Niet onder controle: `#AA3228`
 - Onder controle: `#E07154`
@@ -103,7 +103,7 @@ Gebruik voor een VRT-achtige weergave deze vaste kleuren:
 - Onbekend: `#808080`
 
 `markergrootte` zet de oppervlakte logaritmisch om naar een begrensde waarde van
-2 tot en met 10. Daardoor blijven onderlinge verschillen zichtbaar, maar kunnen
+0,1 tot en met 2. Daardoor blijven onderlinge verschillen zichtbaar, maar kunnen
 zeer grote branden de kaart niet meer bedekken. Stel de beginuitsnede in Flourish
 in op Europa. Voeg als bronregel toe:
 **Data: FireMap.live (EFFIS en NASA FIRMS)**.
@@ -114,51 +114,89 @@ Bind eerst alle hierboven vermelde kolommen. Kies daarna bij de pop-upinstelling
 voor **Custom content** en gebruik bijvoorbeeld:
 
 ```html
-<div class="brand-popup" style="border-left-color: {{markerkleur}}">
-  <div class="brand-status" style="border-color: {{markerkleur}}">{{status}}</div>
+<article class="brand-popup">
+  <p class="brand-kicker">{{landnaam}} · {{status}}</p>
   <h3>{{weergavenaam}}</h3>
-  {{#if oppervlakte_ha}}<p><strong>{{oppervlakte_ha}} ha</strong> getroffen</p>{{/if}}
-  {{#if ontstaansdatum}}<p>Ontstaan op {{ontstaansdatum}}</p>{{/if}}
-  <p>Brandgevaar: <strong>{{brandgevaar}}</strong></p>
-  <p class="brand-bron"><a href="{{bron_url}}" target="_blank">Bron: {{bron}}</a></p>
-</div>
+  <p class="brand-intro">{{status_uitleg}}</p>
+
+  <dl class="brand-feiten">
+    <div><dt>Oppervlakte</dt><dd>{{oppervlakte}}</dd></div>
+    <div><dt>Ontstaan</dt><dd>{{ontstaansdatum}}</dd></div>
+    <div><dt>Brandduur</dt><dd>{{duur}}</dd></div>
+    <div><dt>Status vastgesteld</dt><dd>{{status_bijgewerkt}}</dd></div>
+    <div><dt>Brandgevaar</dt><dd>{{brandgevaar}}</dd></div>
+  </dl>
+
+  <p class="brand-bron"><a href="{{bron_url}}" target="_blank">{{bron}}</a></p>
+</article>
 
 <style>
 .brand-popup {
-  min-width: 210px;
-  padding: 4px 10px 6px 12px;
-  border-left: 5px solid;
-  font-family: Arial, sans-serif;
-  color: #252525;
+  min-width: 230px;
+  max-width: 300px;
+  padding: 12px 14px 10px;
+  border-top: 2px solid #111;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #121212;
 }
 .brand-popup h3 {
-  margin: 8px 0 6px;
-  font-size: 16px;
-  line-height: 1.25;
+  margin: 4px 0 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
 }
-.brand-popup p {
-  margin: 4px 0;
+.brand-kicker {
+  margin: 0;
+  color: #555;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.brand-intro {
+  margin: 0 0 10px;
+  color: #444;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 13px;
+  line-height: 1.35;
 }
-.brand-status {
-  display: inline-block;
-  padding: 3px 7px;
-  border: 2px solid;
-  border-radius: 12px;
-  color: #252525;
-  background: #fff;
+.brand-feiten {
+  margin: 0;
+  border-top: 1px solid #d7d7d7;
+}
+.brand-feiten div {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+.brand-feiten dt {
+  color: #666;
+  font-size: 11px;
+}
+.brand-feiten dd {
+  margin: 0;
   font-size: 11px;
   font-weight: 700;
+  text-align: right;
 }
 .brand-bron {
-  margin-top: 8px !important;
-  font-size: 11px !important;
+  margin: 8px 0 0;
+  font-size: 10px;
 }
 .brand-bron a {
-  color: #555;
+  color: #666;
+  text-decoration: underline;
 }
 </style>
 ```
+
+FireMap.live levert geen afzonderlijk tijdstip waarop een brand precies onder
+controle kwam. `Status vastgesteld` toont daarom het tijdstip van de laatste
+bronupdate waarop de weergegeven status bekend was; ontbrekende waarden worden
+eerlijk als `Niet beschikbaar` getoond.
 
 Automatisch gekoppelde Live CSV-data is volgens Flourish alleen beschikbaar op
 Publisher- en Enterprise-abonnementen. Met een ander abonnement kan dezelfde CSV

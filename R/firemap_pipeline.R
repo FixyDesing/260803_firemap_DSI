@@ -10,6 +10,23 @@ FIREMAP_DEFAULT_URL <- paste0(
 FIREMAP_SOURCE_PAGE <- "https://firemap.live/"
 FIREMAP_DATA_LICENSE <- "https://creativecommons.org/licenses/by/4.0/"
 
+DUTCH_MONTHS <- c(
+  "januari", "februari", "maart", "april", "mei", "juni",
+  "juli", "augustus", "september", "oktober", "november", "december"
+)
+
+COUNTRY_NAMES_NL <- c(
+  AL = "Albanië", BA = "Bosnië en Herzegovina", BE = "België",
+  BG = "Bulgarije", CH = "Zwitserland", CY = "Cyprus", DE = "Duitsland",
+  DZ = "Algerije", EL = "Griekenland", ES = "Spanje", FR = "Frankrijk",
+  HR = "Kroatië", HU = "Hongarije", IE = "Ierland", IL = "Israël",
+  IT = "Italië", JO = "Jordanië", LB = "Libanon", MA = "Marokko",
+  ME = "Montenegro", MK = "Noord-Macedonië", NO = "Noorwegen",
+  PT = "Portugal", RO = "Roemenië", RS = "Servië", SE = "Zweden",
+  SI = "Slovenië", SK = "Slowakije", SY = "Syrië", TN = "Tunesië",
+  TR = "Turkije", UA = "Oekraïne", UK = "Verenigd Koninkrijk"
+)
+
 env_number <- function(name, default) {
   value <- Sys.getenv(name, unset = "")
   if (!nzchar(value)) {
@@ -45,6 +62,109 @@ as_scalar_numeric <- function(value) {
 
 format_utc <- function(value = Sys.time()) {
   format(as.POSIXct(value, tz = "UTC"), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+}
+
+country_name_nl <- function(country_code) {
+  country_code <- as_scalar_character(country_code)
+  if (is.na(country_code)) {
+    return("Onbekend land")
+  }
+
+  translated <- unname(COUNTRY_NAMES_NL[country_code])
+  if (is.na(translated)) country_code else translated
+}
+
+format_date_nl <- function(value) {
+  value <- as_scalar_character(value)
+  if (is.na(value)) {
+    return("Niet beschikbaar")
+  }
+
+  parsed <- suppressWarnings(as.Date(value, format = "%Y-%m-%d"))
+  if (is.na(parsed)) {
+    return("Niet beschikbaar")
+  }
+
+  paste(
+    as.integer(format(parsed, "%d")),
+    DUTCH_MONTHS[[as.integer(format(parsed, "%m"))]],
+    format(parsed, "%Y")
+  )
+}
+
+format_datetime_nl <- function(value, timezone = "Europe/Brussels") {
+  value <- as_scalar_character(value)
+  if (is.na(value)) {
+    return("Niet beschikbaar")
+  }
+
+  parsed <- suppressWarnings(as.POSIXct(
+    value,
+    format = "%Y-%m-%dT%H:%M:%OSZ",
+    tz = "UTC"
+  ))
+  if (is.na(parsed)) {
+    return("Niet beschikbaar")
+  }
+
+  local <- as.POSIXlt(parsed, tz = timezone)
+  sprintf(
+    "%d %s %d om %02d:%02d",
+    local$mday,
+    DUTCH_MONTHS[[local$mon + 1L]],
+    local$year + 1900L,
+    local$hour,
+    local$min
+  )
+}
+
+format_area_nl <- function(size_ha) {
+  if (!is.finite(size_ha) || size_ha < 0) {
+    return("Niet beschikbaar")
+  }
+
+  digits <- if (abs(size_ha - round(size_ha)) < 1e-9) 0L else 1L
+  paste0(
+    formatC(
+      size_ha,
+      format = "f",
+      digits = digits,
+      big.mark = ".",
+      decimal.mark = ","
+    ),
+    " hectare"
+  )
+}
+
+format_duration_nl <- function(duration_days) {
+  if (!is.finite(duration_days) || duration_days < 0) {
+    return("Niet beschikbaar")
+  }
+  if (duration_days == 0) {
+    return("Minder dan één dag")
+  }
+  if (duration_days == 1) {
+    return("1 dag")
+  }
+  paste0(round(duration_days), " dagen")
+}
+
+status_explanation_nl <- function(status) {
+  switch(
+    status,
+    "Niet onder controle" = paste(
+      "Volgens de laatste beschikbare bronupdate was deze brand nog niet",
+      "onder controle."
+    ),
+    "Onder controle" = paste(
+      "Volgens de laatste beschikbare bronupdate stond deze brand onder",
+      "controle."
+    ),
+    "Uitgedoofd" = paste(
+      "Volgens de laatste beschikbare bronupdate was deze brand uitgedoofd."
+    ),
+    "De actuele status van deze brand is niet beschikbaar."
+  )
 }
 
 status_details <- function(status) {
@@ -96,12 +216,12 @@ status_details <- function(status) {
 
 calculate_marker_size <- function(size_ha) {
   if (!is.finite(size_ha) || size_ha <= 0) {
-    return(2)
+    return(0.1)
   }
 
   # Een logaritmische schaal houdt zeer grote branden zichtbaar zonder dat
-  # hun markeringen de kaart bedekken: 1 ha = 2, 10 ha = 4, ... 10.000 ha = 10.
-  round(min(10, max(2, 2 + 2 * log10(size_ha))), 2)
+  # hun markeringen de kaart bedekken: 1 ha = 0,1 en 10.000 ha = 2.
+  round(min(2, max(0.1, 0.1 + 0.475 * log10(size_ha))), 2)
 }
 
 parse_fire_name <- function(fire_name) {
@@ -119,7 +239,14 @@ parse_fire_name <- function(fire_name) {
     NA_character_
   }
 
-  location_name <- if (length(parts) >= 2L) parts[[2L]] else fire_name
+  location_candidate <- if (length(parts) >= 2L) parts[[2L]] else fire_name
+  location_name <- if (
+    grepl("^\\d{4}-\\d{2}-\\d{2}$", location_candidate)
+  ) {
+    NA_character_
+  } else {
+    location_candidate
+  }
   list(country_code = country_code, location_name = location_name)
 }
 
@@ -161,13 +288,12 @@ feature_to_row <- function(feature, row_number, retrieved_at_utc) {
   source_updated_at <- as_scalar_character(properties$datetimenow)
   fire_weather_index <- as_scalar_character(properties$fwi_daily)
 
-  display_name <- fire_name
-  if (is.na(display_name)) {
-    display_name <- if (!is.na(name_parts$location_name)) {
-      name_parts$location_name
-    } else {
-      paste("Bosbrand", id)
-    }
+  display_name <- if (!is.na(name_parts$location_name)) {
+    name_parts$location_name
+  } else if (!is.na(name_parts$country_code)) {
+    paste("Bosbrand in", country_name_nl(name_parts$country_code))
+  } else {
+    "Bosbrand"
   }
 
   data.frame(
@@ -356,18 +482,54 @@ build_flourish_export <- function(data) {
     weergavenaam = data$display_name,
     plaatsnaam = data$location_name,
     landcode = data$country_code,
+    landnaam = vapply(
+      data$country_code,
+      country_name_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     status = data$status_nl,
+    status_uitleg = vapply(
+      data$status_nl,
+      status_explanation_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     statusvolgorde = data$status_order,
     markerkleur = data$marker_color,
     actief = actief,
     oppervlakte_ha = data$size_ha,
+    oppervlakte = vapply(
+      data$size_ha,
+      format_area_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     markergrootte = data$marker_size,
-    ontstaansdatum = data$ignition_date,
+    ontstaansdatum = vapply(
+      data$ignition_date,
+      format_date_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    ontstaansdatum_iso = data$ignition_date,
     duur_dagen = data$duration_days,
+    duur = vapply(
+      data$duration_days,
+      format_duration_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     detecties_24u = data$detections_24h,
     detecties_7d = data$detections_7d,
     uren_sinds_update = data$last_update_hours,
     brandgevaar = translate_fire_weather_index(data$fire_weather_index),
+    status_bijgewerkt = vapply(
+      data$source_updated_at_utc,
+      format_datetime_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     bron_bijgewerkt_utc = data$source_updated_at_utc,
     opgehaald_utc = data$retrieved_at_utc,
     bron = data$source,
@@ -388,7 +550,9 @@ validate_flourish_export <- function(data, min_rows = 1L) {
 
   required <- c(
     "id", "breedtegraad", "lengtegraad", "weergavenaam", "status",
-    "markerkleur", "markergrootte", "opgehaald_utc", "bron"
+    "landnaam", "status_uitleg", "markerkleur", "oppervlakte",
+    "markergrootte", "ontstaansdatum", "duur", "status_bijgewerkt",
+    "opgehaald_utc", "bron"
   )
   missing_columns <- setdiff(required, names(data))
   if (length(missing_columns) > 0L) {
