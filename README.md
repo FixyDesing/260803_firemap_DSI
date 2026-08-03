@@ -79,28 +79,132 @@ De repository moet publiek zijn. Gebruik in Flourish onder **Data** de optie
 https://raw.githubusercontent.com/FixyDesing/260803_firemap_DSI/main/data/flourish_branden.csv
 ```
 
-Kies een punten- of markermap en koppel minimaal:
+Kies de Flourish-template **Marker map** en gebruik deze koppelingen:
 
-| Flourish-instelling | CSV-kolom |
+| Select columns to visualise | CSV-kolom |
 |---|---|
-| Breedtegraad | `breedtegraad` |
-| Lengtegraad | `lengtegraad` |
-| Naam/label | `weergavenaam` |
-| Categorie/kleur | `status` |
-| Grootte | `markergrootte` |
-| Informatievenster | `oppervlakte_ha`, `ontstaansdatum`, `duur_dagen`, `brandgevaar` |
+| Latitude (Required) | `breedtegraad` |
+| Longitude (Required) | `lengtegraad` |
+| Marker | Leeg laten voor gewone bollen |
+| Name | `weergavenaam` |
+| Description | Leeg laten; de aangepaste pop-up toont de details |
+| Photo | Leeg laten |
+| Link | `bron_url` (optioneel) |
+| Category | `status` |
+| Color | `markerkleur` |
+| Size | `markergrootte` |
+| Info for popups | `landnaam`, `oppervlakte`, `ontstaansdatum`, `duur`, `status_bijgewerkt`, `brandgevaar`, `bron`, `bron_url` |
 
-Gebruik voor een VRT-achtige weergave deze vaste kleuren:
+Gebruik de gevraagde vaste kleuren:
 
-- Niet onder controle: `#FF7882`
-- Onder controle: `#F5A623`
-- Uitgedoofd: `#7766ED`
+- Niet onder controle: `#AA3228`
+- Onder controle: `#E07154`
+- Uitgedoofd: `#FCD9BE`
 - Onbekend: `#808080`
 
-`markergrootte` gebruikt het aantal hectare en valt bij een ontbrekende oppervlakte
-terug op `1`, zodat ieder punt zichtbaar blijft. Stel de beginuitsnede in
-Flourish in op Europa. Voeg als bronregel toe:
+`markergrootte` zet de oppervlakte logaritmisch om naar een begrensde waarde van
+0,1 tot en met 3. Daardoor blijven onderlinge verschillen zichtbaar, maar kunnen
+zeer grote branden de kaart niet meer bedekken. In de huidige gegevens ligt de
+mediaan rond 0,94. Stel de beginuitsnede in Flourish in op Europa. Voeg als
+bronregel toe:
 **Data: FireMap.live (EFFIS en NASA FIRMS)**.
+
+### Aangepaste pop-up
+
+Bind eerst alle hierboven vermelde kolommen. Kies daarna bij de pop-upinstellingen
+voor **Custom content** en gebruik bijvoorbeeld:
+
+```html
+<article class="brand-popup">
+  <p class="brand-kicker">{{landnaam}} · {{status}}</p>
+  <h3>{{weergavenaam}}</h3>
+  <p class="brand-update">Stand van {{status_bijgewerkt}}</p>
+
+  <p class="brand-oppervlakte">{{oppervlakte}}</p>
+
+  <dl class="brand-feiten">
+    <div><dt>Ontstaan</dt><dd>{{ontstaansdatum}}</dd></div>
+    <div><dt>Brandduur</dt><dd>{{duur}}</dd></div>
+    <div><dt>Brandgevaar</dt><dd>{{brandgevaar}}</dd></div>
+  </dl>
+
+  <p class="brand-bron"><a href="{{bron_url}}" target="_blank">{{bron}}</a></p>
+</article>
+
+<style>
+.brand-popup {
+  box-sizing: border-box;
+  min-width: 175px;
+  max-width: 210px;
+  padding: 7px 9px 6px;
+  border-top: 1px solid #111;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #121212;
+}
+.brand-popup h3 {
+  margin: 2px 0 3px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.brand-kicker {
+  margin: 0;
+  color: #555;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.brand-update {
+  margin: 0 0 6px;
+  color: #777;
+  font-size: 9px;
+  line-height: 1.2;
+}
+.brand-oppervlakte {
+  margin: 0 0 5px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.brand-feiten {
+  margin: 0;
+  border-top: 1px solid #d7d7d7;
+}
+.brand-feiten div {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+.brand-feiten dt {
+  color: #666;
+  font-size: 9px;
+}
+.brand-feiten dd {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: right;
+}
+.brand-bron {
+  margin: 5px 0 0;
+  font-size: 8.5px;
+}
+.brand-bron a {
+  color: #666;
+  text-decoration: underline;
+}
+</style>
+```
+
+FireMap.live levert geen afzonderlijk tijdstip waarop een brand precies onder
+controle kwam. `Stand van` toont daarom het tijdstip van de laatste bronupdate
+waarop de weergegeven status bekend was; ontbrekende waarden worden eerlijk als
+`Niet beschikbaar` getoond.
 
 Automatisch gekoppelde Live CSV-data is volgens Flourish alleen beschikbaar op
 Publisher- en Enterprise-abonnementen. Met een ander abonnement kan dezelfde CSV
