@@ -220,8 +220,9 @@ calculate_marker_size <- function(size_ha) {
   }
 
   # Een logaritmische schaal houdt zeer grote branden zichtbaar zonder dat
-  # hun markeringen de kaart bedekken: 1 ha = 0,1 en 10.000 ha = 2.
-  round(min(2, max(0.1, 0.1 + 0.475 * log10(size_ha))), 2)
+  # hun markeringen de kaart bedekken. Voor de huidige feed ligt de mediaan
+  # net onder 1; alle waarden blijven begrensd tussen 0,1 en 2.
+  round(min(2, max(0.1, 0.35 + 0.5 * log10(size_ha))), 2)
 }
 
 parse_fire_name <- function(fire_name) {
