@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 source(file.path("R", "firemap_pipeline.R"), encoding = "UTF-8")
-source(file.path("R", "firms_pipeline.R"), encoding = "UTF-8")
 source(file.path("R", "effis_pipeline.R"), encoding = "UTF-8")
 
 tryCatch(

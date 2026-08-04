@@ -1,12 +1,66 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T10:54:06Z",
+  "opgehaald_utc": "2026-08-04T12:18:24Z",
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_records": 721,
+  "aantal_records": 724,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 595839,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          35.1824,
+          47.7381
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-07-29T19:04:00+02:00",
+      "area_ha": 67,
+      "lastupdate": "2026-08-04T10:57:28.012944+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595838,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          35.223,
+          47.7212
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-07-31T10:45:00+02:00",
+      "area_ha": 41,
+      "lastupdate": "2026-08-04T10:56:11.634467+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595837,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          34.7165,
+          47.6155
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-02T09:24:00+02:00",
+      "area_ha": 146,
+      "lastupdate": "2026-08-04T10:54:54.609909+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 595836,
       "centroid": {
@@ -12644,24 +12698,6 @@
       "lastfiredate": {}
     },
     {
-      "id": 577209,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          35.4231,
-          47.6957
-        ]
-      },
-      "country": "UA",
-      "countryful": "Ukraine",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-04-15T00:00:00+02:00",
-      "area_ha": 25,
-      "lastupdate": "2026-07-29T07:54:46.952633+02:00",
-      "lastfiredate": {}
-    },
-    {
       "id": 577207,
       "centroid": {
         "type": "Point",
@@ -12675,6 +12711,24 @@
       "province": "N.A.",
       "commune": "N.A.",
       "firedate": "2026-07-01T10:09:00+02:00",
+      "area_ha": 25,
+      "lastupdate": "2026-07-29T07:54:46.952633+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 577209,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          35.4231,
+          47.6957
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-04-15T00:00:00+02:00",
       "area_ha": 25,
       "lastupdate": "2026-07-29T07:54:46.952633+02:00",
       "lastfiredate": {}

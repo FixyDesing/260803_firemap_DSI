@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 source(file.path("R", "firemap_pipeline.R"), encoding = "UTF-8")
-source(file.path("R", "firms_pipeline.R"), encoding = "UTF-8")
 source(file.path("R", "effis_pipeline.R"), encoding = "UTF-8")
 
 output_dir <- Sys.getenv("EFFIS_OUTPUT_DIR", unset = "data")
@@ -40,13 +39,14 @@ if (!identical(as.integer(metadata$aantal_markers), as.integer(nrow(fires)))) {
 
 source_snapshot <- jsonlite::read_json(source_path, simplifyVector = FALSE)
 effis_rows <- fires$gegevenstype == "EFFIS-brandgebied"
-firms_rows <- fires$gegevenstype == "Actieve satellietdetectie"
 if (!identical(as.integer(source_snapshot$aantal_records), sum(effis_rows))) {
   stop("De EFFIS-bronselectie en CSV tellen niet evenveel gebieden.", call. = FALSE)
 }
-if (!identical(as.integer(metadata$aantal_brandgebieden), sum(effis_rows)) ||
-    !identical(as.integer(metadata$aantal_firms_hotspotclusters), sum(firms_rows))) {
-  stop("De aantallen per gegevenstype kloppen niet.", call. = FALSE)
+if (!identical(as.integer(metadata$aantal_brandgebieden), sum(effis_rows))) {
+  stop("Het aantal EFFIS-brandgebieden klopt niet.", call. = FALSE)
+}
+if (any(!effis_rows)) {
+  stop("De export bevat nog niet-EFFIS-markers.", call. = FALSE)
 }
 
 summary <- utils::read.csv(
@@ -80,6 +80,5 @@ if (any(!nzchar(fires$regio)) || any(!nzchar(fires$statusindicatie))) {
 
 message(
   "Uitvoercontrole geslaagd voor ", sum(effis_rows),
-  " EFFIS-brandgebieden en ", sum(firms_rows),
-  " FIRMS-hotspotclusters; ", linked_count, " gekoppeld aan FireMap."
+  " EFFIS-brandgebieden; ", linked_count, " gekoppeld aan FireMap."
 )
