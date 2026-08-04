@@ -7,10 +7,8 @@ FIRMS_SOURCE_PAGE <- "https://firms.modaps.eosdis.nasa.gov/active_fire/"
 FIRMS_SOURCE_LABEL <- "NASA FIRMS – actieve satellietdetecties"
 FIRMS_DEFAULT_AREA <- "-25,25,45,72"
 FIRMS_DEFAULT_SOURCES <- c(
-  "VIIRS_SNPP_NRT",
-  "VIIRS_NOAA20_NRT",
   "VIIRS_NOAA21_NRT",
-  "MODIS_NRT"
+  "VIIRS_NOAA20_NRT"
 )
 FIRMS_MAX_API_DAYS <- 5L
 
@@ -291,8 +289,8 @@ download_firms_period <- function(
   area,
   from_date,
   days,
-  timeout_seconds = 90,
-  max_tries = 4L
+  timeout_seconds = 45,
+  max_tries = 2L
 ) {
   request_url <- paste(
     FIRMS_API_BASE_URL,
@@ -337,8 +335,10 @@ download_firms_hotspots <- function(
   window_days = 7L,
   sources = FIRMS_DEFAULT_SOURCES,
   area = FIRMS_DEFAULT_AREA,
-  timeout_seconds = 90,
-  retrieved_at = Sys.time()
+  timeout_seconds = 45,
+  max_tries = 2L,
+  retrieved_at = Sys.time(),
+  download_function = download_firms_period
 ) {
   if (!nzchar(map_key)) {
     return(list(
@@ -346,6 +346,9 @@ download_firms_hotspots <- function(
       record_count = 0L, cluster_count = 0L,
       source_url = FIRMS_SOURCE_PAGE,
       query_descriptions = character(),
+      successful_sources = character(),
+      failed_sources = character(),
+      warnings = character(),
       error = "FIRMS is uitgeschakeld: FIRMS_MAP_KEY ontbreekt."
     ))
   }
@@ -362,6 +365,11 @@ download_firms_hotspots <- function(
   if (length(sources) == 0L) {
     stop("Er zijn geen FIRMS-sensorbronnen ingesteld.", call. = FALSE)
   }
+  max_tries <- as.integer(max_tries)
+  if (!is.finite(timeout_seconds) || timeout_seconds < 1 ||
+      is.na(max_tries) || max_tries < 1L) {
+    stop("De FIRMS-time-out of het aantal pogingen is ongeldig.", call. = FALSE)
+  }
 
   period_start <- reference_date - (window_days - 1L)
   chunks <- list()
@@ -374,21 +382,49 @@ download_firms_hotspots <- function(
 
   downloads <- list()
   descriptions <- character()
+  successful_sources <- character()
+  failed_sources <- character()
+  warnings <- character()
   for (source in sources) {
-    for (chunk in chunks) {
-      downloads[[length(downloads) + 1L]] <- download_firms_period(
-        map_key = map_key,
-        source = source,
-        area = area,
-        from_date = chunk$start,
-        days = chunk$days,
-        timeout_seconds = timeout_seconds
-      )
-      descriptions <- c(
-        descriptions,
-        firms_safe_query_description(source, area, chunk$start, chunk$days)
-      )
+    source_downloads <- list()
+    source_descriptions <- character()
+    source_error <- tryCatch(
+      {
+        for (chunk in chunks) {
+          source_downloads[[length(source_downloads) + 1L]] <- download_function(
+            map_key = map_key,
+            source = source,
+            area = area,
+            from_date = chunk$start,
+            days = chunk$days,
+            timeout_seconds = timeout_seconds,
+            max_tries = max_tries
+          )
+          source_descriptions <- c(
+            source_descriptions,
+            firms_safe_query_description(source, area, chunk$start, chunk$days)
+          )
+        }
+        NA_character_
+      },
+      error = function(error) conditionMessage(error)
+    )
+
+    if (is.na(source_error)) {
+      downloads <- c(downloads, source_downloads)
+      descriptions <- c(descriptions, source_descriptions)
+      successful_sources <- c(successful_sources, source)
+    } else {
+      failed_sources <- c(failed_sources, source)
+      warnings <- c(warnings, paste0(source, ": ", source_error))
     }
+  }
+
+  if (length(successful_sources) == 0L) {
+    stop(
+      "Geen enkele ingestelde FIRMS-sensorbron kon worden opgehaald.",
+      call. = FALSE
+    )
   }
 
   data <- do.call(rbind, downloads)
@@ -402,6 +438,9 @@ download_firms_hotspots <- function(
     cluster_count = 0L,
     source_url = FIRMS_SOURCE_PAGE,
     query_descriptions = descriptions,
+    successful_sources = successful_sources,
+    failed_sources = failed_sources,
+    warnings = warnings,
     retrieved_at_utc = format_utc(retrieved_at),
     from_date = period_start,
     to_date = reference_date,

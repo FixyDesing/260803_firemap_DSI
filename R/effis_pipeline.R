@@ -809,10 +809,25 @@ build_effis_metadata <- function(data, download) {
       } else {
         firms$sources
       },
+      geslaagde_sensorbronnen = if (is.null(firms$successful_sources)) {
+        character()
+      } else {
+        firms$successful_sources
+      },
+      mislukte_sensorbronnen = if (is.null(firms$failed_sources)) {
+        character()
+      } else {
+        firms$failed_sources
+      },
       bronqueries_zonder_sleutel = if (is.null(firms$query_descriptions)) {
         character()
       } else {
         firms$query_descriptions
+      },
+      waarschuwingen = if (is.null(firms$warnings)) {
+        character()
+      } else {
+        firms$warnings
       },
       foutmelding = if (is.null(firms$error)) NA_character_ else firms$error
     ),
@@ -1094,7 +1109,8 @@ run_effis_pipeline <- function(
   firms_area = Sys.getenv("FIRMS_AREA", unset = FIRMS_DEFAULT_AREA),
   firms_recent_hours = env_number("FIRMS_RECENT_HOURS", 24),
   firms_cluster_degrees = env_number("FIRMS_CLUSTER_DEGREES", 0.1),
-  firms_timeout_seconds = env_number("FIRMS_TIMEOUT_SECONDS", 90),
+  firms_timeout_seconds = env_number("FIRMS_TIMEOUT_SECONDS", 45),
+  firms_max_tries = env_number("FIRMS_MAX_TRIES", 2),
   page_size = env_number("EFFIS_PAGE_SIZE", 1000),
   reference_date = Sys.getenv("EFFIS_REFERENCE_DATE", unset = "")
 ) {
@@ -1155,6 +1171,7 @@ run_effis_pipeline <- function(
       sources = firms_sources,
       area = firms_area,
       timeout_seconds = firms_timeout_seconds,
+      max_tries = firms_max_tries,
       retrieved_at = retrieved_at
     ),
     error = function(error) {
@@ -1166,6 +1183,9 @@ run_effis_pipeline <- function(
         cluster_count = 0L,
         source_url = FIRMS_SOURCE_PAGE,
         query_descriptions = character(),
+        successful_sources = character(),
+        failed_sources = firms_sources,
+        warnings = character(),
         area = firms_area,
         sources = firms_sources,
         error = conditionMessage(error)
@@ -1179,6 +1199,12 @@ run_effis_pipeline <- function(
       "FIRMS-update mislukt; de vorige geldige uitvoer blijft behouden: ",
       firms_hotspots$error,
       call. = FALSE
+    )
+  }
+  if (length(firms_hotspots$warnings) > 0L) {
+    message(
+      "FIRMS-waarschuwing; update gaat door met de geslaagde bron(nen): ",
+      paste(firms_hotspots$warnings, collapse = "; ")
     )
   }
 
