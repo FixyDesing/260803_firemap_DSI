@@ -1,12 +1,138 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T08:48:08Z",
+  "opgehaald_utc": "2026-08-04T08:52:11Z",
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_records": 612,
+  "aantal_records": 618,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 595695,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.7208,
+          45.1695
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Goruia",
+      "firedate": "2026-07-30T11:04:00+02:00",
+      "area_ha": 12,
+      "lastupdate": "2026-08-04T08:50:29.834760+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595692,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          36.9768,
+          48.0104
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-03T00:00:00+02:00",
+      "area_ha": 20,
+      "lastupdate": "2026-08-04T08:49:20.423017+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595691,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.9048,
+          44.7384
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Sicheviţa",
+      "firedate": "2026-07-31T01:02:00+02:00",
+      "area_ha": 0,
+      "lastupdate": "2026-08-04T08:49:05.101018+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595689,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.9017,
+          44.742
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Sicheviţa",
+      "firedate": "2026-07-31T01:02:00+02:00",
+      "area_ha": 12,
+      "lastupdate": "2026-08-04T08:48:46.835882+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595687,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          36.8167,
+          48.0422
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-02T10:09:00+02:00",
+      "area_ha": 34,
+      "lastupdate": "2026-08-04T08:48:07.029214+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595688,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          36.793,
+          48.0509
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-03T00:00:00+02:00",
+      "area_ha": 21,
+      "lastupdate": "2026-08-04T08:48:07.029214+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595686,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.9003,
+          44.7252
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Sicheviţa",
+      "firedate": "2026-07-31T00:00:00+02:00",
+      "area_ha": 0,
+      "lastupdate": "2026-08-04T08:47:42.730254+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 595683,
       "centroid": {
@@ -4523,24 +4649,6 @@
       "firedate": "2026-07-31T12:44:00+02:00",
       "area_ha": 78,
       "lastupdate": "2026-08-03T06:31:20.046252+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 586306,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.8985,
-          44.7426
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Caraş-Severin",
-      "commune": "Sicheviţa",
-      "firedate": "2026-07-31T01:02:00+02:00",
-      "area_ha": 2,
-      "lastupdate": "2026-08-01T15:34:48.819418+02:00",
       "lastfiredate": {}
     },
     {
@@ -10682,24 +10790,6 @@
       "lastfiredate": {}
     },
     {
-      "id": 577209,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          35.4231,
-          47.6957
-        ]
-      },
-      "country": "UA",
-      "countryful": "Ukraine",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-04-15T00:00:00+02:00",
-      "area_ha": 25,
-      "lastupdate": "2026-07-29T07:54:46.952633+02:00",
-      "lastfiredate": {}
-    },
-    {
       "id": 577207,
       "centroid": {
         "type": "Point",
@@ -10713,6 +10803,24 @@
       "province": "N.A.",
       "commune": "N.A.",
       "firedate": "2026-07-01T10:09:00+02:00",
+      "area_ha": 25,
+      "lastupdate": "2026-07-29T07:54:46.952633+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 577209,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          35.4231,
+          47.6957
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-04-15T00:00:00+02:00",
       "area_ha": 25,
       "lastupdate": "2026-07-29T07:54:46.952633+02:00",
       "lastfiredate": {}
