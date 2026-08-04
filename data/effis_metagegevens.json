@@ -1,6 +1,6 @@
 {
   "schemaversie": "1.2",
-  "opgehaald_utc": "2026-08-04T12:13:31Z",
+  "opgehaald_utc": "2026-08-04T12:18:24Z",
   "bron_bijgewerkt_utc": "2026-08-04T08:57:28Z",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
@@ -22,7 +22,7 @@
     "bron_url": "https://firemap.live/",
     "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
     "ophalen_geslaagd": true,
-    "aantal_firemap_records": 480,
+    "aantal_firemap_records": 481,
     "aantal_gekoppeld_op_effis_id": 458,
     "aandeel_effis_verrijkt": 63.3,
     "foutmelding": null

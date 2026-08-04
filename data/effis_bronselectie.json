@@ -1,6 +1,6 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T12:13:31Z",
+  "opgehaald_utc": "2026-08-04T12:18:24Z",
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
