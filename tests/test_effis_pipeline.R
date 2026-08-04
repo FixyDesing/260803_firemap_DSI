@@ -84,6 +84,56 @@ firms_data <- filter_firms_detections(
   reference_date
 )
 stopifnot(nrow(firms_data) == 4L)
+stopifnot(identical(FIRMS_DEFAULT_SOURCES, c(
+  "VIIRS_NOAA21_NRT", "VIIRS_NOAA20_NRT"
+)))
+mock_firms_download <- function(
+  map_key,
+  source,
+  area,
+  from_date,
+  days,
+  timeout_seconds,
+  max_tries
+) {
+  if (identical(source, "TIJDELIJK_NIET_BESCHIKBAAR")) {
+    stop("Gesimuleerde bronstoring.", call. = FALSE)
+  }
+  read_firms_csv(firms_fixture, source)
+}
+partial_firms <- download_firms_hotspots(
+  map_key = "testkeyzonderproductiewaarde",
+  reference_date = reference_date,
+  window_days = 7L,
+  sources = c("TIJDELIJK_NIET_BESCHIKBAAR", "VIIRS_NOAA21_NRT"),
+  timeout_seconds = 1,
+  max_tries = 1L,
+  retrieved_at = retrieved_at,
+  download_function = mock_firms_download
+)
+stopifnot(partial_firms$succeeded)
+stopifnot(identical(partial_firms$successful_sources, "VIIRS_NOAA21_NRT"))
+stopifnot(identical(
+  partial_firms$failed_sources,
+  "TIJDELIJK_NIET_BESCHIKBAAR"
+))
+stopifnot(length(partial_firms$warnings) == 1L)
+stopifnot(nrow(partial_firms$data) == 4L)
+all_failed_message <- tryCatch(
+  {
+    download_firms_hotspots(
+      map_key = "testkeyzonderproductiewaarde",
+      reference_date = reference_date,
+      sources = "TIJDELIJK_NIET_BESCHIKBAAR",
+      timeout_seconds = 1,
+      max_tries = 1L,
+      download_function = mock_firms_download
+    )
+    NA_character_
+  },
+  error = function(error) conditionMessage(error)
+)
+stopifnot(grepl("Geen enkele ingestelde FIRMS-sensorbron", all_failed_message))
 firms_clusters <- cluster_firms_detections(
   firms_data,
   retrieved_at = retrieved_at,

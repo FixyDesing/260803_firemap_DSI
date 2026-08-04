@@ -76,7 +76,8 @@ Optionele omgevingsvariabelen zijn `EFFIS_SOURCE_URL`, `EFFIS_OUTPUT_DIR`,
 `EFFIS_WINDOW_DAYS`, `EFFIS_MIN_ROWS`, `EFFIS_TIMEOUT_SECONDS`,
 `EFFIS_PAGE_SIZE`, `EFFIS_REFERENCE_DATE`, `EFFIS_FIREMAP_SOURCE_URL`,
 `EFFIS_FIREMAP_TIMEOUT_SECONDS`, `FIRMS_MAP_KEY`, `FIRMS_SOURCES`, `FIRMS_AREA`,
-`FIRMS_RECENT_HOURS`, `FIRMS_CLUSTER_DEGREES` en `FIRMS_TIMEOUT_SECONDS`.
+`FIRMS_RECENT_HOURS`, `FIRMS_CLUSTER_DEGREES`, `FIRMS_TIMEOUT_SECONDS` en
+`FIRMS_MAX_TRIES`.
 
 ## Dagelijkse GitHub-update
 
@@ -89,6 +90,9 @@ De workflow kan ook handmatig worden gestart via **Actions → EFFIS-, FIRMS- en
 FireMap-gegevens dagelijks bijwerken → Run workflow**. Hij installeert de
 R-afhankelijkheden, voert beide lokale testbestanden uit, haalt de drie bronnen
 op, valideert de export en commit uitsluitend de vier hoofdgegevensbestanden.
+Standaard gebruikt de workflow de VIIRS-feeds van NOAA-21 en NOAA-20. Als één
+van beide tijdelijk niet antwoordt, gaat de update verder met de andere feed;
+alleen wanneer beide mislukken blijft de vorige geldige CSV behouden.
 
 NASA vereist een gratis API-sleutel. Die staat niet in de code, maar moet in de
 repository als Actions-secret `FIRMS_MAP_KEY` worden bewaard. Dat kan via
