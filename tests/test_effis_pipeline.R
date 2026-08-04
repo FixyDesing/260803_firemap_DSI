@@ -84,6 +84,7 @@ firms_data <- filter_firms_detections(
   reference_date
 )
 stopifnot(nrow(firms_data) == 4L)
+stopifnot(identical(calculate_marker_size(NA_real_), 0.66))
 stopifnot(identical(FIRMS_DEFAULT_SOURCES, c(
   "VIIRS_NOAA21_NRT", "VIIRS_NOAA20_NRT"
 )))
@@ -137,7 +138,7 @@ stopifnot(grepl("Geen enkele ingestelde FIRMS-sensorbron", all_failed_message))
 firms_clusters <- cluster_firms_detections(
   firms_data,
   retrieved_at = retrieved_at,
-  recent_hours = 24,
+  recent_hours = 48,
   grid_degrees = 0.1
 )
 stopifnot(nrow(firms_clusters) == 2L)
@@ -155,8 +156,16 @@ firms_clusters <- remove_firms_clusters_near_effis(firms_clusters, data)
 stopifnot(nrow(firms_clusters) == 1L)
 stopifnot(identical(firms_clusters$country_code, "NL"))
 firms_rows <- firms_clusters_to_rows(firms_clusters, format_utc(retrieved_at))
+stopifnot(identical(firms_rows$marker_color, "#F7CF8E"))
+stopifnot(identical(firms_rows$marker_size, 0.66))
 combined_data <- rbind(data, firms_rows)
 validate_effis_data(combined_data, min_rows = 5L)
+combined_summary <- build_effis_actuality_summary(combined_data)
+stopifnot(all(
+  combined_summary$markerkleur[
+    grepl("^Satellietdetectie", combined_summary$actualiteit)
+  ] == "#F7CF8E"
+))
 combined_export <- build_effis_flourish_export(combined_data)
 validate_effis_flourish_export(combined_export, min_rows = 5L)
 hotspot_export <- combined_export[combined_export$firms_hotspot == "Ja", ]
@@ -165,10 +174,31 @@ stopifnot(identical(hotspot_export$regio, "Nederland"))
 stopifnot(identical(hotspot_export$oppervlakte, "Nog niet vastgesteld"))
 stopifnot(identical(
   hotspot_export$statusindicatie,
-  "Satellietdetectie – nog niet bevestigd"
+  "Satellietdetectie, nog niet bevestigd"
 ))
+stopifnot(identical(hotspot_export$markerkleur, "#F7CF8E"))
+stopifnot(identical(hotspot_export$markergrootte, 0.66))
 stopifnot(identical(hotspot_export$detecties_24u, "3"))
 stopifnot(identical(hotspot_export$eerste_registratiedatum, "3 augustus 2026"))
+
+age_boundary_data <- firms_data[rep(1L, 2L), , drop = FALSE]
+age_boundary_data$latitude <- c(52.0, 52.2)
+age_boundary_data$longitude <- c(5.0, 5.2)
+age_boundary_data$acquired_at <- c(
+  retrieved_at - 48 * 3600,
+  retrieved_at - 48 * 3600 - 1
+)
+age_boundary_clusters <- cluster_firms_detections(
+  age_boundary_data,
+  retrieved_at = retrieved_at,
+  recent_hours = 48,
+  grid_degrees = 0.1
+)
+stopifnot(nrow(age_boundary_clusters) == 1L)
+stopifnot(identical(
+  age_boundary_clusters$last_detection_utc,
+  format_utc(retrieved_at - 48 * 3600)
+))
 
 export <- build_effis_flourish_export(data)
 validate_effis_flourish_export(export, min_rows = 4L)

@@ -93,6 +93,8 @@ op, valideert de export en commit uitsluitend de vier hoofdgegevensbestanden.
 Standaard gebruikt de workflow de VIIRS-feeds van NOAA-21 en NOAA-20. Als één
 van beide tijdelijk niet antwoordt, gaat de update verder met de andere feed;
 alleen wanneer beide mislukken blijft de vorige geldige CSV behouden.
+Een onbevestigde satellietdetectie blijft maximaal 48 uur na de laatste
+detectie op de kaart staan.
 
 NASA vereist een gratis API-sleutel. Die staat niet in de code, maar moet in de
 repository als Actions-secret `FIRMS_MAP_KEY` worden bewaard. Dat kan via
@@ -133,7 +135,7 @@ Kies de Flourish-template **Marker map** en gebruik deze koppelingen:
 
 De kleuren betekenen voortaan:
 
-- Actieve satellietdetectie: `#AA3228`
+- Actieve satellietdetectie: `#F7CF8E`
 - Vandaag bijgewerkt: `#AA3228`
 - Afgelopen 3 dagen bijgewerkt: `#E07154`
 - 4–7 dagen geleden bijgewerkt: `#FCD9BE`
@@ -141,7 +143,9 @@ De kleuren betekenen voortaan:
 
 `markergrootte` zet de EFFIS-oppervlakte logaritmisch om naar een waarde van
 0,1 tot en met 3. Daardoor blijven grote verschillen zichtbaar zonder dat de
-grootste gebieden de kaart volledig bedekken. Voeg als bronregel toe:
+grootste gebieden de kaart volledig bedekken. Als de oppervlakte niet bekend
+is, waaronder bij FIRMS-detecties, is de markergrootte altijd `0,66`. Voeg als
+bronregel toe:
 **Data: EFFIS – Copernicus Emergency Management Service, NASA FIRMS en FireMap.live;
 bewerking: DSI**.
 
@@ -225,7 +229,7 @@ noodzakelijk de echte ontstaansdatum van de brand.
 
 Voor een FIRMS-marker blijven dezelfde HTML en kolomkoppelingen werken. De
 pop-up toont dan `Actieve satellietdetectie`, `Nog niet vastgesteld` als
-oppervlakte en `Satellietdetectie – nog niet bevestigd` als status. De
+oppervlakte en `Satellietdetectie, nog niet bevestigd` als status. De
 detectieaantallen en eerste registratiedatum komen rechtstreeks uit FIRMS.
 
 Automatisch gekoppelde Live CSV-data is volgens Flourish beschikbaar op
