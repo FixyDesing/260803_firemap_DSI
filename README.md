@@ -1,24 +1,21 @@
-# Dagelijkse EFFIS-, FIRMS- en FireMap-export voor Flourish
+# Dagelijkse EFFIS- en FireMap-export voor Flourish
 
 Dit project haalt elke dag de recent bijgewerkte brandgebieden van het
-**European Forest Fire Information System (EFFIS)** op. Daarnaast haalt de
-R-pipeline recente actieve-branddetecties op uit **NASA FIRMS**. Daardoor kunnen
-nieuwe warmtebronnen al op de kaart verschijnen voordat EFFIS er een
-brandperimeter voor heeft ingetekend. Waar FireMap.live hetzelfde EFFIS-id
-bevat, vult de pijplijn statusindicatie, satellietdetecties en brandgevaar aan.
+**European Forest Fire Information System (EFFIS)** op. Waar FireMap.live
+hetzelfde EFFIS-id bevat, vult de pijplijn statusindicatie, detectieaantallen en
+brandgevaar aan. Losse NASA FIRMS-satellietdetecties worden bewust niet meer
+opgenomen omdat die te veel foutpositieven opleverden.
 
 EFFIS publiceert geen betrouwbare controlestatus. De kleur toont daarom hoe
 recent EFFIS een gebied heeft bijgewerkt, niet of een brand onder controle of
-uitgedoofd is. FIRMS-markers zijn thermische satellietdetecties en dus nog geen
-bevestigde natuurbrand of gemeten brandoppervlakte. De FireMap-status staat
-alleen als aanvullende indicatie in de pop-up en bepaalt de kleur niet.
+uitgedoofd is. De FireMap-status staat alleen als aanvullende indicatie in de
+pop-up en bepaalt de kleur niet.
 
 ## Datastroom
 
 ```text
 EFFIS REST-feed ───────────────┐
-FireMap.live WFS (aanvulling) ─┼─ combineren, ontdubbelen + valideren
-NASA FIRMS Area API ───────────┘
+FireMap.live WFS (aanvulling) ─┴─ koppelen + valideren
         ↓
 R/effis_pipeline.R
         ↓
@@ -27,21 +24,16 @@ data/flourish_effis_branden.csv
 Flourish Live CSV
 ```
 
-De export overschrijft de vorige geldige bestanden niet wanneer EFFIS of de
-ingestelde FIRMS-bron mislukt. Tijdelijke serverproblemen worden automatisch
-opnieuw geprobeerd. Als FireMap niet bereikbaar is, gaat de update wel door en
-krijgen de aanvullende velden `Niet beschikbaar`. FIRMS-detecties met lage
-betrouwbaarheid, detecties op zee, vermoedelijk permanente warmtebronnen en
-detecties nabij een bestaand EFFIS-brandgebied worden weggefilterd. Nabije
-detecties worden per rastercel samengevoegd tot één marker.
+De export overschrijft de vorige geldige bestanden niet wanneer EFFIS mislukt.
+Als FireMap niet bereikbaar is, gaat de update wel door en krijgen de
+aanvullende velden `Niet beschikbaar`.
 
 ## Belangrijkste bestanden
 
 | Bestand | Functie |
 |---|---|
 | `scripts/update_effis.R` | Handmatige en automatische gecombineerde update starten |
-| `R/effis_pipeline.R` | De drie bronnen combineren, valideren en exporteren |
-| `R/firms_pipeline.R` | NASA FIRMS ophalen, filteren en tot hotspotclusters samenvoegen |
+| `R/effis_pipeline.R` | EFFIS en FireMap combineren, valideren en exporteren |
 | `data/flourish_effis_branden.csv` | Hoofdtabel voor de Flourish Marker map |
 | `data/flourish_effis_actualiteitssamenvatting.csv` | Aantallen en hectaren per actualiteitscategorie |
 | `data/effis_bronselectie.json` | Compacte selectie van de gebruikte EFFIS-records |
@@ -59,7 +51,6 @@ R 4.1 of nieuwer is voldoende.
 ```r
 install.packages(c("httr2", "jsonlite"))
 source("R/firemap_pipeline.R", encoding = "UTF-8")
-source("R/firms_pipeline.R", encoding = "UTF-8")
 source("R/effis_pipeline.R", encoding = "UTF-8")
 run_effis_pipeline()
 ```
@@ -74,10 +65,8 @@ Rscript scripts/check_effis_outputs.R
 
 Optionele omgevingsvariabelen zijn `EFFIS_SOURCE_URL`, `EFFIS_OUTPUT_DIR`,
 `EFFIS_WINDOW_DAYS`, `EFFIS_MIN_ROWS`, `EFFIS_TIMEOUT_SECONDS`,
-`EFFIS_PAGE_SIZE`, `EFFIS_REFERENCE_DATE`, `EFFIS_FIREMAP_SOURCE_URL`,
-`EFFIS_FIREMAP_TIMEOUT_SECONDS`, `FIRMS_MAP_KEY`, `FIRMS_SOURCES`, `FIRMS_AREA`,
-`FIRMS_RECENT_HOURS`, `FIRMS_CLUSTER_DEGREES`, `FIRMS_TIMEOUT_SECONDS` en
-`FIRMS_MAX_TRIES`.
+`EFFIS_PAGE_SIZE`, `EFFIS_REFERENCE_DATE`, `EFFIS_FIREMAP_SOURCE_URL` en
+`EFFIS_FIREMAP_TIMEOUT_SECONDS`.
 
 ## Dagelijkse GitHub-update
 
@@ -86,23 +75,11 @@ Belgische zomertijd** en **06.23 uur tijdens de wintertijd**. De UTC-planning
 vermijdt de tijdzoneconfiguratie die bij de eerste FireMap-planning niet
 automatisch startte.
 
-De workflow kan ook handmatig worden gestart via **Actions → EFFIS-, FIRMS- en
+De workflow kan ook handmatig worden gestart via **Actions → EFFIS- en
 FireMap-gegevens dagelijks bijwerken → Run workflow**. Hij installeert de
-R-afhankelijkheden, voert beide lokale testbestanden uit, haalt de drie bronnen
-op, valideert de export en commit uitsluitend de vier hoofdgegevensbestanden.
-Standaard gebruikt de workflow de VIIRS-feeds van NOAA-21 en NOAA-20. Als één
-van beide tijdelijk niet antwoordt, gaat de update verder met de andere feed;
-alleen wanneer beide mislukken blijft de vorige geldige CSV behouden.
-Een onbevestigde satellietdetectie blijft maximaal 48 uur na de laatste
-detectie op de kaart staan.
-
-NASA vereist een gratis API-sleutel. Die staat niet in de code, maar moet in de
-repository als Actions-secret `FIRMS_MAP_KEY` worden bewaard. Dat kan via
-**Settings → Secrets and variables → Actions → New repository secret**, of met:
-
-```bash
-gh secret set FIRMS_MAP_KEY
-```
+R-afhankelijkheden, voert beide lokale testbestanden uit, haalt EFFIS en de
+optionele FireMap-verrijking op, valideert de export en commit uitsluitend de
+vier hoofdgegevensbestanden.
 
 De workflow gebruikt `permissions: contents: write`. Als een GitHub-beleid dit
 blokkeert, moet bij **Settings → Actions → General → Workflow permissions**
@@ -133,9 +110,8 @@ Kies de Flourish-template **Marker map** en gebruik deze koppelingen:
 | Size | `markergrootte` |
 | Info for popups | `regio`, `weergavenaam`, `oppervlakte`, `statusindicatie`, `detecties_24u`, `detecties_7d`, `brandgevaar`, `eerste_registratiedatum` |
 
-De kleuren betekenen voortaan:
+De kleuren betekenen:
 
-- Actieve satellietdetectie: `#F7CF8E`
 - Vandaag bijgewerkt: `#AA3228`
 - Afgelopen 3 dagen bijgewerkt: `#E07154`
 - 4–7 dagen geleden bijgewerkt: `#FCD9BE`
@@ -144,9 +120,8 @@ De kleuren betekenen voortaan:
 `markergrootte` zet de EFFIS-oppervlakte logaritmisch om naar een waarde van
 0,1 tot en met 3. Daardoor blijven grote verschillen zichtbaar zonder dat de
 grootste gebieden de kaart volledig bedekken. Als de oppervlakte niet bekend
-is, waaronder bij FIRMS-detecties, is de markergrootte altijd `0,66`. Voeg als
-bronregel toe:
-**Data: EFFIS – Copernicus Emergency Management Service, NASA FIRMS en FireMap.live;
+is, is de markergrootte altijd `0,4`. Voeg als bronregel toe:
+**Data: EFFIS – Copernicus Emergency Management Service en FireMap.live;
 bewerking: DSI**.
 
 ### Nieuwe aangepaste pop-up
@@ -227,11 +202,6 @@ FireMap. Als een EFFIS-gebied niet op het bron-id kan worden gekoppeld, tonen ze
 `Niet beschikbaar`. `eerste_registratiedatum` komt uit EFFIS en is niet
 noodzakelijk de echte ontstaansdatum van de brand.
 
-Voor een FIRMS-marker blijven dezelfde HTML en kolomkoppelingen werken. De
-pop-up toont dan `Actieve satellietdetectie`, `Nog niet vastgesteld` als
-oppervlakte en `Satellietdetectie, nog niet bevestigd` als status. De
-detectieaantallen en eerste registratiedatum komen rechtstreeks uit FIRMS.
-
 Automatisch gekoppelde Live CSV-data is volgens Flourish beschikbaar op
 Publisher- en Enterprise-abonnementen. Met een ander abonnement kan de CSV wel
 handmatig worden geüpload, maar ververst Flourish de kaart niet automatisch.
@@ -239,7 +209,6 @@ handmatig worden geüpload, maar ververst Flourish de kaart niet automatisch.
 ## Bron, licentie en waarschuwing
 
 - Viewer en bron: [EFFIS Current Situation Viewer](https://forest-fire.emergency.copernicus.eu/apps/effis.csv/)
-- Actieve satellietdetecties: [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/active_fire/)
 - Aanvullende bron: [FireMap.live](https://firemap.live/)
 - Technische uitleg: [EFFIS Rapid Damage Assessment](https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/rapid-damage-assessment)
 - Licentie: [CC BY 4.0 via de EFFIS-datalicentie](https://forest-fire.emergency.copernicus.eu/about-effis/data-license)

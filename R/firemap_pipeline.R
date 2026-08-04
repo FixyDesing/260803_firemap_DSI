@@ -223,7 +223,7 @@ status_details <- function(status) {
 
 calculate_marker_size <- function(size_ha) {
   if (!is.finite(size_ha)) {
-    return(0.66)
+    return(0.4)
   }
   if (size_ha <= 0) {
     return(0.1)
