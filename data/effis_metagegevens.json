@@ -1,14 +1,16 @@
 {
-  "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T07:43:33Z",
-  "bron_bijgewerkt_utc": "2026-08-04T05:39:05Z",
+  "schemaversie": "1.1",
+  "opgehaald_utc": "2026-08-04T08:30:46Z",
+  "bron_bijgewerkt_utc": "2026-08-04T06:29:29Z",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_brandgebieden": 562,
-  "totale_oppervlakte_ha": 121901,
+  "aantal_markers": 1564,
+  "aantal_brandgebieden": 582,
+  "aantal_firms_hotspotclusters": 982,
+  "totale_oppervlakte_ha": 122874,
   "aantallen_per_actualiteit": {
-    "vandaag": 31,
-    "afgelopen_drie_dagen": 182,
+    "vandaag": 52,
+    "afgelopen_drie_dagen": 181,
     "vier_tot_zeven_dagen": 349,
     "onbekend": 0
   },
@@ -22,10 +24,23 @@
     "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
     "ophalen_geslaagd": true,
     "aantal_firemap_records": 441,
-    "aantal_gekoppeld_op_effis_id": 371,
-    "aandeel_effis_verrijkt": 66,
+    "aantal_gekoppeld_op_effis_id": 376,
+    "aandeel_effis_verrijkt": 64.6,
     "foutmelding": null
   },
-  "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd; beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id.",
-  "belangrijke_beperking": "EFFIS-datums zijn kaartregistraties en hoeven niet overeen te komen met het werkelijke ontstaan of uitdoven van een brand."
+  "firms_hotspots": {
+    "bron": "NASA FIRMS – actieve satellietdetecties",
+    "bron_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+    "ophalen_geslaagd": true,
+    "aantal_detecties_na_filtering": 59431,
+    "aantal_clusters_voor_effis_ontdubbeling": 1612,
+    "aantal_clusters_voor_filter_permanente_warmtebronnen": 1554,
+    "aantal_clusters_in_export": 982,
+    "zoekgebied": "-25,25,45,72",
+    "sensorbronnen": ["VIIRS_SNPP_NRT", "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT", "MODIS_NRT"],
+    "bronqueries_zonder_sleutel": ["https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_SNPP_NRT/-25,25,45,72/5/2026-07-29", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_SNPP_NRT/-25,25,45,72/2/2026-08-03", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_NOAA20_NRT/-25,25,45,72/5/2026-07-29", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_NOAA20_NRT/-25,25,45,72/2/2026-08-03", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_NOAA21_NRT/-25,25,45,72/5/2026-07-29", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_NOAA21_NRT/-25,25,45,72/2/2026-08-03", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/MODIS_NRT/-25,25,45,72/5/2026-07-29", "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/MODIS_NRT/-25,25,45,72/2/2026-08-03"],
+    "foutmelding": null
+  },
+  "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd; beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id; recente FIRMS-detecties op land per rastercel samengevoegd en ontdubbeld tegen nabijgelegen EFFIS-brandgebieden.",
+  "belangrijke_beperking": "EFFIS-datums zijn kaartregistraties. FIRMS-detecties zijn thermische anomalieën en vormen zonder EFFIS-perimeter nog geen bevestiging van een natuurbrand of van de verbrande oppervlakte."
 }
