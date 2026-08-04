@@ -409,12 +409,9 @@ firms_clusters_to_rows <- function(clusters, retrieved_at_utc) {
     actuality_nl = labels,
     actuality_explanation_nl = explanations,
     actuality_order = 0L,
-    marker_color = "#AA3228",
+    marker_color = "#F7CF8E",
     size_ha = NA_real_,
-    marker_size = round(pmin(
-      1.5,
-      0.8 + 0.2 * log10(pmax(1, clusters$detections_7d) + 1)
-    ), 2),
+    marker_size = 0.66,
     first_registration_utc = clusters$first_detection_utc,
     last_update_utc = clusters$last_detection_utc,
     days_since_update = pmax(0, as.numeric(difftime(
@@ -427,7 +424,7 @@ firms_clusters_to_rows <- function(clusters, retrieved_at_utc) {
     source = FIRMS_SOURCE_LABEL,
     source_url = FIRMS_SOURCE_PAGE,
     firemap_available = FALSE,
-    firemap_status_nl = "Satellietdetectie – nog niet bevestigd",
+    firemap_status_nl = "Satellietdetectie, nog niet bevestigd",
     firemap_detections_24h = clusters$detections_24h,
     firemap_detections_7d = clusters$detections_7d,
     firemap_fire_weather_nl = NA_character_,
@@ -687,7 +684,7 @@ build_effis_actuality_summary <- function(data) {
     ),
     actualiteitvolgorde = c(0L, 0L, 1L, 2L, 3L, 4L),
     markerkleur = c(
-      "#AA3228", "#AA3228", "#AA3228", "#E07154", "#FCD9BE", "#808080"
+      "#F7CF8E", "#F7CF8E", "#AA3228", "#E07154", "#FCD9BE", "#808080"
     ),
     stringsAsFactors = FALSE
   )
@@ -1107,7 +1104,7 @@ run_effis_pipeline <- function(
     unset = paste(FIRMS_DEFAULT_SOURCES, collapse = ",")
   )),
   firms_area = Sys.getenv("FIRMS_AREA", unset = FIRMS_DEFAULT_AREA),
-  firms_recent_hours = env_number("FIRMS_RECENT_HOURS", 24),
+  firms_recent_hours = env_number("FIRMS_RECENT_HOURS", 48),
   firms_cluster_degrees = env_number("FIRMS_CLUSTER_DEGREES", 0.1),
   firms_timeout_seconds = env_number("FIRMS_TIMEOUT_SECONDS", 45),
   firms_max_tries = env_number("FIRMS_MAX_TRIES", 2),
