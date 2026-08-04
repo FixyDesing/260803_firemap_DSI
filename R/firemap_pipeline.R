@@ -306,6 +306,7 @@ feature_to_row <- function(feature, row_number, retrieved_at_utc) {
 
   data.frame(
     id = id,
+    source_id = source_id,
     latitude = latitude,
     longitude = longitude,
     display_name = display_name,

@@ -48,13 +48,46 @@ stopifnot(identical(
 ))
 validate_effis_data(data, min_rows = 4L)
 
+firemap_fixture_path <- file.path("tests", "fixtures", "firemap_sample.geojson")
+firemap_fixture <- readBin(
+  firemap_fixture_path,
+  what = "raw",
+  n = file.info(firemap_fixture_path)$size
+)
+firemap_data <- parse_firemap_geojson(
+  firemap_fixture,
+  retrieved_at = retrieved_at
+)
+firemap_data$source_id <- c("1001", "1002", "1003", NA_character_)
+data <- enrich_effis_with_firemap(data, firemap_data)
+stopifnot(identical(data$firemap_available, c(TRUE, TRUE, TRUE, FALSE)))
+stopifnot(identical(data$firemap_status_nl[1:3], c(
+  "Niet onder controle", "Onder controle", "Uitgedoofd"
+)))
+stopifnot(identical(data$firemap_detections_24h[[1L]], 4))
+stopifnot(identical(data$firemap_detections_7d[[1L]], 17))
+stopifnot(identical(data$firemap_fire_weather_nl[[1L]], "Zeer hoog"))
+disabled_enrichment <- download_firemap_enrichment(source_url = "")
+stopifnot(!disabled_enrichment$succeeded)
+stopifnot(is.null(disabled_enrichment$data))
+
 export <- build_effis_flourish_export(data)
 validate_effis_flourish_export(export, min_rows = 4L)
 stopifnot(identical(export$actualiteit, data$actuality_nl))
 stopifnot(identical(export$oppervlakte[[1L]], "12,5 hectare"))
+stopifnot(identical(
+  export$regio[[1L]],
+  "Portugal, Área Metropolitana do Porto"
+))
 stopifnot(identical(export$eerste_registratie[[1L]], "1 augustus 2026 om 14:25"))
+stopifnot(identical(export$eerste_registratiedatum[[1L]], "1 augustus 2026"))
 stopifnot(identical(export$laatste_update[[1L]], "4 augustus 2026 om 06:15"))
 stopifnot(identical(export$registratieperiode[[1L]], "2 dagen tussen registraties"))
+stopifnot(identical(export$statusindicatie[[1L]], "Niet onder controle"))
+stopifnot(identical(export$detecties_24u[[1L]], "4"))
+stopifnot(identical(export$detecties_7d[[1L]], "17"))
+stopifnot(identical(export$brandgevaar[[1L]], "Zeer hoog"))
+stopifnot(identical(export$statusindicatie[[4L]], "Niet beschikbaar"))
 
 download <- list(
   results = fixture$results,
@@ -67,6 +100,12 @@ download <- list(
     reference_date,
     1000L
   )
+)
+download$firemap_enrichment <- list(
+  succeeded = TRUE,
+  record_count = nrow(firemap_data),
+  source_url = FIREMAP_DEFAULT_URL,
+  error = NA_character_
 )
 temporary_output <- tempfile("effis-test-")
 dir.create(temporary_output)
@@ -93,5 +132,9 @@ written_metadata <- jsonlite::read_json(
 )
 stopifnot(identical(as.integer(written_metadata$aantal_brandgebieden), 4L))
 stopifnot(identical(written_metadata$venster_vanaf, "2026-07-29"))
+stopifnot(identical(
+  as.integer(written_metadata$firemap_verrijking$aantal_gekoppeld_op_effis_id),
+  3L
+))
 
 message("Alle lokale EFFIS-pipelinetests zijn geslaagd.")

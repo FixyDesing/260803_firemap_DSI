@@ -1,19 +1,24 @@
-# Dagelijkse EFFIS-export voor Flourish
+# Dagelijkse gecombineerde EFFIS- en FireMap-export voor Flourish
 
 Dit project haalt elke dag de recent bijgewerkte brandgebieden van het
 **European Forest Fire Information System (EFFIS)** op. De R-pipeline selecteert
 de laatste zeven dagen, zet elke brandperimeter om naar het door EFFIS opgegeven
-centroidpunt en maakt een Nederlandstalige CSV voor Flourish.
+centroidpunt en maakt een Nederlandstalige CSV voor Flourish. Waar FireMap.live
+hetzelfde EFFIS-id bevat, vult de pijplijn statusindicatie, satellietdetecties en
+brandgevaar aan.
 
 EFFIS publiceert geen betrouwbare controlestatus. De kleur toont daarom hoe
 recent EFFIS een gebied heeft bijgewerkt, niet of een brand onder controle of
-uitgedoofd is.
+uitgedoofd is. De FireMap-status staat alleen als aanvullende indicatie in de
+pop-up en bepaalt de kleur niet.
 
 ## Datastroom
 
 ```text
-EFFIS REST-feed met actuele verbrande gebieden
-        ↓ ophalen + pagineren + valideren
+EFFIS REST-feed ───────────────┐
+                              ├─ exact koppelen op EFFIS-id + valideren
+FireMap.live WFS (aanvulling) ─┘
+        ↓
 R/effis_pipeline.R
         ↓
 data/flourish_effis_branden.csv
@@ -21,9 +26,11 @@ data/flourish_effis_branden.csv
 Flourish Live CSV
 ```
 
-De pijplijn overschrijft de vorige geldige bestanden niet wanneer het ophalen,
-inlezen of valideren mislukt. Tijdelijke serverproblemen worden automatisch
-opnieuw geprobeerd. De volledige polygonen worden niet dagelijks in GitHub
+De EFFIS-export overschrijft de vorige geldige bestanden niet wanneer het
+ophalen, inlezen of valideren van de hoofdbron mislukt. Tijdelijke
+serverproblemen worden automatisch opnieuw geprobeerd. Als FireMap niet
+bereikbaar is, gaat de EFFIS-update wel door en krijgen de aanvullende velden
+`Niet beschikbaar`. De volledige polygonen worden niet dagelijks in GitHub
 opgeslagen: `effis_bronselectie.json` bewaart alleen de gebruikte bronvelden en
 centroidpunten. Zo blijft de repository beheersbaar.
 
@@ -31,16 +38,17 @@ centroidpunten. Zo blijft de repository beheersbaar.
 
 | Bestand | Functie |
 |---|---|
-| `scripts/update_effis.R` | Handmatige en automatische EFFIS-update starten |
-| `R/effis_pipeline.R` | EFFIS ophalen, transformeren, valideren en exporteren |
+| `scripts/update_effis.R` | Handmatige en automatische gecombineerde update starten |
+| `R/effis_pipeline.R` | EFFIS ophalen, met FireMap verrijken, valideren en exporteren |
 | `data/flourish_effis_branden.csv` | Hoofdtabel voor de Flourish Marker map |
 | `data/flourish_effis_actualiteitssamenvatting.csv` | Aantallen en hectaren per actualiteitscategorie |
 | `data/effis_bronselectie.json` | Compacte selectie van de gebruikte EFFIS-records |
 | `data/effis_metagegevens.json` | Bijwerkdatum, selectieperiode, bron en beperkingen |
 | `.github/workflows/update-firemap.yml` | Dagelijkse GitHub Action |
 
-De eerdere FireMap.live-bestanden en code blijven voorlopig ongewijzigd
-beschikbaar als referentie en terugvalmogelijkheid.
+De zelfstandige FireMap.live-bestanden blijven beschikbaar als referentie. De
+dagelijkse hoofdexport gebruikt FireMap voortaan alleen als niet-blokkerende
+aanvullende bron.
 
 ## Lokaal uitvoeren
 
@@ -63,7 +71,8 @@ Rscript scripts/check_effis_outputs.R
 
 Optionele omgevingsvariabelen zijn `EFFIS_SOURCE_URL`, `EFFIS_OUTPUT_DIR`,
 `EFFIS_WINDOW_DAYS`, `EFFIS_MIN_ROWS`, `EFFIS_TIMEOUT_SECONDS`,
-`EFFIS_PAGE_SIZE` en `EFFIS_REFERENCE_DATE`.
+`EFFIS_PAGE_SIZE`, `EFFIS_REFERENCE_DATE`, `EFFIS_FIREMAP_SOURCE_URL` en
+`EFFIS_FIREMAP_TIMEOUT_SECONDS`.
 
 ## Dagelijkse GitHub-update
 
@@ -72,10 +81,11 @@ Belgische zomertijd** en **06.23 uur tijdens de wintertijd**. De UTC-planning
 vermijdt de tijdzoneconfiguratie die bij de eerste FireMap-planning niet
 automatisch startte.
 
-De workflow kan ook handmatig worden gestart via **Actions → EFFIS-gegevens
-dagelijks bijwerken → Run workflow**. Hij installeert de R-afhankelijkheden,
-voert beide lokale testbestanden uit, haalt EFFIS op, valideert de export en
-commit uitsluitend de vier nieuwe EFFIS-databestanden.
+De workflow kan ook handmatig worden gestart via **Actions → EFFIS- en
+FireMap-gegevens dagelijks bijwerken → Run workflow**. Hij installeert de
+R-afhankelijkheden, voert beide lokale testbestanden uit, haalt EFFIS en
+FireMap op, valideert de export en commit uitsluitend de vier
+EFFIS-hoofdbestanden.
 
 De workflow gebruikt `permissions: contents: write`. Als een GitHub-beleid dit
 blokkeert, moet bij **Settings → Actions → General → Workflow permissions**
@@ -104,7 +114,7 @@ Kies de Flourish-template **Marker map** en gebruik deze koppelingen:
 | Category | `actualiteit` **(gewijzigd; vroeger `status`)** |
 | Color | `markerkleur` |
 | Size | `markergrootte` |
-| Info for popups | `landnaam`, `provincie`, `oppervlakte`, `eerste_registratie`, `laatste_update`, `registratieperiode`, `bron`, `bron_url` |
+| Info for popups | `regio`, `weergavenaam`, `oppervlakte`, `statusindicatie`, `detecties_24u`, `detecties_7d`, `brandgevaar`, `eerste_registratiedatum` |
 
 De kleuren betekenen voortaan:
 
@@ -116,7 +126,8 @@ De kleuren betekenen voortaan:
 `markergrootte` zet de EFFIS-oppervlakte logaritmisch om naar een waarde van
 0,1 tot en met 3. Daardoor blijven grote verschillen zichtbaar zonder dat de
 grootste gebieden de kaart volledig bedekken. Voeg als bronregel toe:
-**Data: EFFIS – Copernicus Emergency Management Service; bewerking: DSI**.
+**Data: EFFIS – Copernicus Emergency Management Service en FireMap.live;
+bewerking: DSI**.
 
 ### Nieuwe aangepaste pop-up
 
@@ -125,19 +136,17 @@ de oude FireMap-HTML volledig door:
 
 ```html
 <article class="brand-popup">
-  <p class="brand-kicker">{{landnaam}} · {{actualiteit}}</p>
+  <p class="brand-kicker">{{regio}}</p>
   <h3>{{weergavenaam}}</h3>
-  <p class="brand-update">{{provincie}}</p>
-
   <p class="brand-oppervlakte">{{oppervlakte}}</p>
 
   <dl class="brand-feiten">
-    <div><dt>Eerste registratie</dt><dd>{{eerste_registratie}}</dd></div>
-    <div><dt>Laatste update</dt><dd>{{laatste_update}}</dd></div>
+    <div><dt>Statusindicatie</dt><dd>{{statusindicatie}}</dd></div>
+    <div><dt>Detecties laatste 24u</dt><dd>{{detecties_24u}}</dd></div>
+    <div><dt>Detecties laatste 7d</dt><dd>{{detecties_7d}}</dd></div>
+    <div><dt>Brandgevaar</dt><dd>{{brandgevaar}}</dd></div>
+    <div><dt>Eerste registratie</dt><dd>{{eerste_registratiedatum}}</dd></div>
   </dl>
-
-  <p class="brand-noot">Kaartregistraties; geen officiële controlestatus.</p>
-  <p class="brand-bron"><a href="{{bron_url}}" target="_blank">{{bron}}</a></p>
 </article>
 
 <style>
@@ -145,14 +154,9 @@ de oude FireMap-HTML volledig door:
   box-sizing: border-box;
   min-width: 175px;
   max-width: 210px;
-  padding: 7px 9px 6px;
-  border-top: 1px solid #111;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #121212;
 }
 .brand-popup h3 {
   margin: 2px 0 2px;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.1;
@@ -165,15 +169,8 @@ de oude FireMap-HTML volledig door:
   letter-spacing: .05em;
   text-transform: uppercase;
 }
-.brand-update {
-  margin: 0 0 6px;
-  color: #777;
-  font-size: 9px;
-  line-height: 1.2;
-}
 .brand-oppervlakte {
   margin: 0 0 5px;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 15px;
   font-weight: 700;
   line-height: 1.1;
@@ -184,7 +181,7 @@ de oude FireMap-HTML volledig door:
 }
 .brand-feiten div {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
   padding: 3px 0;
   border-bottom: 1px solid #e6e6e6;
@@ -202,28 +199,13 @@ de oude FireMap-HTML volledig door:
   font-weight: 700;
   text-align: right;
 }
-.brand-noot {
-  margin: 5px 0 0;
-  color: #777;
-  font-size: 8.5px;
-  line-height: 1.2;
-}
-.brand-bron {
-  margin: 4px 0 0;
-  font-size: 8.5px;
-}
-.brand-bron a {
-  color: #666;
-  text-decoration: underline;
-}
 </style>
 ```
 
-De kolommen `ontstaansdatum`, `duur`, `status_bijgewerkt` en `brandgevaar` uit
-de oude FireMap-export worden niet meer gebruikt. EFFIS waarschuwt dat de
-gerapporteerde eerste registratie en laatste update niet noodzakelijk het echte
-moment van ontstaan of uitdoven zijn. Daarom noemt de pop-up ze expliciet
-kaartregistraties.
+`statusindicatie`, `detecties_24u`, `detecties_7d` en `brandgevaar` komen uit
+FireMap. Als een EFFIS-gebied niet op het bron-id kan worden gekoppeld, tonen ze
+`Niet beschikbaar`. `eerste_registratiedatum` komt uit EFFIS en is niet
+noodzakelijk de echte ontstaansdatum van de brand.
 
 Automatisch gekoppelde Live CSV-data is volgens Flourish beschikbaar op
 Publisher- en Enterprise-abonnementen. Met een ander abonnement kan de CSV wel
@@ -232,6 +214,7 @@ handmatig worden geüpload, maar ververst Flourish de kaart niet automatisch.
 ## Bron, licentie en waarschuwing
 
 - Viewer en bron: [EFFIS Current Situation Viewer](https://forest-fire.emergency.copernicus.eu/apps/effis.csv/)
+- Aanvullende bron: [FireMap.live](https://firemap.live/)
 - Technische uitleg: [EFFIS Rapid Damage Assessment](https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/rapid-damage-assessment)
 - Licentie: [CC BY 4.0 via de EFFIS-datalicentie](https://forest-fire.emergency.copernicus.eu/about-effis/data-license)
 - Voorbeeldontwerp: [VRT NWS – Actieve bosbranden](https://interactief.vrtnws.be/kaart-bosbranden/)
@@ -241,9 +224,8 @@ branden en andere verbrande gebieden. De gegevens zijn informatief en niet
 bedoeld voor evacuatie-, veiligheids- of operationele beslissingen. Raadpleeg
 daarvoor altijd de bevoegde lokale diensten.
 
-## Tijdelijke FireMap-terugval
+## Zelfstandige FireMap-terugval
 
 De eerdere scripts `scripts/update_firemap.R`, `R/firemap_pipeline.R` en de
-bestanden `data/flourish_branden.csv` blijven voorlopig bestaan. Ze worden niet
-meer door de dagelijkse workflow bijgewerkt zodra de EFFIS-versie is
-samengevoegd.
+bestanden `data/flourish_branden.csv` blijven voorlopig bestaan. De dagelijkse
+workflow werkt alleen de gecombineerde EFFIS-hoofdexport bij.

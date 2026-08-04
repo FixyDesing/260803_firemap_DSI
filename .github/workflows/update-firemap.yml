@@ -1,4 +1,4 @@
-name: EFFIS-gegevens dagelijks bijwerken
+name: EFFIS- en FireMap-gegevens dagelijks bijwerken
 
 on:
   schedule:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: effis-gegevens-bijwerken
+  group: effis-firemap-gegevens-bijwerken
   cancel-in-progress: false
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
           Rscript tests/test_pipeline.R
           Rscript tests/test_effis_pipeline.R
 
-      - name: Actuele EFFIS-brandgebieden ophalen en exporteren
+      - name: EFFIS ophalen en met FireMap verrijken
         run: Rscript scripts/update_effis.R
 
       - name: Aangemaakte EFFIS-bestanden valideren
@@ -61,7 +61,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "gegevens: EFFIS-momentopname bijwerken [skip ci]"
+          git commit -m "gegevens: EFFIS en FireMap bijwerken [skip ci]"
 
           branch="${GITHUB_REF_NAME}"
           git pull --rebase origin "${branch}"
