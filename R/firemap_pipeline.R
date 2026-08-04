@@ -16,13 +16,20 @@ DUTCH_MONTHS <- c(
 )
 
 COUNTRY_NAMES_NL <- c(
-  AL = "Albanië", BA = "Bosnië en Herzegovina", BE = "België",
-  BG = "Bulgarije", CH = "Zwitserland", CY = "Cyprus", DE = "Duitsland",
-  DZ = "Algerije", EL = "Griekenland", ES = "Spanje", FR = "Frankrijk",
-  HR = "Kroatië", HU = "Hongarije", IE = "Ierland", IL = "Israël",
-  IT = "Italië", JO = "Jordanië", LB = "Libanon", MA = "Marokko",
-  ME = "Montenegro", MK = "Noord-Macedonië", NO = "Noorwegen",
-  PT = "Portugal", RO = "Roemenië", RS = "Servië", SE = "Zweden",
+  AD = "Andorra", AL = "Albanië", AM = "Armenië", AT = "Oostenrijk",
+  AZ = "Azerbeidzjan", BA = "Bosnië en Herzegovina", BE = "België",
+  BG = "Bulgarije", BY = "Belarus", CH = "Zwitserland", CY = "Cyprus",
+  CZ = "Tsjechië", DE = "Duitsland", DK = "Denemarken", DZ = "Algerije",
+  EE = "Estland", EG = "Egypte", EL = "Griekenland", ES = "Spanje",
+  FI = "Finland", FR = "Frankrijk", GB = "Verenigd Koninkrijk",
+  GE = "Georgië", GR = "Griekenland", HR = "Kroatië", HU = "Hongarije",
+  IE = "Ierland", IL = "Israël", IQ = "Irak", IS = "IJsland",
+  IT = "Italië", JO = "Jordanië", LB = "Libanon", LI = "Liechtenstein",
+  LT = "Litouwen", LU = "Luxemburg", LV = "Letland", LY = "Libië",
+  MA = "Marokko", MD = "Moldavië", ME = "Montenegro",
+  MK = "Noord-Macedonië", MT = "Malta", NL = "Nederland",
+  NO = "Noorwegen", PL = "Polen", PS = "Palestina", PT = "Portugal",
+  RO = "Roemenië", RS = "Servië", RU = "Rusland", SE = "Zweden",
   SI = "Slovenië", SK = "Slowakije", SY = "Syrië", TN = "Tunesië",
   TR = "Turkije", UA = "Oekraïne", UK = "Verenigd Koninkrijk"
 )

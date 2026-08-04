@@ -1,18 +1,18 @@
-name: FireMap-gegevens dagelijks bijwerken
+name: EFFIS-gegevens dagelijks bijwerken
 
 on:
   schedule:
-    # Dagelijks om 06:17 Belgische tijd. Een tijd buiten het hele uur
-    # verkleint de kans op vertraging in de GitHub Actions-wachtrij.
-    - cron: "17 6 * * *"
-      timezone: "Europe/Brussels"
+    # GitHub cron gebruikt UTC. Dit is 07:23 tijdens de Belgische zomertijd
+    # en 06:23 tijdens de wintertijd. Een tijd buiten het hele uur verkleint
+    # de kans op vertraging in de GitHub Actions-wachtrij.
+    - cron: "23 5 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: firemap-gegevens-bijwerken
+  group: effis-gegevens-bijwerken
   cancel-in-progress: false
 
 jobs:
@@ -36,18 +36,24 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
 
       - name: Lokale pijplijntests uitvoeren
-        run: Rscript tests/test_pipeline.R
+        run: |
+          Rscript tests/test_pipeline.R
+          Rscript tests/test_effis_pipeline.R
 
-      - name: Actuele brandgegevens ophalen en exporteren
-        run: Rscript scripts/update_firemap.R
+      - name: Actuele EFFIS-brandgebieden ophalen en exporteren
+        run: Rscript scripts/update_effis.R
 
-      - name: Aangemaakte bestanden valideren
-        run: Rscript scripts/check_outputs.R
+      - name: Aangemaakte EFFIS-bestanden valideren
+        run: Rscript scripts/check_effis_outputs.R
 
       - name: Gewijzigde gegevens vastleggen
         shell: bash
         run: |
-          git add data/
+          git add \
+            data/effis_bronselectie.json \
+            data/effis_metagegevens.json \
+            data/flourish_effis_branden.csv \
+            data/flourish_effis_actualiteitssamenvatting.csv
           if git diff --cached --quiet; then
             echo "Geen gegevenswijziging om te committen."
             exit 0
@@ -55,7 +61,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "gegevens: FireMap-momentopname bijwerken [skip ci]"
+          git commit -m "gegevens: EFFIS-momentopname bijwerken [skip ci]"
 
           branch="${GITHUB_REF_NAME}"
           git pull --rebase origin "${branch}"

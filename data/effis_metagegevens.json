@@ -1,0 +1,21 @@
+{
+  "schemaversie": "1.0",
+  "opgehaald_utc": "2026-08-04T06:38:21Z",
+  "bron_bijgewerkt_utc": "2026-08-04T04:37:17Z",
+  "venster_vanaf": "2026-07-29",
+  "venster_tot_en_met": "2026-08-04",
+  "aantal_brandgebieden": 542,
+  "totale_oppervlakte_ha": 120351,
+  "aantallen_per_actualiteit": {
+    "vandaag": 10,
+    "afgelopen_drie_dagen": 182,
+    "vier_tot_zeven_dagen": 350,
+    "onbekend": 0
+  },
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "bronpagina": "https://forest-fire.emergency.copernicus.eu/apps/effis.csv/",
+  "datalicentie": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
+  "bronvermelding": "EFFIS – Copernicus Emergency Management Service",
+  "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd.",
+  "belangrijke_beperking": "EFFIS-datums zijn kaartregistraties en hoeven niet overeen te komen met het werkelijke ontstaan of uitdoven van een brand."
+}

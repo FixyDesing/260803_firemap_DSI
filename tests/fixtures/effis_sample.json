@@ -1,0 +1,67 @@
+{
+  "count": 4,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1001,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [-8.47054, 41.04774]
+      },
+      "country": "PT",
+      "countryful": "Portugal",
+      "province": "Área Metropolitana do Porto",
+      "commune": "Canedo, Vale e Vila Maior",
+      "firedate": "2026-08-01T14:25:00+02:00",
+      "area_ha": 12.5,
+      "lastupdate": "2026-08-04T06:15:00+02:00",
+      "lastfiredate": null
+    },
+    {
+      "id": 1002,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [6.311, 43.406]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "N.A.",
+      "firedate": "2026-07-31T11:00:00+02:00",
+      "area_ha": 100,
+      "lastupdate": "2026-08-02T09:30:00+02:00",
+      "lastfiredate": null
+    },
+    {
+      "id": 1003,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [-4.25, 40.38]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Madrid",
+      "commune": "Navas del Rey",
+      "firedate": "2026-07-29T12:00:00+02:00",
+      "area_ha": 0,
+      "lastupdate": "2026-07-30T18:00:00+02:00",
+      "lastfiredate": null
+    },
+    {
+      "id": 1004,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [20.0, 45.0]
+      },
+      "country": "ZZ",
+      "countryful": "Testland",
+      "province": null,
+      "commune": null,
+      "firedate": null,
+      "area_ha": null,
+      "lastupdate": null,
+      "lastfiredate": null
+    }
+  ]
+}
