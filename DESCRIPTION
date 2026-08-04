@@ -1,11 +1,12 @@
 Package: firemapflourish
 Type: Project
-Title: Dagelijkse FireMap-Export voor Flourish
+Title: Dagelijkse EFFIS-Export voor Flourish
 Version: 0.1.0
 Authors@R: person("DSI", "Data", email = "noreply@example.com", role = c("aut", "cre"))
-Description: Haalt de openbare Europese zevendaagse GeoJSON-bron van
-    FireMap.live op, valideert de gegevens en maakt stabiele CSV-bestanden
-    voor Flourish.
+Description: Haalt de openbare actuele brandgebieden van het European Forest
+    Fire Information System (EFFIS) op, valideert de gegevens en maakt
+    stabiele Nederlandstalige CSV-bestanden voor Flourish. De eerdere
+    FireMap.live-pipeline blijft tijdelijk beschikbaar als referentie.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
