@@ -248,6 +248,7 @@ effis_record_to_row <- function(
 
   data.frame(
     id = paste0("effis-ba-", source_id),
+    data_type = "effis_brandgebied",
     source_id = source_id,
     latitude = coordinates[[2L]],
     longitude = coordinates[[1L]],
@@ -284,6 +285,10 @@ effis_record_to_row <- function(
     firemap_fire_weather_nl = NA_character_,
     firemap_source_updated_at_utc = NA_character_,
     firemap_retrieved_at_utc = NA_character_,
+    firms_satellites = NA_character_,
+    firms_instruments = NA_character_,
+    firms_max_frp_mw = NA_real_,
+    firms_detection_days_7d = NA_real_,
     stringsAsFactors = FALSE,
     check.names = FALSE
   )
@@ -353,6 +358,90 @@ enrich_effis_with_firemap <- function(effis_data, firemap_data = NULL) {
   effis_data
 }
 
+firms_clusters_to_rows <- function(clusters, retrieved_at_utc) {
+  if (!is.data.frame(clusters) || nrow(clusters) == 0L) {
+    return(data.frame())
+  }
+
+  first_detection <- as.POSIXct(
+    clusters$first_detection_utc,
+    format = "%Y-%m-%dT%H:%M:%SZ",
+    tz = "UTC"
+  )
+  last_detection <- as.POSIXct(
+    clusters$last_detection_utc,
+    format = "%Y-%m-%dT%H:%M:%SZ",
+    tz = "UTC"
+  )
+  registration_days <- pmax(0, floor(as.numeric(difftime(
+    last_detection,
+    first_detection,
+    units = "days"
+  ))))
+  labels <- ifelse(
+    clusters$detections_24h > 0,
+    "Satellietdetectie laatste 24 uur",
+    "Satellietdetectie laatste 48 uur"
+  )
+  explanations <- ifelse(
+    clusters$detections_24h > 0,
+    paste(
+      "NASA FIRMS registreerde hier de afgelopen 24 uur een warmtebron.",
+      "Dit is nog geen door EFFIS ingetekend brandgebied."
+    ),
+    paste(
+      "NASA FIRMS registreerde hier de afgelopen 48 uur een warmtebron.",
+      "Dit is nog geen door EFFIS ingetekend brandgebied."
+    )
+  )
+
+  data.frame(
+    id = clusters$cluster_id,
+    data_type = "firms_hotspot",
+    source_id = clusters$cluster_id,
+    latitude = clusters$latitude,
+    longitude = clusters$longitude,
+    display_name = "Actieve satellietdetectie",
+    commune = NA_character_,
+    province = NA_character_,
+    country_code = clusters$country_code,
+    country_name = clusters$country_name,
+    actuality_nl = labels,
+    actuality_explanation_nl = explanations,
+    actuality_order = 0L,
+    marker_color = "#AA3228",
+    size_ha = NA_real_,
+    marker_size = round(pmin(
+      1.5,
+      0.8 + 0.2 * log10(pmax(1, clusters$detections_7d) + 1)
+    ), 2),
+    first_registration_utc = clusters$first_detection_utc,
+    last_update_utc = clusters$last_detection_utc,
+    days_since_update = pmax(0, as.numeric(difftime(
+      as.POSIXct(retrieved_at_utc, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
+      last_detection,
+      units = "days"
+    ))),
+    registration_days = registration_days,
+    retrieved_at_utc = retrieved_at_utc,
+    source = FIRMS_SOURCE_LABEL,
+    source_url = FIRMS_SOURCE_PAGE,
+    firemap_available = FALSE,
+    firemap_status_nl = "Satellietdetectie – nog niet bevestigd",
+    firemap_detections_24h = clusters$detections_24h,
+    firemap_detections_7d = clusters$detections_7d,
+    firemap_fire_weather_nl = NA_character_,
+    firemap_source_updated_at_utc = NA_character_,
+    firemap_retrieved_at_utc = NA_character_,
+    firms_satellites = clusters$satellites,
+    firms_instruments = clusters$instruments,
+    firms_max_frp_mw = clusters$max_frp_mw,
+    firms_detection_days_7d = clusters$detection_days_7d,
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  )
+}
+
 validate_effis_data <- function(data, min_rows = 1L) {
   min_rows <- as.integer(min_rows)
   if (!is.data.frame(data) || nrow(data) < min_rows) {
@@ -406,6 +495,9 @@ validate_effis_data <- function(data, min_rows = 1L) {
 }
 
 effis_last_updated <- function(data) {
+  if ("data_type" %in% names(data)) {
+    data <- data[data$data_type == "effis_brandgebied", , drop = FALSE]
+  }
   values <- data$last_update_utc
   values <- values[!is.na(values) & nzchar(values)]
   if (length(values) == 0L) {
@@ -423,6 +515,11 @@ effis_last_updated <- function(data) {
 build_effis_flourish_export <- function(data) {
   data.frame(
     id = data$id,
+    gegevenstype = ifelse(
+      data$data_type == "firms_hotspot",
+      "Actieve satellietdetectie",
+      "EFFIS-brandgebied"
+    ),
     breedtegraad = data$latitude,
     lengtegraad = data$longitude,
     weergavenaam = data$display_name,
@@ -441,11 +538,15 @@ build_effis_flourish_export <- function(data) {
     actualiteitvolgorde = data$actuality_order,
     markerkleur = data$marker_color,
     oppervlakte_ha = data$size_ha,
-    oppervlakte = vapply(
-      data$size_ha,
-      format_area_nl,
-      character(1),
-      USE.NAMES = FALSE
+    oppervlakte = ifelse(
+      data$data_type == "firms_hotspot",
+      "Nog niet vastgesteld",
+      vapply(
+        data$size_ha,
+        format_area_nl,
+        character(1),
+        USE.NAMES = FALSE
+      )
     ),
     markergrootte = data$marker_size,
     eerste_registratie = vapply(
@@ -508,6 +609,19 @@ build_effis_flourish_export <- function(data) {
     ),
     firemap_bijgewerkt_utc = data$firemap_source_updated_at_utc,
     firemap_opgehaald_utc = data$firemap_retrieved_at_utc,
+    firms_hotspot = ifelse(data$data_type == "firms_hotspot", "Ja", "Nee"),
+    satellieten = ifelse(
+      is.na(data$firms_satellites),
+      "Niet beschikbaar",
+      data$firms_satellites
+    ),
+    instrumenten = ifelse(
+      is.na(data$firms_instruments),
+      "Niet beschikbaar",
+      data$firms_instruments
+    ),
+    maximale_stralingskracht_mw = data$firms_max_frp_mw,
+    detectiedagen_7d = data$firms_detection_days_7d,
     opgehaald_utc = data$retrieved_at_utc,
     bron = data$source,
     bron_url = data$source_url,
@@ -532,7 +646,7 @@ validate_effis_flourish_export <- function(data, min_rows = 1L) {
     stop("De EFFIS-Flourish-export bevat te weinig rijen.", call. = FALSE)
   }
   required <- c(
-    "id", "breedtegraad", "lengtegraad", "weergavenaam", "regio",
+    "id", "gegevenstype", "breedtegraad", "lengtegraad", "weergavenaam", "regio",
     "actualiteit", "markerkleur", "oppervlakte", "markergrootte",
     "eerste_registratie", "eerste_registratiedatum", "laatste_update",
     "registratieperiode", "statusindicatie", "detecties_24u",
@@ -564,13 +678,17 @@ validate_effis_flourish_export <- function(data, min_rows = 1L) {
 build_effis_actuality_summary <- function(data) {
   categories <- data.frame(
     actualiteit = c(
+      "Satellietdetectie laatste 24 uur",
+      "Satellietdetectie laatste 48 uur",
       "Vandaag bijgewerkt",
       "Afgelopen 3 dagen bijgewerkt",
       "4–7 dagen geleden bijgewerkt",
       "Actualiteit onbekend"
     ),
-    actualiteitvolgorde = 1:4,
-    markerkleur = c("#AA3228", "#E07154", "#FCD9BE", "#808080"),
+    actualiteitvolgorde = c(0L, 0L, 1L, 2L, 3L, 4L),
+    markerkleur = c(
+      "#AA3228", "#AA3228", "#AA3228", "#E07154", "#FCD9BE", "#808080"
+    ),
     stringsAsFactors = FALSE
   )
   categories$aantal <- vapply(
@@ -585,7 +703,11 @@ build_effis_actuality_summary <- function(data) {
   )
   categories$opgehaald_utc <- data$retrieved_at_utc[[1L]]
   categories$bron_bijgewerkt_utc <- effis_last_updated(data)
-  categories$bron <- EFFIS_SOURCE_LABEL
+  categories$bron <- ifelse(
+    grepl("^Satellietdetectie", categories$actualiteit),
+    FIRMS_SOURCE_LABEL,
+    EFFIS_SOURCE_LABEL
+  )
   categories
 }
 
@@ -602,6 +724,9 @@ build_effis_query_url <- function(source_url, from_date, to_date, page_size) {
 build_effis_metadata <- function(data, download) {
   summary <- build_effis_actuality_summary(data)
   enrichment <- download$firemap_enrichment
+  firms <- download$firms_hotspots
+  is_effis <- data$data_type == "effis_brandgebied"
+  is_firms <- data$data_type == "firms_hotspot"
   firemap_records <- if (is.null(enrichment$record_count)) {
     0L
   } else {
@@ -618,13 +743,15 @@ build_effis_metadata <- function(data, download) {
   }
 
   list(
-    schemaversie = "1.0",
+    schemaversie = "1.1",
     opgehaald_utc = data$retrieved_at_utc[[1L]],
     bron_bijgewerkt_utc = effis_last_updated(data),
     venster_vanaf = as.character(download$from_date),
     venster_tot_en_met = as.character(download$to_date),
-    aantal_brandgebieden = nrow(data),
-    totale_oppervlakte_ha = sum(data$size_ha, na.rm = TRUE),
+    aantal_markers = nrow(data),
+    aantal_brandgebieden = sum(is_effis),
+    aantal_firms_hotspotclusters = sum(is_firms),
+    totale_oppervlakte_ha = sum(data$size_ha[is_effis], na.rm = TRUE),
     aantallen_per_actualiteit = list(
       vandaag = count_for("Vandaag bijgewerkt"),
       afgelopen_drie_dagen = count_for("Afgelopen 3 dagen bijgewerkt"),
@@ -645,22 +772,62 @@ build_effis_metadata <- function(data, download) {
       },
       ophalen_geslaagd = isTRUE(enrichment$succeeded),
       aantal_firemap_records = firemap_records,
-      aantal_gekoppeld_op_effis_id = sum(data$firemap_available),
+      aantal_gekoppeld_op_effis_id = sum(data$firemap_available[is_effis]),
       aandeel_effis_verrijkt = round(
-        100 * mean(data$firemap_available),
+        100 * mean(data$firemap_available[is_effis]),
         1
       ),
       foutmelding = firemap_error
+    ),
+    firms_hotspots = list(
+      bron = FIRMS_SOURCE_LABEL,
+      bron_url = FIRMS_SOURCE_PAGE,
+      ophalen_geslaagd = isTRUE(firms$succeeded),
+      aantal_detecties_na_filtering = if (is.null(firms$record_count)) {
+        0L
+      } else {
+        as.integer(firms$record_count)
+      },
+      aantal_clusters_voor_effis_ontdubbeling = if (
+        is.null(firms$cluster_count_before_deduplication)
+      ) {
+        0L
+      } else {
+        as.integer(firms$cluster_count_before_deduplication)
+      },
+      aantal_clusters_voor_filter_permanente_warmtebronnen = if (
+        is.null(firms$cluster_count_before_static_filter)
+      ) {
+        0L
+      } else {
+        as.integer(firms$cluster_count_before_static_filter)
+      },
+      aantal_clusters_in_export = sum(is_firms),
+      zoekgebied = if (is.null(firms$area)) FIRMS_DEFAULT_AREA else firms$area,
+      sensorbronnen = if (is.null(firms$sources)) {
+        FIRMS_DEFAULT_SOURCES
+      } else {
+        firms$sources
+      },
+      bronqueries_zonder_sleutel = if (is.null(firms$query_descriptions)) {
+        character()
+      } else {
+        firms$query_descriptions
+      },
+      foutmelding = if (is.null(firms$error)) NA_character_ else firms$error
     ),
     uitgevoerde_aanpassingen = paste(
       "Selectie op laatste EFFIS-update van zeven dagen;",
       "brandperimeters weergegeven als centroidpunten;",
       "actualiteitscategorieën en Nederlandse labels toegevoegd;",
-      "beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id."
+      "beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id;",
+      "recente FIRMS-detecties op land per rastercel samengevoegd en",
+      "ontdubbeld tegen nabijgelegen EFFIS-brandgebieden."
     ),
     belangrijke_beperking = paste(
-      "EFFIS-datums zijn kaartregistraties en hoeven niet overeen te komen",
-      "met het werkelijke ontstaan of uitdoven van een brand."
+      "EFFIS-datums zijn kaartregistraties. FIRMS-detecties zijn thermische",
+      "anomalieën en vormen zonder EFFIS-perimeter nog geen bevestiging van",
+      "een natuurbrand of van de verbrande oppervlakte."
     )
   )
 }
@@ -919,6 +1086,15 @@ run_effis_pipeline <- function(
     "EFFIS_FIREMAP_TIMEOUT_SECONDS",
     60
   ),
+  firms_map_key = Sys.getenv("FIRMS_MAP_KEY", unset = ""),
+  firms_sources = firms_sources_from_string(Sys.getenv(
+    "FIRMS_SOURCES",
+    unset = paste(FIRMS_DEFAULT_SOURCES, collapse = ",")
+  )),
+  firms_area = Sys.getenv("FIRMS_AREA", unset = FIRMS_DEFAULT_AREA),
+  firms_recent_hours = env_number("FIRMS_RECENT_HOURS", 24),
+  firms_cluster_degrees = env_number("FIRMS_CLUSTER_DEGREES", 0.1),
+  firms_timeout_seconds = env_number("FIRMS_TIMEOUT_SECONDS", 90),
   page_size = env_number("EFFIS_PAGE_SIZE", 1000),
   reference_date = Sys.getenv("EFFIS_REFERENCE_DATE", unset = "")
 ) {
@@ -969,12 +1145,80 @@ run_effis_pipeline <- function(
   }
   data <- enrich_effis_with_firemap(data, firemap_enrichment$data)
   download$firemap_enrichment <- firemap_enrichment
+
+  message("Recente NASA FIRMS-satellietdetecties ophalen...")
+  firms_hotspots <- tryCatch(
+    download_firms_hotspots(
+      map_key = firms_map_key,
+      reference_date = reference_date,
+      window_days = window_days,
+      sources = firms_sources,
+      area = firms_area,
+      timeout_seconds = firms_timeout_seconds,
+      retrieved_at = retrieved_at
+    ),
+    error = function(error) {
+      list(
+        data = NULL,
+        clusters = NULL,
+        succeeded = FALSE,
+        record_count = 0L,
+        cluster_count = 0L,
+        source_url = FIRMS_SOURCE_PAGE,
+        query_descriptions = character(),
+        area = firms_area,
+        sources = firms_sources,
+        error = conditionMessage(error)
+      )
+    }
+  )
+  firms_hotspots$area <- firms_area
+  firms_hotspots$sources <- firms_sources
+  if (nzchar(firms_map_key) && !isTRUE(firms_hotspots$succeeded)) {
+    stop(
+      "FIRMS-update mislukt; de vorige geldige uitvoer blijft behouden: ",
+      firms_hotspots$error,
+      call. = FALSE
+    )
+  }
+
+  firms_clusters <- data.frame()
+  if (isTRUE(firms_hotspots$succeeded)) {
+    firms_clusters <- cluster_firms_detections(
+      firms_hotspots$data,
+      retrieved_at = retrieved_at,
+      recent_hours = firms_recent_hours,
+      grid_degrees = firms_cluster_degrees
+    )
+    firms_hotspots$cluster_count_before_deduplication <- nrow(firms_clusters)
+    firms_clusters <- remove_firms_clusters_near_effis(firms_clusters, data)
+    firms_hotspots$cluster_count_before_static_filter <- nrow(firms_clusters)
+    firms_clusters <- remove_likely_static_firms_clusters(firms_clusters)
+    firms_hotspots$cluster_count <- nrow(firms_clusters)
+    firms_hotspots$clusters <- firms_clusters
+
+    firms_rows <- firms_clusters_to_rows(
+      firms_clusters,
+      retrieved_at_utc = format_utc(retrieved_at)
+    )
+    if (nrow(firms_rows) > 0L) {
+      data <- rbind(data, firms_rows)
+      rownames(data) <- NULL
+    }
+  } else {
+    firms_hotspots$cluster_count_before_deduplication <- 0L
+    message(firms_hotspots$error)
+  }
+  download$firms_hotspots <- firms_hotspots
+  validate_effis_data(data, min_rows = min_rows)
   write_effis_outputs(data, download, output_dir)
 
   message(
-    "Klaar: ", nrow(data), " EFFIS-brandgebieden weggeschreven naar ",
+    "Klaar: ", sum(data$data_type == "effis_brandgebied"),
+    " EFFIS-brandgebieden en ", sum(data$data_type == "firms_hotspot"),
+    " FIRMS-hotspotclusters weggeschreven naar ",
     normalizePath(output_dir, mustWork = TRUE), "; ",
-    sum(data$firemap_available), " gekoppeld aan FireMap."
+    sum(data$firemap_available), " EFFIS-records gekoppeld aan FireMap."
   )
   invisible(data)
 }

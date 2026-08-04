@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 source(file.path("R", "firemap_pipeline.R"), encoding = "UTF-8")
+source(file.path("R", "firms_pipeline.R"), encoding = "UTF-8")
 source(file.path("R", "effis_pipeline.R"), encoding = "UTF-8")
 
 fixture <- jsonlite::read_json(
@@ -38,6 +39,7 @@ stopifnot(identical(data$country_name, c(
 stopifnot(isTRUE(all.equal(data$size_ha[[1L]], 12.5)))
 stopifnot(isTRUE(all.equal(data$marker_size[[1L]], 0.9)))
 stopifnot(identical(data$marker_size[[3L]], 0.1))
+stopifnot(all(data$data_type == "effis_brandgebied"))
 stopifnot(identical(data$first_registration_utc[[1L]], "2026-08-01T12:25:00Z"))
 stopifnot(identical(data$last_update_utc[[1L]], "2026-08-04T04:15:00Z"))
 stopifnot(identical(data$days_since_update, c(0, 2, 5, NA_real_)))
@@ -71,9 +73,57 @@ disabled_enrichment <- download_firemap_enrichment(source_url = "")
 stopifnot(!disabled_enrichment$succeeded)
 stopifnot(is.null(disabled_enrichment$data))
 
+firms_fixture <- paste(
+  readLines(file.path("tests", "fixtures", "firms_sample.csv"), encoding = "UTF-8"),
+  collapse = "\n"
+)
+firms_data <- read_firms_csv(firms_fixture, "VIIRS_NOAA21_NRT")
+firms_data <- filter_firms_detections(
+  firms_data,
+  as.Date("2026-07-29"),
+  reference_date
+)
+stopifnot(nrow(firms_data) == 4L)
+firms_clusters <- cluster_firms_detections(
+  firms_data,
+  retrieved_at = retrieved_at,
+  recent_hours = 24,
+  grid_degrees = 0.1
+)
+stopifnot(nrow(firms_clusters) == 2L)
+netherlands_cluster <- firms_clusters[firms_clusters$country_code == "NL", ]
+stopifnot(nrow(netherlands_cluster) == 1L)
+stopifnot(identical(netherlands_cluster$country_name, "Nederland"))
+stopifnot(identical(netherlands_cluster$detections_24h, 3L))
+stopifnot(identical(netherlands_cluster$detections_7d, 3L))
+stopifnot(identical(netherlands_cluster$detection_days_7d, 2L))
+static_example <- netherlands_cluster
+static_example$detections_7d <- 20L
+static_example$detection_days_7d <- 4L
+stopifnot(nrow(remove_likely_static_firms_clusters(static_example)) == 0L)
+firms_clusters <- remove_firms_clusters_near_effis(firms_clusters, data)
+stopifnot(nrow(firms_clusters) == 1L)
+stopifnot(identical(firms_clusters$country_code, "NL"))
+firms_rows <- firms_clusters_to_rows(firms_clusters, format_utc(retrieved_at))
+combined_data <- rbind(data, firms_rows)
+validate_effis_data(combined_data, min_rows = 5L)
+combined_export <- build_effis_flourish_export(combined_data)
+validate_effis_flourish_export(combined_export, min_rows = 5L)
+hotspot_export <- combined_export[combined_export$firms_hotspot == "Ja", ]
+stopifnot(nrow(hotspot_export) == 1L)
+stopifnot(identical(hotspot_export$regio, "Nederland"))
+stopifnot(identical(hotspot_export$oppervlakte, "Nog niet vastgesteld"))
+stopifnot(identical(
+  hotspot_export$statusindicatie,
+  "Satellietdetectie – nog niet bevestigd"
+))
+stopifnot(identical(hotspot_export$detecties_24u, "3"))
+stopifnot(identical(hotspot_export$eerste_registratiedatum, "3 augustus 2026"))
+
 export <- build_effis_flourish_export(data)
 validate_effis_flourish_export(export, min_rows = 4L)
 stopifnot(identical(export$actualiteit, data$actuality_nl))
+stopifnot(all(export$gegevenstype == "EFFIS-brandgebied"))
 stopifnot(identical(export$oppervlakte[[1L]], "12,5 hectare"))
 stopifnot(identical(
   export$regio[[1L]],
@@ -107,6 +157,16 @@ download$firemap_enrichment <- list(
   source_url = FIREMAP_DEFAULT_URL,
   error = NA_character_
 )
+download$firms_hotspots <- list(
+  succeeded = TRUE,
+  record_count = 0L,
+  cluster_count_before_deduplication = 0L,
+  cluster_count = 0L,
+  area = FIRMS_DEFAULT_AREA,
+  sources = FIRMS_DEFAULT_SOURCES,
+  query_descriptions = character(),
+  error = NA_character_
+)
 temporary_output <- tempfile("effis-test-")
 dir.create(temporary_output)
 on.exit(unlink(temporary_output, recursive = TRUE, force = TRUE), add = TRUE)
@@ -132,6 +192,7 @@ written_metadata <- jsonlite::read_json(
 )
 stopifnot(identical(as.integer(written_metadata$aantal_brandgebieden), 4L))
 stopifnot(identical(written_metadata$venster_vanaf, "2026-07-29"))
+stopifnot(identical(as.integer(written_metadata$aantal_markers), 4L))
 stopifnot(identical(
   as.integer(written_metadata$firemap_verrijking$aantal_gekoppeld_op_effis_id),
   3L

@@ -1,12 +1,390 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T07:43:33Z",
+  "opgehaald_utc": "2026-08-04T08:30:46Z",
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_records": 562,
+  "aantal_records": 582,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 595576,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -3.7908,
+          39.849
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Toledo",
+      "commune": "Guardia, La",
+      "firedate": "2026-07-29T13:04:00+02:00",
+      "area_ha": 76,
+      "lastupdate": "2026-08-04T08:29:29.914582+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595562,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          13.2293,
+          41.4065
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Latina",
+      "commune": "Sonnino",
+      "firedate": "2026-08-01T00:00:00+02:00",
+      "area_ha": 31,
+      "lastupdate": "2026-08-04T08:26:36.646118+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595544,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.2538,
+          39.1929
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Cáceres",
+      "commune": "Alcuéscar",
+      "firedate": "2026-07-31T14:05:00+02:00",
+      "area_ha": 19,
+      "lastupdate": "2026-08-04T08:26:19.526986+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595542,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.9768,
+          38.3646
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Badajoz",
+      "commune": "Zahínos",
+      "firedate": "2026-07-31T14:42:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-08-04T08:25:01.436501+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595539,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          37.4404,
+          49.6628
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-07-28T00:00:00+02:00",
+      "area_ha": 15,
+      "lastupdate": "2026-08-04T08:24:34.413389+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595536,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.7167,
+          37.2853
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Huelva",
+      "commune": "Lucena del Puerto",
+      "firedate": "2026-08-01T13:48:00+02:00",
+      "area_ha": 10,
+      "lastupdate": "2026-08-04T08:22:34.626714+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595528,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.4207,
+          37.2529
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Huelva",
+      "commune": "Hinojos",
+      "firedate": "2026-08-01T12:42:00+02:00",
+      "area_ha": 24,
+      "lastupdate": "2026-08-04T08:21:25.191435+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595527,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          15.1019,
+          37.9087
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Messina",
+      "commune": "Francavilla di Sicilia",
+      "firedate": "2026-07-31T10:20:48.159000+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-08-04T08:21:00.574171+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595524,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          37.199,
+          50.216
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-01T10:28:00+02:00",
+      "area_ha": 19,
+      "lastupdate": "2026-08-04T08:19:03.466284+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595523,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          13.2265,
+          38.1257
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Palermo",
+      "commune": "Torretta",
+      "firedate": "2026-08-01T00:00:00+02:00",
+      "area_ha": 74,
+      "lastupdate": "2026-08-04T08:18:50.944444+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595521,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -5.7778,
+          35.5507
+        ]
+      },
+      "country": "MA",
+      "countryful": "Morocco",
+      "province": "Assilah",
+      "commune": "N.A.",
+      "firedate": "2026-07-28T12:36:00+02:00",
+      "area_ha": 480,
+      "lastupdate": "2026-08-04T08:17:50.519169+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595428,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          12.2081,
+          52.636
+        ]
+      },
+      "country": "DE",
+      "countryful": "Deutschland",
+      "province": "Stendal",
+      "commune": "Schollene",
+      "firedate": "2026-08-03T11:32:00+02:00",
+      "area_ha": 0,
+      "lastupdate": "2026-08-04T08:01:32.297080+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595415,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          12.1548,
+          52.6412
+        ]
+      },
+      "country": "DE",
+      "countryful": "Deutschland",
+      "province": "Stendal",
+      "commune": "Schollene",
+      "firedate": "2026-07-29T00:00:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-08-04T08:01:13.712890+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595393,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          12.1346,
+          52.6321
+        ]
+      },
+      "country": "DE",
+      "countryful": "Deutschland",
+      "province": "Stendal",
+      "commune": "Schönhausen (Elbe)",
+      "firedate": "2026-07-29T12:02:00+02:00",
+      "area_ha": 21,
+      "lastupdate": "2026-08-04T08:00:26.169565+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595376,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -1.7809,
+          53.4982
+        ]
+      },
+      "country": "UK",
+      "countryful": "United Kingdom",
+      "province": "Barnsley, Doncaster and Rotherham",
+      "commune": "Barnsley",
+      "firedate": "2026-07-16T13:06:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-08-04T07:56:47.394855+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595334,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -5.6801,
+          50.0992
+        ]
+      },
+      "country": "UK",
+      "countryful": "United Kingdom",
+      "province": "Cornwall and Isles of Scilly",
+      "commune": "Cornwall",
+      "firedate": "2026-07-16T02:21:00+02:00",
+      "area_ha": 11,
+      "lastupdate": "2026-08-04T07:50:48.712269+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595316,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -3.4201,
+          51.6551
+        ]
+      },
+      "country": "UK",
+      "countryful": "United Kingdom",
+      "province": "Central Valleys",
+      "commune": "Rhondda Cynon Taf",
+      "firedate": "2026-08-02T01:17:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-08-04T07:50:08.463876+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595315,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -3.44,
+          51.6683
+        ]
+      },
+      "country": "UK",
+      "countryful": "United Kingdom",
+      "province": "Central Valleys",
+      "commune": "Rhondda Cynon Taf",
+      "firedate": "2026-08-03T01:43:00+02:00",
+      "area_ha": 61,
+      "lastupdate": "2026-08-04T07:49:50.961469+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595297,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          2.0312,
+          47.814
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Loiret",
+      "commune": "Sandillon",
+      "firedate": "2026-07-29T13:42:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-08-04T07:46:07.383668+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595286,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -0.913,
+          43.9791
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Landes",
+      "commune": "Rion-des-Landes",
+      "firedate": "2026-07-30T00:00:00+02:00",
+      "area_ha": 36,
+      "lastupdate": "2026-08-04T07:43:44.881304+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595285,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -0.8945,
+          43.9796
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Landes",
+      "commune": "Morcenx",
+      "firedate": "2026-07-30T01:58:00+02:00",
+      "area_ha": 27,
+      "lastupdate": "2026-08-04T07:43:05.092463+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 595259,
       "centroid": {
@@ -678,8 +1056,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.0087,
-          40.4106
+          9.0073,
+          40.4101
         ]
       },
       "country": "IT",
@@ -687,7 +1065,7 @@
       "province": "Sassari",
       "commune": "Bottidda",
       "firedate": "2026-08-01T11:21:00+02:00",
-      "area_ha": 57,
+      "area_ha": 94,
       "lastupdate": "2026-08-03T13:35:46.949719+02:00",
       "lastfiredate": {}
     },
@@ -2064,8 +2442,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -6.8596,
-          37.2244
+          -6.8606,
+          37.2252
         ]
       },
       "country": "ES",
@@ -2073,7 +2451,7 @@
       "province": "Huelva",
       "commune": "Moguer",
       "firedate": "2026-08-02T12:44:00+02:00",
-      "area_ha": 1,
+      "area_ha": 16,
       "lastupdate": "2026-08-03T08:54:16.834390+02:00",
       "lastfiredate": {}
     },
@@ -2669,24 +3047,6 @@
       "firedate": "2026-08-01T11:21:00+02:00",
       "area_ha": 31,
       "lastupdate": "2026-08-03T08:02:35.570458+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 592294,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          9.0104,
-          40.4055
-        ]
-      },
-      "country": "IT",
-      "countryful": "Italia",
-      "province": "Sassari",
-      "commune": "Bottidda",
-      "firedate": "2026-08-01T11:21:00+02:00",
-      "area_ha": 4,
-      "lastupdate": "2026-08-03T08:01:23.909908+02:00",
       "lastfiredate": {}
     },
     {
@@ -3351,7 +3711,7 @@
       "province": "Agrigento",
       "commune": "Cammarata",
       "firedate": "2026-07-31T11:40:00+02:00",
-      "area_ha": 534,
+      "area_ha": 532,
       "lastupdate": "2026-08-03T07:20:35.495093+02:00",
       "lastfiredate": {}
     },

@@ -1,4 +1,4 @@
-name: EFFIS- en FireMap-gegevens dagelijks bijwerken
+name: EFFIS-, FIRMS- en FireMap-gegevens dagelijks bijwerken
 
 on:
   schedule:
@@ -40,8 +40,16 @@ jobs:
           Rscript tests/test_pipeline.R
           Rscript tests/test_effis_pipeline.R
 
-      - name: EFFIS ophalen en met FireMap verrijken
-        run: Rscript scripts/update_effis.R
+      - name: EFFIS, FIRMS en FireMap ophalen
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        shell: bash
+        run: |
+          if [ -z "${FIRMS_MAP_KEY}" ]; then
+            echo "Repository-secret FIRMS_MAP_KEY ontbreekt."
+            exit 1
+          fi
+          Rscript scripts/update_effis.R
 
       - name: Aangemaakte EFFIS-bestanden valideren
         run: Rscript scripts/check_effis_outputs.R
@@ -61,7 +69,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "gegevens: EFFIS en FireMap bijwerken [skip ci]"
+          git commit -m "gegevens: EFFIS, FIRMS en FireMap bijwerken [skip ci]"
 
           branch="${GITHUB_REF_NAME}"
           git pull --rebase origin "${branch}"

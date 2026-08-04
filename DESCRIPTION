@@ -1,14 +1,16 @@
 Package: firemapflourish
 Type: Project
-Title: Dagelijkse Gecombineerde EFFIS- en FireMap-Export voor Flourish
+Title: Dagelijkse EFFIS-, FIRMS- en FireMap-Export voor Flourish
 Version: 0.1.0
 Authors@R: person("DSI", "Data", email = "noreply@example.com", role = c("aut", "cre"))
 Description: Haalt de openbare actuele brandgebieden van het European Forest
-    Fire Information System (EFFIS) op, verrijkt ze waar mogelijk met
-    status-, detectie- en brandgevaargegevens van FireMap.live, valideert de
-    gegevens en maakt stabiele Nederlandstalige CSV-bestanden voor Flourish.
+    Fire Information System (EFFIS) op, voegt recente satellietdetecties van
+    NASA FIRMS toe en verrijkt EFFIS-records waar mogelijk met FireMap.live.
+    De pijplijn valideert alles en maakt stabiele Nederlandstalige
+    CSV-bestanden voor Flourish.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     httr2,
-    jsonlite
+    jsonlite,
+    maps
