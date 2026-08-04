@@ -63,5 +63,21 @@ if (sum(summary$aantal) != nrow(fires)) {
 if (!identical(unique(fires$opgehaald_utc), metadata$opgehaald_utc)) {
   stop("De ophaaltijd verschilt tussen de EFFIS-bestanden.", call. = FALSE)
 }
+if (any(!fires$firemap_beschikbaar %in% c("Ja", "Nee"))) {
+  stop("Ongeldige FireMap-beschikbaarheidswaarde in de CSV.", call. = FALSE)
+}
+linked_count <- sum(fires$firemap_beschikbaar == "Ja")
+if (!identical(
+  as.integer(metadata$firemap_verrijking$aantal_gekoppeld_op_effis_id),
+  as.integer(linked_count)
+)) {
+  stop("Het aantal FireMap-koppelingen klopt niet met de metadata.", call. = FALSE)
+}
+if (any(!nzchar(fires$regio)) || any(!nzchar(fires$statusindicatie))) {
+  stop("Minstens één tooltipveld is leeg.", call. = FALSE)
+}
 
-message("EFFIS-outputcontrole geslaagd voor ", nrow(fires), " brandgebieden.")
+message(
+  "EFFIS-outputcontrole geslaagd voor ", nrow(fires),
+  " brandgebieden; ", linked_count, " gekoppeld aan FireMap."
+)

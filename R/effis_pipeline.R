@@ -144,6 +144,52 @@ format_registration_period_nl <- function(days) {
   paste0(round(days), " dagen tussen registraties")
 }
 
+format_effis_date_nl <- function(value) {
+  parsed <- parse_effis_datetime(value)
+  if (is.na(parsed)) {
+    return("Niet beschikbaar")
+  }
+  format_date_nl(format(parsed, "%Y-%m-%d", tz = EFFIS_TIMEZONE))
+}
+
+format_firemap_count_nl <- function(value) {
+  if (!is.finite(value) || value < 0) {
+    return("Niet beschikbaar")
+  }
+  formatC(
+    round(value),
+    format = "f",
+    digits = 0,
+    big.mark = ".",
+    decimal.mark = ","
+  )
+}
+
+format_firemap_status_nl <- function(value) {
+  value <- clean_effis_text(value)
+  if (is.na(value) || identical(value, "Onbekend")) {
+    "Niet beschikbaar"
+  } else {
+    value
+  }
+}
+
+format_firemap_danger_nl <- function(value) {
+  value <- clean_effis_text(value)
+  if (is.na(value) || identical(value, "Onbekend")) {
+    "Niet beschikbaar"
+  } else {
+    value
+  }
+}
+
+effis_region_nl <- function(country_name, province) {
+  country_name <- clean_effis_text(country_name)
+  province <- clean_effis_text(province)
+  if (is.na(country_name)) country_name <- "Onbekend land"
+  if (is.na(province)) country_name else paste(country_name, province, sep = ", ")
+}
+
 effis_record_to_row <- function(
   record,
   row_number,
@@ -231,6 +277,13 @@ effis_record_to_row <- function(
     retrieved_at_utc = retrieved_at_utc,
     source = EFFIS_SOURCE_LABEL,
     source_url = EFFIS_SOURCE_PAGE,
+    firemap_available = FALSE,
+    firemap_status_nl = NA_character_,
+    firemap_detections_24h = NA_real_,
+    firemap_detections_7d = NA_real_,
+    firemap_fire_weather_nl = NA_character_,
+    firemap_source_updated_at_utc = NA_character_,
+    firemap_retrieved_at_utc = NA_character_,
     stringsAsFactors = FALSE,
     check.names = FALSE
   )
@@ -265,6 +318,39 @@ parse_effis_records <- function(
   data <- do.call(rbind, rows)
   rownames(data) <- NULL
   data
+}
+
+enrich_effis_with_firemap <- function(effis_data, firemap_data = NULL) {
+  if (is.null(firemap_data) || !is.data.frame(firemap_data) ||
+      nrow(firemap_data) == 0L) {
+    return(effis_data)
+  }
+  if (!"source_id" %in% names(firemap_data)) {
+    stop("De FireMap-verrijking bevat geen EFFIS-bron-id.", call. = FALSE)
+  }
+
+  usable <- !is.na(firemap_data$source_id) & nzchar(firemap_data$source_id)
+  enrichment <- firemap_data[usable, , drop = FALSE]
+  enrichment <- enrichment[!duplicated(enrichment$source_id), , drop = FALSE]
+  matched_index <- match(effis_data$source_id, enrichment$source_id)
+  matched <- !is.na(matched_index)
+  if (!any(matched)) {
+    return(effis_data)
+  }
+
+  source_rows <- matched_index[matched]
+  effis_data$firemap_available[matched] <- TRUE
+  effis_data$firemap_status_nl[matched] <- enrichment$status_nl[source_rows]
+  effis_data$firemap_detections_24h[matched] <- enrichment$detections_24h[source_rows]
+  effis_data$firemap_detections_7d[matched] <- enrichment$detections_7d[source_rows]
+  effis_data$firemap_fire_weather_nl[matched] <- translate_fire_weather_index(
+    enrichment$fire_weather_index[source_rows]
+  )
+  effis_data$firemap_source_updated_at_utc[matched] <-
+    enrichment$source_updated_at_utc[source_rows]
+  effis_data$firemap_retrieved_at_utc[matched] <-
+    enrichment$retrieved_at_utc[source_rows]
+  effis_data
 }
 
 validate_effis_data <- function(data, min_rows = 1L) {
@@ -344,6 +430,12 @@ build_effis_flourish_export <- function(data) {
     provincie = ifelse(is.na(data$province), "Niet beschikbaar", data$province),
     landcode = data$country_code,
     landnaam = data$country_name,
+    regio = mapply(
+      effis_region_nl,
+      data$country_name,
+      data$province,
+      USE.NAMES = FALSE
+    ),
     actualiteit = data$actuality_nl,
     actualiteit_uitleg = data$actuality_explanation_nl,
     actualiteitvolgorde = data$actuality_order,
@@ -362,6 +454,12 @@ build_effis_flourish_export <- function(data) {
       character(1),
       USE.NAMES = FALSE
     ),
+    eerste_registratiedatum = vapply(
+      data$first_registration_utc,
+      format_effis_date_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
     eerste_registratie_utc = data$first_registration_utc,
     laatste_update = vapply(
       data$last_update_utc,
@@ -377,9 +475,52 @@ build_effis_flourish_export <- function(data) {
       character(1),
       USE.NAMES = FALSE
     ),
+    statusindicatie = vapply(
+      data$firemap_status_nl,
+      format_firemap_status_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    detecties_24u = vapply(
+      data$firemap_detections_24h,
+      format_firemap_count_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    detecties_7d = vapply(
+      data$firemap_detections_7d,
+      format_firemap_count_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    brandgevaar = vapply(
+      data$firemap_fire_weather_nl,
+      format_firemap_danger_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    firemap_beschikbaar = ifelse(data$firemap_available, "Ja", "Nee"),
+    firemap_bijgewerkt = vapply(
+      data$firemap_source_updated_at_utc,
+      format_datetime_nl,
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    firemap_bijgewerkt_utc = data$firemap_source_updated_at_utc,
+    firemap_opgehaald_utc = data$firemap_retrieved_at_utc,
     opgehaald_utc = data$retrieved_at_utc,
     bron = data$source,
     bron_url = data$source_url,
+    aanvullende_bron = ifelse(
+      data$firemap_available,
+      "FireMap.live (EFFIS en NASA FIRMS)",
+      ""
+    ),
+    aanvullende_bron_url = ifelse(
+      data$firemap_available,
+      FIREMAP_SOURCE_PAGE,
+      ""
+    ),
     stringsAsFactors = FALSE,
     check.names = FALSE
   )
@@ -391,9 +532,11 @@ validate_effis_flourish_export <- function(data, min_rows = 1L) {
     stop("De EFFIS-Flourish-export bevat te weinig rijen.", call. = FALSE)
   }
   required <- c(
-    "id", "breedtegraad", "lengtegraad", "weergavenaam", "actualiteit",
-    "markerkleur", "oppervlakte", "markergrootte", "eerste_registratie",
-    "laatste_update", "registratieperiode", "bron", "bron_url"
+    "id", "breedtegraad", "lengtegraad", "weergavenaam", "regio",
+    "actualiteit", "markerkleur", "oppervlakte", "markergrootte",
+    "eerste_registratie", "eerste_registratiedatum", "laatste_update",
+    "registratieperiode", "statusindicatie", "detecties_24u",
+    "detecties_7d", "brandgevaar", "firemap_beschikbaar", "bron", "bron_url"
   )
   missing_columns <- setdiff(required, names(data))
   if (length(missing_columns) > 0L) {
@@ -458,6 +601,17 @@ build_effis_query_url <- function(source_url, from_date, to_date, page_size) {
 
 build_effis_metadata <- function(data, download) {
   summary <- build_effis_actuality_summary(data)
+  enrichment <- download$firemap_enrichment
+  firemap_records <- if (is.null(enrichment$record_count)) {
+    0L
+  } else {
+    as.integer(enrichment$record_count)
+  }
+  firemap_error <- if (is.null(enrichment$error)) {
+    NA_character_
+  } else {
+    as.character(enrichment$error)
+  }
   count_for <- function(label) {
     value <- summary$aantal[summary$actualiteit == label]
     if (length(value) == 0L) 0 else value[[1L]]
@@ -481,10 +635,28 @@ build_effis_metadata <- function(data, download) {
     bronpagina = EFFIS_SOURCE_PAGE,
     datalicentie = EFFIS_DATA_LICENSE,
     bronvermelding = EFFIS_SOURCE_LABEL,
+    firemap_verrijking = list(
+      bron = "FireMap.live (EFFIS en NASA FIRMS)",
+      bron_url = FIREMAP_SOURCE_PAGE,
+      brondata_url = if (is.null(enrichment$source_url)) {
+        FIREMAP_DEFAULT_URL
+      } else {
+        enrichment$source_url
+      },
+      ophalen_geslaagd = isTRUE(enrichment$succeeded),
+      aantal_firemap_records = firemap_records,
+      aantal_gekoppeld_op_effis_id = sum(data$firemap_available),
+      aandeel_effis_verrijkt = round(
+        100 * mean(data$firemap_available),
+        1
+      ),
+      foutmelding = firemap_error
+    ),
     uitgevoerde_aanpassingen = paste(
       "Selectie op laatste EFFIS-update van zeven dagen;",
       "brandperimeters weergegeven als centroidpunten;",
-      "actualiteitscategorieën en Nederlandse labels toegevoegd."
+      "actualiteitscategorieën en Nederlandse labels toegevoegd;",
+      "beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id."
     ),
     belangrijke_beperking = paste(
       "EFFIS-datums zijn kaartregistraties en hoeven niet overeen te komen",
@@ -688,12 +860,65 @@ download_effis_burnt_areas <- function(
   )
 }
 
+download_firemap_enrichment <- function(
+  source_url = FIREMAP_DEFAULT_URL,
+  timeout_seconds = 60,
+  max_tries = 4L
+) {
+  if (!nzchar(source_url)) {
+    return(list(
+      data = NULL,
+      succeeded = FALSE,
+      record_count = 0L,
+      source_url = source_url,
+      error = "FireMap-verrijking is uitgeschakeld."
+    ))
+  }
+
+  tryCatch(
+    {
+      raw_geojson <- download_firemap_geojson(
+        source_url = source_url,
+        timeout_seconds = timeout_seconds,
+        max_tries = max_tries
+      )
+      retrieved_at <- Sys.time()
+      data <- parse_firemap_geojson(raw_geojson, retrieved_at = retrieved_at)
+      validate_fire_data(data, min_rows = 1L)
+      list(
+        data = data,
+        succeeded = TRUE,
+        record_count = nrow(data),
+        source_url = source_url,
+        error = NA_character_
+      )
+    },
+    error = function(error) {
+      list(
+        data = NULL,
+        succeeded = FALSE,
+        record_count = 0L,
+        source_url = source_url,
+        error = conditionMessage(error)
+      )
+    }
+  )
+}
+
 run_effis_pipeline <- function(
   source_url = Sys.getenv("EFFIS_SOURCE_URL", unset = EFFIS_DEFAULT_URL),
+  firemap_source_url = Sys.getenv(
+    "EFFIS_FIREMAP_SOURCE_URL",
+    unset = FIREMAP_DEFAULT_URL
+  ),
   output_dir = Sys.getenv("EFFIS_OUTPUT_DIR", unset = "data"),
   window_days = env_number("EFFIS_WINDOW_DAYS", 7),
   min_rows = env_number("EFFIS_MIN_ROWS", 10),
   timeout_seconds = env_number("EFFIS_TIMEOUT_SECONDS", 90),
+  firemap_timeout_seconds = env_number(
+    "EFFIS_FIREMAP_TIMEOUT_SECONDS",
+    60
+  ),
   page_size = env_number("EFFIS_PAGE_SIZE", 1000),
   reference_date = Sys.getenv("EFFIS_REFERENCE_DATE", unset = "")
 ) {
@@ -730,11 +955,26 @@ run_effis_pipeline <- function(
     reference_date = reference_date
   )
   validate_effis_data(data, min_rows = min_rows)
+
+  message("Aanvullende FireMap-informatie ophalen...")
+  firemap_enrichment <- download_firemap_enrichment(
+    source_url = firemap_source_url,
+    timeout_seconds = firemap_timeout_seconds
+  )
+  if (!isTRUE(firemap_enrichment$succeeded)) {
+    message(
+      "FireMap-verrijking niet beschikbaar; EFFIS-update gaat door: ",
+      firemap_enrichment$error
+    )
+  }
+  data <- enrich_effis_with_firemap(data, firemap_enrichment$data)
+  download$firemap_enrichment <- firemap_enrichment
   write_effis_outputs(data, download, output_dir)
 
   message(
     "Klaar: ", nrow(data), " EFFIS-brandgebieden weggeschreven naar ",
-    normalizePath(output_dir, mustWork = TRUE), "."
+    normalizePath(output_dir, mustWork = TRUE), "; ",
+    sum(data$firemap_available), " gekoppeld aan FireMap."
   )
   invisible(data)
 }

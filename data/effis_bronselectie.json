@@ -1,12 +1,390 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T06:38:21Z",
+  "opgehaald_utc": "2026-08-04T07:43:33Z",
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_records": 542,
+  "aantal_records": 562,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 595259,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.1124,
+          43.4828
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "Montfort-sur-Argens",
+      "firedate": "2026-07-31T11:42:00+02:00",
+      "area_ha": 582,
+      "lastupdate": "2026-08-04T07:39:05.958020+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595194,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.0885,
+          43.4856
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "Correns",
+      "firedate": "2026-07-31T11:42:00+02:00",
+      "area_ha": 56,
+      "lastupdate": "2026-08-04T07:28:55.762432+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595160,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.7487,
+          41.0841
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Elbasan",
+      "commune": "Peqin",
+      "firedate": "2026-07-09T13:31:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-08-04T07:27:17.611226+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595147,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          20.3233,
+          41.1226
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Elbasan",
+      "commune": "Librazhd",
+      "firedate": "2026-07-30T11:57:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-08-04T07:25:03.464580+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595145,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.0885,
+          43.5096
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "Correns",
+      "firedate": "2026-07-25T00:00:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-08-04T07:23:26.480285+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595144,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.9796,
+          40.3579
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Gjirokastër",
+      "commune": "Memaliaj",
+      "firedate": "2026-07-30T11:04:00+02:00",
+      "area_ha": 16,
+      "lastupdate": "2026-08-04T07:23:17.819528+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595126,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.0619,
+          43.5023
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "Correns",
+      "firedate": "2026-07-31T11:42:00+02:00",
+      "area_ha": 501,
+      "lastupdate": "2026-08-04T07:22:09.887306+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595120,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.9194,
+          40.1106
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Vlorë",
+      "commune": "Himarë",
+      "firedate": "2026-07-29T11:57:00+02:00",
+      "area_ha": 25,
+      "lastupdate": "2026-08-04T07:20:54.643116+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595112,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.0388,
+          43.4933
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Var",
+      "commune": "Châteauvert",
+      "firedate": "2026-07-31T14:25:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-08-04T07:18:55.317996+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595111,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.398,
+          39.2856
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λάρισα",
+      "commune": "Δημοτική Κοινότητα Φαρσάλων",
+      "firedate": "2026-08-01T10:26:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-08-04T07:18:04.566807+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595079,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          16.2132,
+          43.6039
+        ]
+      },
+      "country": "HR",
+      "countryful": "Hrvatska",
+      "province": "Splitsko-dalmatinska županija",
+      "commune": "Prgomet",
+      "firedate": "2026-07-31T19:15:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-08-04T07:13:06.055711+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595078,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          18.9479,
+          42.5365
+        ]
+      },
+      "country": "ME",
+      "countryful": "Црна Гора",
+      "province": "Црна Гора",
+      "commune": "N.A.",
+      "firedate": "2026-08-01T00:43:00+02:00",
+      "area_ha": 362,
+      "lastupdate": "2026-08-04T07:12:13.017620+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595071,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.6285,
+          42.1005
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Shkodër",
+      "commune": "Shkodër",
+      "firedate": "2026-08-02T12:44:00+02:00",
+      "area_ha": 19,
+      "lastupdate": "2026-08-04T07:11:16.806349+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595066,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.8693,
+          41.4306
+        ]
+      },
+      "country": "MK",
+      "countryful": "Северна Македонија",
+      "province": "Вардарски",
+      "commune": "Kavadarci",
+      "firedate": "2026-08-03T10:43:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-08-04T07:10:27.566487+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595065,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.8594,
+          41.429
+        ]
+      },
+      "country": "MK",
+      "countryful": "Северна Македонија",
+      "province": "Вардарски",
+      "commune": "Kavadarci",
+      "firedate": "2026-08-03T10:43:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-08-04T07:10:11.887362+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595064,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.8482,
+          41.4111
+        ]
+      },
+      "country": "MK",
+      "countryful": "Северна Македонија",
+      "province": "Вардарски",
+      "commune": "Kavadarci",
+      "firedate": "2026-08-02T18:51:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-08-04T07:09:45.337126+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595063,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.8503,
+          41.4178
+        ]
+      },
+      "country": "MK",
+      "countryful": "Северна Македонија",
+      "province": "Вардарски",
+      "commune": "Kavadarci",
+      "firedate": "2026-08-02T18:51:00+02:00",
+      "area_ha": 12,
+      "lastupdate": "2026-08-04T07:09:19.586664+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595057,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          20.3812,
+          41.0634
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Elbasan",
+      "commune": "Prrenjas",
+      "firedate": "2026-08-02T18:51:00+02:00",
+      "area_ha": 15,
+      "lastupdate": "2026-08-04T07:07:59.409861+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 595034,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.5897,
+          40.1832
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Vlorë",
+      "commune": "Himarë",
+      "firedate": "2026-08-01T00:43:00+02:00",
+      "area_ha": 16,
+      "lastupdate": "2026-08-04T07:07:06.805466+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 594779,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -4.9764,
+          39.2018
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Badajoz",
+      "commune": "Herrera del Duque",
+      "firedate": "2026-07-31T14:05:00+02:00",
+      "area_ha": 443,
+      "lastupdate": "2026-08-04T06:42:58.439879+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 594751,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          2.9574,
+          43.9621
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Aveyron",
+      "commune": "Roquefort-sur-Soulzon",
+      "firedate": "2026-08-02T12:25:00+02:00",
+      "area_ha": 41,
+      "lastupdate": "2026-08-04T06:38:10.279936+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 594723,
       "centroid": {
@@ -2281,7 +2659,7 @@
         "type": "Point",
         "coordinates": [
           6.1216,
-          44.3288
+          44.3294
         ]
       },
       "country": "FR",
@@ -2289,7 +2667,7 @@
       "province": "Alpes-de-Haute-Provence",
       "commune": "Bayons",
       "firedate": "2026-08-01T11:21:00+02:00",
-      "area_ha": 7,
+      "area_ha": 31,
       "lastupdate": "2026-08-03T08:02:35.570458+02:00",
       "lastfiredate": {}
     },
@@ -3162,8 +3540,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          22.4054,
-          39.2862
+          22.406,
+          39.2863
         ]
       },
       "country": "EL",
@@ -3171,7 +3549,7 @@
       "province": "Λάρισα",
       "commune": "Τοπική Κοινότητα Αχιλλείου",
       "firedate": "2026-08-01T10:26:00+02:00",
-      "area_ha": 35,
+      "area_ha": 32,
       "lastupdate": "2026-08-03T06:39:11.837991+02:00",
       "lastfiredate": {}
     },
@@ -3180,7 +3558,7 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          20.7409,
+          20.7408,
           38.0776
         ]
       },
@@ -3189,7 +3567,7 @@
       "province": "Ιθάκη, Κεφαλληνία",
       "commune": "Τοπική Κοινότητα Μαρκοπούλου",
       "firedate": "2026-08-02T00:26:00+02:00",
-      "area_ha": 390,
+      "area_ha": 383,
       "lastupdate": "2026-08-03T06:37:42.924556+02:00",
       "lastfiredate": {}
     },
@@ -3414,8 +3792,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          6.0843,
-          43.4824
+          6.0756,
+          43.4733
         ]
       },
       "country": "FR",
@@ -3423,7 +3801,7 @@
       "province": "Var",
       "commune": "Correns",
       "firedate": "2026-07-31T11:42:00+02:00",
-      "area_ha": 2032,
+      "area_ha": 962,
       "lastupdate": "2026-08-01T15:19:56.325853+02:00",
       "lastfiredate": {}
     },
@@ -3738,8 +4116,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          23.0265,
-          38.2482
+          23.0273,
+          38.2478
         ]
       },
       "country": "EL",
@@ -3747,7 +4125,7 @@
       "province": "Βοιωτία",
       "commune": "Τοπική Κοινότητα Ξηρονομής",
       "firedate": "2026-07-31T08:09:00+02:00",
-      "area_ha": 3746,
+      "area_ha": 3735,
       "lastupdate": "2026-07-31T13:31:40.103016+02:00",
       "lastfiredate": {}
     },
@@ -3756,8 +4134,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          23.2407,
-          38.1343
+          23.2405,
+          38.1336
         ]
       },
       "country": "EL",
@@ -3765,7 +4143,7 @@
       "province": "Βοιωτία",
       "commune": "Τοπική Κοινότητα Καπαρελλίου",
       "firedate": "2026-07-31T10:43:00+02:00",
-      "area_ha": 11440,
+      "area_ha": 11935,
       "lastupdate": "2026-07-31T13:29:45.390925+02:00",
       "lastfiredate": {}
     },
@@ -5214,8 +5592,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          28.1232,
-          37.6247
+          28.125,
+          37.6239
         ]
       },
       "country": "TR",
@@ -5223,7 +5601,7 @@
       "province": "Aydın",
       "commune": "N.A.",
       "firedate": "2026-07-18T11:28:00+02:00",
-      "area_ha": 2763,
+      "area_ha": 2816,
       "lastupdate": "2026-07-31T06:42:17.957347+02:00",
       "lastfiredate": {}
     },
@@ -5387,24 +5765,6 @@
       "firedate": "2026-07-29T17:54:00+02:00",
       "area_ha": 494,
       "lastupdate": "2026-07-30T15:30:51.218523+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 581406,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          19.9111,
-          40.1086
-        ]
-      },
-      "country": "AL",
-      "countryful": "Shqipëria",
-      "province": "Vlorë",
-      "commune": "Himarë",
-      "firedate": "2026-07-29T11:57:00+02:00",
-      "area_ha": 52,
-      "lastupdate": "2026-07-30T15:23:41.249023+02:00",
       "lastfiredate": {}
     },
     {

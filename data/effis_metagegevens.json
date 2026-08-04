@@ -1,21 +1,31 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-08-04T06:38:21Z",
-  "bron_bijgewerkt_utc": "2026-08-04T04:37:17Z",
+  "opgehaald_utc": "2026-08-04T07:43:33Z",
+  "bron_bijgewerkt_utc": "2026-08-04T05:39:05Z",
   "venster_vanaf": "2026-07-29",
   "venster_tot_en_met": "2026-08-04",
-  "aantal_brandgebieden": 542,
-  "totale_oppervlakte_ha": 120351,
+  "aantal_brandgebieden": 562,
+  "totale_oppervlakte_ha": 121901,
   "aantallen_per_actualiteit": {
-    "vandaag": 10,
+    "vandaag": 31,
     "afgelopen_drie_dagen": 182,
-    "vier_tot_zeven_dagen": 350,
+    "vier_tot_zeven_dagen": 349,
     "onbekend": 0
   },
   "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-07-29T00%3A00%3A00&lastupdate__lte=2026-08-04T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
   "bronpagina": "https://forest-fire.emergency.copernicus.eu/apps/effis.csv/",
   "datalicentie": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
   "bronvermelding": "EFFIS – Copernicus Emergency Management Service",
-  "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd.",
+  "firemap_verrijking": {
+    "bron": "FireMap.live (EFFIS en NASA FIRMS)",
+    "bron_url": "https://firemap.live/",
+    "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
+    "ophalen_geslaagd": true,
+    "aantal_firemap_records": 441,
+    "aantal_gekoppeld_op_effis_id": 371,
+    "aandeel_effis_verrijkt": 66,
+    "foutmelding": null
+  },
+  "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd; beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id.",
   "belangrijke_beperking": "EFFIS-datums zijn kaartregistraties en hoeven niet overeen te komen met het werkelijke ontstaan of uitdoven van een brand."
 }

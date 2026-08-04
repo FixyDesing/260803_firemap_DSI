@@ -11,6 +11,7 @@
         "fire_id_source": "BE-1",
         "size_ha": "12.5",
         "active24hr": "4   ",
+        "active7d": "17",
         "ignition_date": "2026-08-02",
         "duration_days": 1,
         "lastupdate_hours": 2,
