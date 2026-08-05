@@ -1,14 +1,14 @@
 {
   "schemaversie": "1.2",
-  "opgehaald_utc": "2026-08-05T06:47:33Z",
-  "bron_bijgewerkt_utc": "2026-08-05T03:52:51Z",
+  "opgehaald_utc": "2026-08-05T08:00:39Z",
+  "bron_bijgewerkt_utc": "2026-08-05T05:59:30Z",
   "venster_vanaf": "2026-07-30",
   "venster_tot_en_met": "2026-08-05",
-  "aantal_markers": 655,
-  "aantal_brandgebieden": 655,
-  "totale_oppervlakte_ha": 90405,
+  "aantal_markers": 710,
+  "aantal_brandgebieden": 710,
+  "totale_oppervlakte_ha": 92273,
   "aantallen_per_actualiteit": {
-    "vandaag": 19,
+    "vandaag": 74,
     "afgelopen_drie_dagen": 396,
     "vier_tot_zeven_dagen": 240,
     "onbekend": 0
@@ -22,9 +22,9 @@
     "bron_url": "https://firemap.live/",
     "brondata_url": "https://geo.firemap.live/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=FireDB%3Amodis_ba_pt_7day&outputFormat=application%2Fjson",
     "ophalen_geslaagd": true,
-    "aantal_firemap_records": 499,
-    "aantal_gekoppeld_op_effis_id": 459,
-    "aandeel_effis_verrijkt": 70.1,
+    "aantal_firemap_records": 501,
+    "aantal_gekoppeld_op_effis_id": 462,
+    "aandeel_effis_verrijkt": 65.1,
     "foutmelding": null
   },
   "uitgevoerde_aanpassingen": "Selectie op laatste EFFIS-update van zeven dagen; brandperimeters weergegeven als centroidpunten; actualiteitscategorieën en Nederlandse labels toegevoegd; beschikbare FireMap-velden gekoppeld via het oorspronkelijke EFFIS-id.",
