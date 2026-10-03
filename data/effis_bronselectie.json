@@ -1,12 +1,768 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-10-02T11:13:23Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-09-26T00%3A00%3A00&lastupdate__lte=2026-10-02T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-09-26",
-  "venster_tot_en_met": "2026-10-02",
-  "aantal_records": 420,
+  "opgehaald_utc": "2026-10-03T10:30:53Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-09-27T00%3A00%3A00&lastupdate__lte=2026-10-03T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-09-27",
+  "venster_tot_en_met": "2026-10-03",
+  "aantal_records": 462,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 798499,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.399,
+          48.8227
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-15T11:06:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-02T14:11:29.445470+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798498,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.3183,
+          48.8361
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-09T10:51:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-10-02T14:10:45.305203+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798496,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.8028,
+          48.681
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-01T10:47:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-02T14:09:27.375479+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798497,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.8012,
+          48.6705
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-08-05T11:30:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-02T14:09:27.375479+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798495,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.5042,
+          48.0147
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-09T09:58:00+02:00",
+      "area_ha": 20,
+      "lastupdate": "2026-10-02T14:07:05.084584+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798494,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7665,
+          45.2483
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Gorj",
+      "commune": "Padeş",
+      "firedate": "2026-08-17T11:21:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-02T14:02:46.909805+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798493,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7554,
+          45.2514
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Gorj",
+      "commune": "Padeş",
+      "firedate": "2026-08-17T11:21:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-10-02T14:01:15.236049+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798492,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          17.2624,
+          44.7634
+        ]
+      },
+      "country": "BA",
+      "countryful": "Bosnia and Herzegovina",
+      "province": "Banja Luka",
+      "commune": "N.A.",
+      "firedate": "2026-09-02T01:20:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-02T13:48:25.495092+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798491,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -3.9484,
+          39.3636
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Toledo",
+      "commune": "Yébenes, Los",
+      "firedate": "2026-09-26T13:53:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-02T13:36:21.771691+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798490,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.6167,
+          41.342
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Durrës",
+      "commune": "Shijak",
+      "firedate": "2026-09-28T10:41:00+02:00",
+      "area_ha": 8,
+      "lastupdate": "2026-10-02T13:29:04.090731+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798489,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          20.1642,
+          41.4588
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Dibër",
+      "commune": "Klos",
+      "firedate": "2026-10-01T12:00:00+02:00",
+      "area_ha": 32,
+      "lastupdate": "2026-10-02T13:28:21.024807+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798488,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.5875,
+          41.2062
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Tiranë",
+      "commune": "Kavajë",
+      "firedate": "2026-09-29T10:19:00+02:00",
+      "area_ha": 80,
+      "lastupdate": "2026-10-02T13:27:54.542335+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798487,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.8313,
+          41.1137
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Elbasan",
+      "commune": "Peqin",
+      "firedate": "2026-10-01T10:41:00+02:00",
+      "area_ha": 203,
+      "lastupdate": "2026-10-02T13:27:04.085918+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798481,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.5894,
+          42.4746
+        ]
+      },
+      "country": "KS",
+      "countryful": "Kosovo",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-18T10:28:00+02:00",
+      "area_ha": 8,
+      "lastupdate": "2026-10-02T13:05:43.702978+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798480,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.3905,
+          42.4121
+        ]
+      },
+      "country": "KS",
+      "countryful": "Kosovo",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-30T00:00:00+02:00",
+      "area_ha": 18,
+      "lastupdate": "2026-10-02T13:04:35.073818+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798479,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.3665,
+          42.3897
+        ]
+      },
+      "country": "KS",
+      "countryful": "Kosovo",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-30T00:00:00+02:00",
+      "area_ha": 32,
+      "lastupdate": "2026-10-02T13:03:59.000998+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798478,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.3824,
+          42.3981
+        ]
+      },
+      "country": "KS",
+      "countryful": "Kosovo",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-30T00:00:00+02:00",
+      "area_ha": 103,
+      "lastupdate": "2026-10-02T13:03:15.886382+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798477,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.8716,
+          44.6927
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Sicheviţa",
+      "firedate": "2026-09-06T13:16:00+02:00",
+      "area_ha": 9,
+      "lastupdate": "2026-10-02T12:44:45.781708+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798476,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.6737,
+          44.4949
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Mehedinţi",
+      "commune": "Devesel",
+      "firedate": "2026-08-12T18:51:00+02:00",
+      "area_ha": 24,
+      "lastupdate": "2026-10-02T12:39:23.249841+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798475,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.6316,
+          44.4128
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Mehedinţi",
+      "commune": "Gogoşu",
+      "firedate": "2026-09-11T13:10:00+02:00",
+      "area_ha": 96,
+      "lastupdate": "2026-10-02T12:37:51.595829+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798474,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7262,
+          44.5162
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Mehedinţi",
+      "commune": "Hinova",
+      "firedate": "2026-09-28T00:00:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-02T12:36:11.548004+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798473,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7982,
+          44.5204
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Mehedinţi",
+      "commune": "Hinova",
+      "firedate": "2026-09-30T10:02:00+02:00",
+      "area_ha": 309,
+      "lastupdate": "2026-10-02T12:35:19.758207+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798472,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.9301,
+          43.9685
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Dolj",
+      "commune": "Municipiul Calafat",
+      "firedate": "2026-09-21T00:22:00+02:00",
+      "area_ha": 73,
+      "lastupdate": "2026-10-02T12:22:16.064018+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798471,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.0505,
+          43.6334
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Монтана",
+      "commune": "Брусарци",
+      "firedate": "2026-09-24T10:51:00+02:00",
+      "area_ha": 71,
+      "lastupdate": "2026-10-02T12:16:10.147954+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798470,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.9055,
+          43.8003
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Видин",
+      "commune": "Димово",
+      "firedate": "2026-09-14T07:56:00+02:00",
+      "area_ha": 64,
+      "lastupdate": "2026-10-02T12:12:15.370475+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798469,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.8707,
+          43.7177
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Враца",
+      "commune": "Мизия",
+      "firedate": "2026-09-22T00:24:00+02:00",
+      "area_ha": 103,
+      "lastupdate": "2026-10-02T12:10:53.597459+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798468,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.5124,
+          43.7993
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Монтана",
+      "commune": "Вълчедръм",
+      "firedate": "2026-09-28T00:00:00+02:00",
+      "area_ha": 98,
+      "lastupdate": "2026-10-02T12:09:06.929071+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798467,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.5608,
+          43.8071
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Dolj",
+      "commune": "Cârna",
+      "firedate": "2026-09-06T00:24:00+02:00",
+      "area_ha": 58,
+      "lastupdate": "2026-10-02T12:07:34.384230+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798466,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.5911,
+          43.801
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Dolj",
+      "commune": "Cârna",
+      "firedate": "2026-09-06T00:03:00+02:00",
+      "area_ha": 43,
+      "lastupdate": "2026-10-02T12:07:18.679823+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798465,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.5857,
+          43.8006
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Dolj",
+      "commune": "Cârna",
+      "firedate": "2026-09-06T00:03:00+02:00",
+      "area_ha": 35,
+      "lastupdate": "2026-10-02T12:06:52.141286+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798464,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.6173,
+          43.8419
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Dolj",
+      "commune": "Cârna",
+      "firedate": "2026-09-22T10:09:00+02:00",
+      "area_ha": 38,
+      "lastupdate": "2026-10-02T12:03:37.328006+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798463,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.1118,
+          43.6551
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Враца",
+      "commune": "Оряхово",
+      "firedate": "2026-09-11T18:41:00+02:00",
+      "area_ha": 22,
+      "lastupdate": "2026-10-02T12:02:23.042728+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798462,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.416,
+          43.734
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Olt",
+      "commune": "Oraş Corabia",
+      "firedate": "2026-08-31T11:04:00+02:00",
+      "area_ha": 87,
+      "lastupdate": "2026-10-02T12:01:14.974029+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798461,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.9938,
+          44.3168
+        ]
+      },
+      "country": "RS",
+      "countryful": "Srbija/Сpбија",
+      "province": "Борска област",
+      "commune": "Majdanpek",
+      "firedate": "2026-09-30T10:41:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-10-02T11:59:48.498563+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798460,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.9326,
+          43.5828
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Видин",
+      "commune": "Ружинци",
+      "firedate": "2026-09-20T20:32:00+02:00",
+      "area_ha": 211,
+      "lastupdate": "2026-10-02T11:59:07.692579+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798459,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.0677,
+          43.4755
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Монтана",
+      "commune": "Монтана",
+      "firedate": "2026-09-06T12:32:00+02:00",
+      "area_ha": 42,
+      "lastupdate": "2026-10-02T11:56:48.641374+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798458,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.0604,
+          43.3187
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Монтана",
+      "commune": "Берковица",
+      "firedate": "2026-09-20T12:06:00+02:00",
+      "area_ha": 103,
+      "lastupdate": "2026-10-02T11:54:53.382412+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798457,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.248,
+          43.4072
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Плевен",
+      "commune": "Искър",
+      "firedate": "2026-09-22T00:03:00+02:00",
+      "area_ha": 24,
+      "lastupdate": "2026-10-02T11:51:25.417896+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798456,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.05,
+          43.2712
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Плевен",
+      "commune": "Червен бряг",
+      "firedate": "2026-09-15T11:23:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-02T11:50:00.833591+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798455,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.9072,
+          43.1157
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Враца",
+      "commune": "Роман",
+      "firedate": "2026-09-22T00:24:00+02:00",
+      "area_ha": 39,
+      "lastupdate": "2026-10-02T11:48:25.927396+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798454,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.0532,
+          44.7915
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Gorj",
+      "commune": "Samarineşti",
+      "firedate": "2026-09-28T00:00:00+02:00",
+      "area_ha": 15,
+      "lastupdate": "2026-10-02T11:14:11.913077+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 798453,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.0558,
+          44.7606
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Gorj",
+      "commune": "Samarineşti",
+      "firedate": "2026-09-28T00:00:00+02:00",
+      "area_ha": 15,
+      "lastupdate": "2026-10-02T11:13:09.292180+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 798452,
       "centroid": {
@@ -728,12 +1484,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 797817,
+      "id": 797816,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.7461,
-          52.8051
+          9.7474,
+          52.8056
         ]
       },
       "country": "DE",
@@ -746,12 +1502,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 797816,
+      "id": 797817,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.7474,
-          52.8056
+          9.7461,
+          52.8051
         ]
       },
       "country": "DE",
@@ -4296,8 +5052,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          22.3633,
-          43.6658
+          22.3639,
+          43.6663
         ]
       },
       "country": "RS",
@@ -4305,7 +5061,7 @@
       "province": "Зајечарска област",
       "commune": "Knjaževac",
       "firedate": "2026-09-05T11:49:00+02:00",
-      "area_ha": 19,
+      "area_ha": 25,
       "lastupdate": "2026-09-29T08:00:19.953069+02:00",
       "lastfiredate": {}
     },
@@ -6726,8 +7482,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          22.7692,
-          44.5165
+          22.7647,
+          44.5187
         ]
       },
       "country": "RO",
@@ -6735,7 +7491,7 @@
       "province": "Mehedinţi",
       "commune": "Hinova",
       "firedate": "2026-09-22T13:36:00+02:00",
-      "area_ha": 33,
+      "area_ha": 73,
       "lastupdate": "2026-09-28T08:36:56.425633+02:00",
       "lastfiredate": {}
     },
