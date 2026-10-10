@@ -1,12 +1,174 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-10-09T12:00:37Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-03T00%3A00%3A00&lastupdate__lte=2026-10-09T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-10-03",
-  "venster_tot_en_met": "2026-10-09",
-  "aantal_records": 463,
+  "opgehaald_utc": "2026-10-10T11:16:53Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-04T00%3A00%3A00&lastupdate__lte=2026-10-10T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-10-04",
+  "venster_tot_en_met": "2026-10-10",
+  "aantal_records": 472,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 823299,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.4198,
+          36.483
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-03T13:01:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-10-09T14:17:16.131887+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823298,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.417,
+          36.487
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-03T13:01:00+02:00",
+      "area_ha": 7,
+      "lastupdate": "2026-10-09T14:16:59.808372+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823297,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.4591,
+          36.8566
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-02T00:00:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-09T14:11:34.339376+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823296,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.4091,
+          36.8383
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-04T12:44:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-09T14:10:58.855147+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823295,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.4558,
+          36.8488
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-02T00:00:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-09T14:07:17.390214+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823294,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.4896,
+          36.8915
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-09-30T19:34:00+02:00",
+      "area_ha": 11,
+      "lastupdate": "2026-10-09T14:04:26.158247+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823293,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.7737,
+          36.57
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-07T00:45:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-09T14:03:27.524940+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823292,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          14.7001,
+          38.0288
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Messina",
+      "commune": "Alcara li Fusi",
+      "firedate": "2026-10-08T00:00:00+02:00",
+      "area_ha": 14,
+      "lastupdate": "2026-10-09T13:41:38.938369+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 823291,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          18.5891,
+          43.1526
+        ]
+      },
+      "country": "BA",
+      "countryful": "Bosnia and Herzegovina",
+      "province": "Gacko",
+      "commune": "N.A.",
+      "firedate": "2026-10-07T11:10:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-10-09T13:37:38.293025+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 823290,
       "centroid": {
@@ -602,12 +764,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 823256,
+      "id": 823255,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          26.5904,
-          42.7198
+          26.5849,
+          42.7163
         ]
       },
       "country": "BG",
@@ -620,12 +782,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 823255,
+      "id": 823256,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          26.5849,
-          42.7163
+          26.5904,
+          42.7198
         ]
       },
       "country": "BG",
@@ -7226,12 +7388,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 809690,
+      "id": 809691,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -4.2449,
-          43.0368
+          -4.2417,
+          43.0389
         ]
       },
       "country": "ES",
@@ -7244,12 +7406,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 809691,
+      "id": 809690,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -4.2417,
-          43.0389
+          -4.2449,
+          43.0368
         ]
       },
       "country": "ES",
