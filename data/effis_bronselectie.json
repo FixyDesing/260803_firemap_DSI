@@ -1,12 +1,84 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-10-16T09:58:47Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-10T00%3A00%3A00&lastupdate__lte=2026-10-16T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-10-10",
-  "venster_tot_en_met": "2026-10-16",
-  "aantal_records": 165,
+  "opgehaald_utc": "2026-10-17T09:31:42Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-11T00%3A00%3A00&lastupdate__lte=2026-10-17T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-10-11",
+  "venster_tot_en_met": "2026-10-17",
+  "aantal_records": 169,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 854557,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.9551,
+          45.4833
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Hunedoara",
+      "commune": "Sălaşu de Sus",
+      "firedate": "2026-10-07T10:28:00+02:00",
+      "area_ha": 84,
+      "lastupdate": "2026-10-16T12:06:32.669185+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 854556,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.4573,
+          45.1294
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Caraş-Severin",
+      "commune": "Teregova",
+      "firedate": "2026-10-04T11:23:00+02:00",
+      "area_ha": 14,
+      "lastupdate": "2026-10-16T12:04:32.577489+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 854555,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.6989,
+          44.2833
+        ]
+      },
+      "country": "RO",
+      "countryful": "România",
+      "province": "Mehedinţi",
+      "commune": "Gruia",
+      "firedate": "2026-10-08T12:34:00+02:00",
+      "area_ha": 181,
+      "lastupdate": "2026-10-16T11:58:52.366631+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 854554,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          14.6066,
+          41.9184
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Chieti",
+      "commune": "Tufillo",
+      "firedate": "2026-10-04T12:08:00+02:00",
+      "area_ha": 13,
+      "lastupdate": "2026-10-16T11:54:11.585879+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 854553,
       "centroid": {
@@ -782,12 +854,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 849784,
+      "id": 849783,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.6535,
-          37.2941
+          9.6534,
+          37.2955
         ]
       },
       "country": "TN",
@@ -800,12 +872,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 849783,
+      "id": 849784,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.6534,
-          37.2955
+          9.6535,
+          37.2941
         ]
       },
       "country": "TN",
@@ -1808,12 +1880,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 841775,
+      "id": 841776,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          24.5268,
-          35.2722
+          24.5245,
+          35.2713
         ]
       },
       "country": "EL",
@@ -1826,12 +1898,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 841776,
+      "id": 841775,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          24.5245,
-          35.2713
+          24.5268,
+          35.2722
         ]
       },
       "country": "EL",
@@ -1970,12 +2042,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 836514,
+      "id": 836512,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          22.4573,
-          42.5164
+          22.4523,
+          42.5157
         ]
       },
       "country": "RS",
@@ -1988,12 +2060,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 836512,
+      "id": 836514,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          22.4523,
-          42.5157
+          22.4573,
+          42.5164
         ]
       },
       "country": "RS",
