@@ -1,12 +1,480 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-10-19T11:00:07Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-13T00%3A00%3A00&lastupdate__lte=2026-10-19T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-10-13",
-  "venster_tot_en_met": "2026-10-19",
-  "aantal_records": 177,
+  "opgehaald_utc": "2026-10-20T10:14:43Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-14T00%3A00%3A00&lastupdate__lte=2026-10-20T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-10-14",
+  "venster_tot_en_met": "2026-10-20",
+  "aantal_records": 176,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 868556,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.2115,
+          43.0346
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Ловеч",
+      "commune": "Тетевен",
+      "firedate": "2026-09-22T10:51:00+02:00",
+      "area_ha": 2,
+      "lastupdate": "2026-10-20T07:36:48.407140+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 868505,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.2907,
+          42.7701
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "София",
+      "commune": "Антон",
+      "firedate": "2026-10-10T10:51:00+02:00",
+      "area_ha": 7,
+      "lastupdate": "2026-10-20T07:35:24.846242+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 868354,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.9083,
+          39.9206
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Γρεβενά, Κοζάνη",
+      "commune": "Δημοτική Κοινότητα Δεσκάτης",
+      "firedate": "2026-10-08T11:28:00+02:00",
+      "area_ha": 3,
+      "lastupdate": "2026-10-20T07:30:34.042439+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 868353,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          21.3999,
+          40.2746
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Γρεβενά, Κοζάνη",
+      "commune": "Τοπική Κοινότητα Πεπονιάς",
+      "firedate": "2026-10-09T00:00:00+02:00",
+      "area_ha": 8,
+      "lastupdate": "2026-10-20T07:29:39.642920+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 868164,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          9.0417,
+          39.6114
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Sud Sardegna",
+      "commune": "Guamaggiore",
+      "firedate": "2026-10-18T01:22:00+02:00",
+      "area_ha": 36,
+      "lastupdate": "2026-10-20T07:17:22.401029+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864111,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.3391,
+          43.347
+        ]
+      },
+      "country": "RS",
+      "countryful": "Srbija/Сpбија",
+      "province": "Пиротска област",
+      "commune": "Bela Palanka",
+      "firedate": "2026-10-06T11:30:00+02:00",
+      "area_ha": 7,
+      "lastupdate": "2026-10-19T15:00:36.739265+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864110,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.4278,
+          43.3921
+        ]
+      },
+      "country": "RS",
+      "countryful": "Srbija/Сpбија",
+      "province": "Зајечарска област",
+      "commune": "Knjaževac",
+      "firedate": "2026-10-08T10:51:00+02:00",
+      "area_ha": 40,
+      "lastupdate": "2026-10-19T14:58:14.667183+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864108,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.4368,
+          42.5727
+        ]
+      },
+      "country": "RS",
+      "countryful": "Srbija/Сpбија",
+      "province": "Пчињска област",
+      "commune": "Surdulica",
+      "firedate": "2026-10-05T13:38:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-10-19T14:53:52.775493+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864107,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.5874,
+          42.4923
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Кюстендил",
+      "commune": "Трекляно",
+      "firedate": "2026-10-06T10:26:00+02:00",
+      "area_ha": 12,
+      "lastupdate": "2026-10-19T14:51:26.955610+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864106,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.6617,
+          41.6896
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Благоевград",
+      "commune": "Гоце Делчев",
+      "firedate": "2026-10-10T12:32:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-10-19T14:50:08.992867+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864105,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.7743,
+          41.6875
+        ]
+      },
+      "country": "BG",
+      "countryful": "България ",
+      "province": "Благоевград",
+      "commune": "Гърмен",
+      "firedate": "2026-10-02T13:23:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-10-19T14:49:08.730834+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864104,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          12.3612,
+          46.5912
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Belluno",
+      "commune": "Auronzo di Cadore",
+      "firedate": "2026-10-15T00:35:00+02:00",
+      "area_ha": 10,
+      "lastupdate": "2026-10-19T14:45:56.296379+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864103,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -7.6584,
+          43.5648
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Lugo",
+      "commune": "Ourol",
+      "firedate": "2026-10-02T01:22:00+02:00",
+      "area_ha": 52,
+      "lastupdate": "2026-10-19T13:19:12.428220+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864102,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -8.036,
+          41.0378
+        ]
+      },
+      "country": "PT",
+      "countryful": "Portugal",
+      "province": "Tâmega e Sousa",
+      "commune": "Ferreiros de Tendais",
+      "firedate": "2026-10-13T14:20:00+02:00",
+      "area_ha": 0,
+      "lastupdate": "2026-10-19T13:01:18.933582+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864101,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -5.6915,
+          35.2608
+        ]
+      },
+      "country": "MA",
+      "countryful": "Morocco",
+      "province": "Larache",
+      "commune": "N.A.",
+      "firedate": "2026-10-13T12:38:00+02:00",
+      "area_ha": 191,
+      "lastupdate": "2026-10-19T12:54:07.312491+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864100,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.1029,
+          36.5291
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-16T11:42:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-10-19T12:52:56.628649+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864099,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.1192,
+          36.6533
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-05T11:49:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-10-19T12:51:38.699801+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864098,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.6563,
+          36.9104
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-03T13:01:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-10-19T12:51:05.167541+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864097,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.9517,
+          36.7218
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-16T11:42:00+02:00",
+      "area_ha": 9,
+      "lastupdate": "2026-10-19T12:50:00.745943+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864096,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          7.9269,
+          36.3705
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-15T12:00:00+02:00",
+      "area_ha": 7,
+      "lastupdate": "2026-10-19T12:49:19.083050+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864095,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          7.9687,
+          36.3779
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-15T12:00:00+02:00",
+      "area_ha": 19,
+      "lastupdate": "2026-10-19T12:48:53.931824+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864094,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          9.1266,
+          36.6689
+        ]
+      },
+      "country": "TN",
+      "countryful": "Tunisia",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-08T11:49:00+02:00",
+      "area_ha": 8,
+      "lastupdate": "2026-10-19T12:47:37.292210+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864093,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -8.4869,
+          41.8999
+        ]
+      },
+      "country": "PT",
+      "countryful": "Portugal",
+      "province": "Alto Minho",
+      "commune": "Sabadim",
+      "firedate": "2026-10-15T13:42:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-10-19T12:41:02.964720+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864092,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          13.3711,
+          37.5135
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Agrigento",
+      "commune": "Bivona",
+      "firedate": "2026-10-18T12:00:00+02:00",
+      "area_ha": 6,
+      "lastupdate": "2026-10-19T12:38:12.485693+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864091,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          19.7667,
+          41.4568
+        ]
+      },
+      "country": "AL",
+      "countryful": "Shqipëria",
+      "province": "Durrës",
+      "commune": "Krujë",
+      "firedate": "2026-10-09T00:00:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-10-19T12:37:11.043072+02:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 864090,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          20.0972,
+          44.7854
+        ]
+      },
+      "country": "RS",
+      "countryful": "Srbija/Сpбија",
+      "province": "Београдска област",
+      "commune": "Belgrade - Surčin",
+      "firedate": "2026-09-03T11:49:00+02:00",
+      "area_ha": 83,
+      "lastupdate": "2026-10-19T12:34:00.750733+02:00",
+      "lastfiredate": {}
+    },
     {
       "id": 864089,
       "centroid": {
@@ -85,7 +553,7 @@
         "type": "Point",
         "coordinates": [
           -2.586,
-          52.4788
+          52.4787
         ]
       },
       "country": "UK",
@@ -246,8 +714,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -3.4813,
-          51.6657
+          -3.4815,
+          51.6658
         ]
       },
       "country": "UK",
@@ -255,7 +723,7 @@
       "province": "Central Valleys",
       "commune": "Rhondda Cynon Taf",
       "firedate": "2026-08-23T02:11:00+02:00",
-      "area_ha": 137,
+      "area_ha": 124,
       "lastupdate": "2026-10-19T08:38:01.319133+02:00",
       "lastfiredate": {}
     },
@@ -282,7 +750,7 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -3.8532,
+          -3.8531,
           51.6676
         ]
       },
@@ -768,8 +1236,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -7.0518,
-          42.9945
+          -7.0519,
+          42.9944
         ]
       },
       "country": "ES",
@@ -786,7 +1254,7 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          -9.1112,
+          -9.1111,
           43.13
         ]
       },
@@ -795,7 +1263,7 @@
       "province": "A Coruña",
       "commune": "Vimianzo",
       "firedate": "2026-10-17T20:49:00+02:00",
-      "area_ha": 33,
+      "area_ha": 30,
       "lastupdate": "2026-10-19T07:51:56.641712+02:00",
       "lastfiredate": {}
     },
@@ -2060,12 +2528,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 849783,
+      "id": 849784,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.6534,
-          37.2955
+          9.6535,
+          37.2941
         ]
       },
       "country": "TN",
@@ -2078,12 +2546,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 849784,
+      "id": 849783,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          9.6535,
-          37.2941
+          9.6534,
+          37.2955
         ]
       },
       "country": "TN",
@@ -2705,492 +3173,6 @@
       "firedate": "2026-10-09T12:12:00+02:00",
       "area_ha": 42,
       "lastupdate": "2026-10-14T07:47:40.960591+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842767,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.4739,
-          44.5463
-        ]
-      },
-      "country": "RS",
-      "countryful": "Srbija/Сpбија",
-      "province": "Борска област",
-      "commune": "Kladovo",
-      "firedate": "2026-10-07T10:28:00+02:00",
-      "area_ha": 142,
-      "lastupdate": "2026-10-13T14:39:30.777112+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842766,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.816,
-          44.8255
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Şovarna",
-      "firedate": "2026-10-08T00:24:00+02:00",
-      "area_ha": 29,
-      "lastupdate": "2026-10-13T14:30:31.727180+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842765,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.9103,
-          45.4991
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Caraş-Severin",
-      "commune": "Fârliug",
-      "firedate": "2026-10-02T11:06:00+02:00",
-      "area_ha": 30,
-      "lastupdate": "2026-10-13T14:29:21.935986+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842764,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.2344,
-          45.3429
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Caraş-Severin",
-      "commune": "Buchin",
-      "firedate": "2026-10-07T11:47:00+02:00",
-      "area_ha": 146,
-      "lastupdate": "2026-10-13T14:28:38.357995+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842763,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          20.7563,
-          42.4924
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-10-02T11:42:00+02:00",
-      "area_ha": 6,
-      "lastupdate": "2026-10-13T12:57:14.674253+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842609,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.0952,
-          42.7314
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-08-31T11:04:00+02:00",
-      "area_ha": 17,
-      "lastupdate": "2026-10-13T08:50:07.015881+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842522,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.2235,
-          42.7421
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-09-06T12:32:00+02:00",
-      "area_ha": 3,
-      "lastupdate": "2026-10-13T08:23:13.626050+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842510,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          20.9752,
-          42.9058
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-10-06T00:05:00+02:00",
-      "area_ha": 3,
-      "lastupdate": "2026-10-13T08:19:12.425862+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842511,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          20.9711,
-          42.9056
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-10-06T00:05:00+02:00",
-      "area_ha": 2,
-      "lastupdate": "2026-10-13T08:19:12.425862+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842508,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.2874,
-          42.834
-        ]
-      },
-      "country": "KS",
-      "countryful": "Kosovo",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-09-20T10:45:00+02:00",
-      "area_ha": 11,
-      "lastupdate": "2026-10-13T08:18:02.029411+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 842051,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.576,
-          42.1152
-        ]
-      },
-      "country": "MK",
-      "countryful": "Северна Македонија",
-      "province": "Североисточен",
-      "commune": "Lipkovo",
-      "firedate": "2026-10-03T11:21:00+02:00",
-      "area_ha": 4,
-      "lastupdate": "2026-10-13T07:33:28.684579+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841995,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          21.4931,
-          41.8557
-        ]
-      },
-      "country": "MK",
-      "countryful": "Северна Македонија",
-      "province": "Скопски",
-      "commune": "Studeničani",
-      "firedate": "2026-10-08T00:24:00+02:00",
-      "area_ha": 19,
-      "lastupdate": "2026-10-13T07:30:01.350530+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841941,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -8.7357,
-          38.0673
-        ]
-      },
-      "country": "PT",
-      "countryful": "Portugal",
-      "province": "Alentejo Litoral",
-      "commune": "Santiago do Cacém, Santa Cruz e São Bartolomeu da Serra",
-      "firedate": "2026-10-06T00:00:00+02:00",
-      "area_ha": 3,
-      "lastupdate": "2026-10-13T07:15:43.513560+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841891,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.0929,
-          45.9012
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Timiş",
-      "commune": "Oraş Făget",
-      "firedate": "2026-10-08T12:34:00+02:00",
-      "area_ha": 27,
-      "lastupdate": "2026-10-13T07:04:45.780511+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841890,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.6311,
-          45.7637
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Hunedoara",
-      "commune": "Cerbăl",
-      "firedate": "2026-10-08T10:51:00+02:00",
-      "area_ha": 22,
-      "lastupdate": "2026-10-13T07:03:52.655209+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841842,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.8574,
-          44.7838
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Şişeşti",
-      "firedate": "2026-10-09T19:37:00+02:00",
-      "area_ha": 3,
-      "lastupdate": "2026-10-13T07:01:30.417653+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841841,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.839,
-          44.7844
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Şişeşti",
-      "firedate": "2026-10-09T18:53:00+02:00",
-      "area_ha": 90,
-      "lastupdate": "2026-10-13T07:01:17.479375+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841786,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.4591,
-          44.8721
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Caraş-Severin",
-      "commune": "Oraş Băile Herculane",
-      "firedate": "2026-09-23T00:50:00+02:00",
-      "area_ha": 131,
-      "lastupdate": "2026-10-13T06:59:13.494425+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841785,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.5092,
-          44.8836
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Podeni",
-      "firedate": "2026-09-30T13:44:00+02:00",
-      "area_ha": 0,
-      "lastupdate": "2026-10-13T06:57:32.533695+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841784,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.5115,
-          44.8859
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Podeni",
-      "firedate": "2026-10-01T00:37:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-10-13T06:57:20.440060+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841783,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          22.5081,
-          44.8955
-        ]
-      },
-      "country": "RO",
-      "countryful": "România",
-      "province": "Mehedinţi",
-      "commune": "Podeni",
-      "firedate": "2026-09-12T13:48:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-10-13T06:56:54.700370+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841775,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          24.5268,
-          35.2722
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Ρέθυμνο",
-      "commune": "Τοπική Κοινότητα Σελλίου",
-      "firedate": "2026-10-06T00:00:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-10-13T06:46:59.271452+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841776,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          24.5245,
-          35.2713
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Ρέθυμνο",
-      "commune": "Τοπική Κοινότητα Σελλίου",
-      "firedate": "2026-10-06T00:00:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-10-13T06:46:59.271452+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841685,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          16.8747,
-          43.7569
-        ]
-      },
-      "country": "BA",
-      "countryful": "Bosnia and Herzegovina",
-      "province": "Livno",
-      "commune": "N.A.",
-      "firedate": "2026-10-03T11:42:00+02:00",
-      "area_ha": 2,
-      "lastupdate": "2026-10-13T06:41:28.576498+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841677,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          16.6165,
-          40.4441
-        ]
-      },
-      "country": "IT",
-      "countryful": "Italia",
-      "province": "Matera",
-      "commune": "Pomarico",
-      "firedate": "2026-10-07T12:06:00+02:00",
-      "area_ha": 22,
-      "lastupdate": "2026-10-13T06:36:50.478279+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841633,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          16.5434,
-          40.1908
-        ]
-      },
-      "country": "IT",
-      "countryful": "Italia",
-      "province": "Matera",
-      "commune": "Rotondella",
-      "firedate": "2026-10-03T00:00:00+02:00",
-      "area_ha": 3,
-      "lastupdate": "2026-10-13T06:35:51.014728+02:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 841521,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          8.4454,
-          39.6838
-        ]
-      },
-      "country": "IT",
-      "countryful": "Italy",
-      "province": "Arbus",
-      "commune": "N.A.",
-      "firedate": "2026-10-04T13:04:00+02:00",
-      "area_ha": 0,
-      "lastupdate": "2026-10-13T06:32:16.511030+02:00",
       "lastfiredate": {}
     }
   ]
