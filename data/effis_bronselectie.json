@@ -1,12 +1,48 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-10-30T11:30:52Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-24T00%3A00%3A00&lastupdate__lte=2026-10-30T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-10-24",
-  "venster_tot_en_met": "2026-10-30",
-  "aantal_records": 159,
+  "opgehaald_utc": "2026-10-31T11:01:11Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-25T00%3A00%3A00&lastupdate__lte=2026-10-31T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-10-25",
+  "venster_tot_en_met": "2026-10-31",
+  "aantal_records": 160,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 871159,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          7.1956,
+          36.5204
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-27T11:34:00+01:00",
+      "area_ha": 25,
+      "lastupdate": "2026-10-30T17:14:05.337793+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871160,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          9.0323,
+          39.6296
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Sud Sardegna",
+      "commune": "Villanovafranca",
+      "firedate": "2026-10-26T11:53:00+01:00",
+      "area_ha": 18,
+      "lastupdate": "2026-10-30T17:14:05.337793+01:00",
+      "lastfiredate": {}
+    },
     {
       "id": 871158,
       "centroid": {
@@ -1049,24 +1085,6 @@
       "firedate": "2026-09-21T20:06:00+02:00",
       "area_ha": 3,
       "lastupdate": "2026-10-28T11:38:03.101936+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871098,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          7.1928,
-          36.5199
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-10-27T11:34:00+01:00",
-      "area_ha": 5,
-      "lastupdate": "2026-10-28T11:32:47.039770+01:00",
       "lastfiredate": {}
     },
     {
