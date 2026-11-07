@@ -1,12 +1,66 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-11-06T13:04:29Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-10-31T00%3A00%3A00&lastupdate__lte=2026-11-06T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-10-31",
-  "venster_tot_en_met": "2026-11-06",
-  "aantal_records": 124,
+  "opgehaald_utc": "2026-11-07T11:50:22Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-01T00%3A00%3A00&lastupdate__lte=2026-11-07T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-11-01",
+  "venster_tot_en_met": "2026-11-07",
+  "aantal_records": 127,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 871289,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -8.0449,
+          32.8288
+        ]
+      },
+      "country": "MA",
+      "countryful": "Morocco",
+      "province": "Sidi Smail",
+      "commune": "N.A.",
+      "firedate": "2026-09-23T15:48:00+02:00",
+      "area_ha": 98,
+      "lastupdate": "2026-11-06T16:50:12.162006+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871292,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -9.7521,
+          30.944
+        ]
+      },
+      "country": "MA",
+      "countryful": "Morocco",
+      "province": "Tamanar",
+      "commune": "N.A.",
+      "firedate": "2026-09-22T13:08:00+02:00",
+      "area_ha": 13,
+      "lastupdate": "2026-11-06T16:50:12.162006+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871290,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -7.5944,
+          33.4465
+        ]
+      },
+      "country": "MA",
+      "countryful": "Morocco",
+      "province": "Mediouna",
+      "commune": "N.A.",
+      "firedate": "2026-10-29T13:14:00+01:00",
+      "area_ha": 8,
+      "lastupdate": "2026-11-06T16:50:12.162006+01:00",
+      "lastfiredate": {}
+    },
     {
       "id": 871288,
       "centroid": {
@@ -1574,24 +1628,6 @@
       "lastfiredate": {}
     },
     {
-      "id": 871199,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -8.128,
-          41.6647
-        ]
-      },
-      "country": "PT",
-      "countryful": "Portugal",
-      "province": "Ave",
-      "commune": "Louredo",
-      "firedate": "2026-11-02T12:23:00+01:00",
-      "area_ha": 5,
-      "lastupdate": "2026-11-03T15:45:10.278715+01:00",
-      "lastfiredate": {}
-    },
-    {
       "id": 871198,
       "centroid": {
         "type": "Point",
@@ -1605,6 +1641,24 @@
       "province": "Cávado",
       "commune": "Covide",
       "firedate": "2026-10-17T02:38:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-11-03T15:45:10.278715+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871199,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -8.128,
+          41.6647
+        ]
+      },
+      "country": "PT",
+      "countryful": "Portugal",
+      "province": "Ave",
+      "commune": "Louredo",
+      "firedate": "2026-11-02T12:23:00+01:00",
       "area_ha": 5,
       "lastupdate": "2026-11-03T15:45:10.278715+01:00",
       "lastfiredate": {}
