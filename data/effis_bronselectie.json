@@ -1,9 +1,9 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-11-07T11:50:22Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-01T00%3A00%3A00&lastupdate__lte=2026-11-07T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-11-01",
-  "venster_tot_en_met": "2026-11-07",
+  "opgehaald_utc": "2026-11-08T12:02:38Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-02T00%3A00%3A00&lastupdate__lte=2026-11-08T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-11-02",
+  "venster_tot_en_met": "2026-11-08",
   "aantal_records": 127,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
