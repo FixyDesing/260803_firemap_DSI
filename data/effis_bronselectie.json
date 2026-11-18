@@ -1,12 +1,66 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-11-17T14:44:17Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-11T00%3A00%3A00&lastupdate__lte=2026-11-17T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-11-11",
-  "venster_tot_en_met": "2026-11-17",
-  "aantal_records": 72,
+  "opgehaald_utc": "2026-11-18T14:21:58Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-12T00%3A00%3A00&lastupdate__lte=2026-11-18T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-11-12",
+  "venster_tot_en_met": "2026-11-18",
+  "aantal_records": 66,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 871417,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.914,
+          39.2441
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 33,
+      "lastupdate": "2026-11-18T08:49:17.147058+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871416,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9425,
+          39.246
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-07T11:27:00+01:00",
+      "area_ha": 54,
+      "lastupdate": "2026-11-18T08:48:18.951277+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871415,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.6521,
+          38.408
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Badajoz",
+      "commune": "Burguillos del Cerro",
+      "firedate": "2026-11-04T12:25:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-18T08:42:27.670527+01:00",
+      "lastfiredate": {}
+    },
     {
       "id": 871414,
       "centroid": {
@@ -1139,168 +1193,6 @@
       "firedate": "2026-10-28T11:51:00+01:00",
       "area_ha": 4,
       "lastupdate": "2026-11-12T07:30:54.657139+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871349,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          9.1122,
-          36.891
-        ]
-      },
-      "country": "TN",
-      "countryful": "Tunisia",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-10-26T00:33:00+01:00",
-      "area_ha": 11,
-      "lastupdate": "2026-11-11T14:51:52.580085+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871348,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -0.3091,
-          42.9675
-        ]
-      },
-      "country": "FR",
-      "countryful": "France",
-      "province": "Pyrénées-Atlantiques",
-      "commune": "Béost",
-      "firedate": "2026-11-09T00:00:00+01:00",
-      "area_ha": 36,
-      "lastupdate": "2026-11-11T14:21:36.174816+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871347,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -0.3172,
-          42.9628
-        ]
-      },
-      "country": "FR",
-      "countryful": "France",
-      "province": "Pyrénées-Atlantiques",
-      "commune": "Béost",
-      "firedate": "2026-11-09T02:06:00+01:00",
-      "area_ha": 16,
-      "lastupdate": "2026-11-11T14:20:47.704274+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871346,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          0.1704,
-          42.9355
-        ]
-      },
-      "country": "FR",
-      "countryful": "France",
-      "province": "Hautes-Pyrénées",
-      "commune": "Bagnères-de-Bigorre",
-      "firedate": "2026-11-10T10:29:00+01:00",
-      "area_ha": 2,
-      "lastupdate": "2026-11-11T14:20:07.298134+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871345,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          0.1904,
-          42.9303
-        ]
-      },
-      "country": "FR",
-      "countryful": "France",
-      "province": "Hautes-Pyrénées",
-      "commune": "Bagnères-de-Bigorre",
-      "firedate": "2026-11-10T10:29:00+01:00",
-      "area_ha": 21,
-      "lastupdate": "2026-11-11T14:19:39.626457+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871343,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -4.2605,
-          43.1684
-        ]
-      },
-      "country": "ES",
-      "countryful": "España",
-      "province": "Cantabria",
-      "commune": "Tojos, Los",
-      "firedate": "2026-10-30T00:00:00+01:00",
-      "area_ha": 62,
-      "lastupdate": "2026-11-11T11:55:58.146287+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871344,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -4.2676,
-          43.1699
-        ]
-      },
-      "country": "ES",
-      "countryful": "España",
-      "province": "Cantabria",
-      "commune": "Tojos, Los",
-      "firedate": "2026-10-30T00:00:00+01:00",
-      "area_ha": 2,
-      "lastupdate": "2026-11-11T11:55:58.146287+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871342,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -8.62,
-          41.9614
-        ]
-      },
-      "country": "PT",
-      "countryful": "Portugal",
-      "province": "Alto Minho",
-      "commune": "Fontoura",
-      "firedate": "2026-10-29T00:00:00+01:00",
-      "area_ha": 3,
-      "lastupdate": "2026-11-11T11:46:02.460938+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871341,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -8.57,
-          41.9724
-        ]
-      },
-      "country": "PT",
-      "countryful": "Portugal",
-      "province": "Alto Minho",
-      "commune": "Cerdal",
-      "firedate": "2026-10-29T00:00:00+01:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-11T11:43:29.939892+01:00",
       "lastfiredate": {}
     }
   ]
