@@ -1,12 +1,570 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-11-18T14:21:58Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-12T00%3A00%3A00&lastupdate__lte=2026-11-18T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-11-12",
-  "venster_tot_en_met": "2026-11-18",
-  "aantal_records": 66,
+  "opgehaald_utc": "2026-11-19T14:34:06Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-13T00%3A00%3A00&lastupdate__lte=2026-11-19T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-11-13",
+  "venster_tot_en_met": "2026-11-19",
+  "aantal_records": 86,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 871449,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.5028,
+          36.5252
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T00:00:00+01:00",
+      "area_ha": 15,
+      "lastupdate": "2026-11-19T13:20:11.818714+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871448,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          4.5738,
+          36.5262
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-17T13:22:00+01:00",
+      "area_ha": 2,
+      "lastupdate": "2026-11-19T13:19:45.186531+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871447,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.0358,
+          36.6086
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-13T12:14:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-19T13:19:11.635879+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871446,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.4501,
+          36.5229
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-17T11:40:00+01:00",
+      "area_ha": 47,
+      "lastupdate": "2026-11-19T13:18:23.648746+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871445,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.454,
+          36.5664
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T00:00:00+01:00",
+      "area_ha": 2,
+      "lastupdate": "2026-11-19T13:16:45.030513+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871444,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.4485,
+          36.5594
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T00:00:00+01:00",
+      "area_ha": 9,
+      "lastupdate": "2026-11-19T13:14:20.410371+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871443,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.4517,
+          36.5635
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T00:00:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-19T13:13:47.479636+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871442,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.43,
+          36.5573
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T00:00:00+01:00",
+      "area_ha": 45,
+      "lastupdate": "2026-11-19T13:13:19.316678+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871441,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.5835,
+          36.5474
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-11T21:22:00+01:00",
+      "area_ha": 6,
+      "lastupdate": "2026-11-19T13:12:30.319891+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871440,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.9836,
+          36.5996
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-11T12:50:00+01:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-19T13:11:41.579193+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871439,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.8962,
+          36.6168
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-12T08:39:00+01:00",
+      "area_ha": 16,
+      "lastupdate": "2026-11-19T13:11:15.764988+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871438,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.9094,
+          36.5899
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-18T00:00:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-19T13:10:49.067115+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871437,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.8722,
+          36.5527
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-17T12:38:00+01:00",
+      "area_ha": 6,
+      "lastupdate": "2026-11-19T13:10:12.988080+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871436,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.8831,
+          36.5506
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-17T12:38:00+01:00",
+      "area_ha": 34,
+      "lastupdate": "2026-11-19T13:09:55.731069+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871435,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7362,
+          36.8133
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λακωνία, Μεσσηνία",
+      "commune": "Τοπική Κοινότητα Αστερίου",
+      "firedate": "2026-11-17T10:57:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-19T13:06:57.962003+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871433,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.3437,
+          49.846
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-07T11:10:00+02:00",
+      "area_ha": 17,
+      "lastupdate": "2026-11-19T10:20:22.859618+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871434,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.873,
+          50.0327
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-08T11:30:00+02:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-19T10:20:22.859618+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871432,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.8991,
+          50.1999
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-02T11:06:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-19T10:12:38.486321+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871431,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          23.9005,
+          50.1992
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-02T11:06:00+02:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-19T10:12:38.486321+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871429,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          24.1295,
+          49.884
+        ]
+      },
+      "country": "UA",
+      "countryful": "Ukraine",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-10-08T10:53:00+02:00",
+      "area_ha": 5,
+      "lastupdate": "2026-11-19T10:11:19.151537+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871428,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          9.4774,
+          42.2425
+        ]
+      },
+      "country": "FR",
+      "countryful": "France",
+      "province": "Haute-Corse",
+      "commune": "Linguizzetta",
+      "firedate": "2026-11-14T11:55:00+01:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-19T09:32:58.668260+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871427,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          -6.886,
+          38.9973
+        ]
+      },
+      "country": "ES",
+      "countryful": "España",
+      "province": "Badajoz",
+      "commune": "Badajoz",
+      "firedate": "2026-11-05T13:48:00+01:00",
+      "area_ha": 22,
+      "lastupdate": "2026-11-19T07:53:55.003406+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871426,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          35.9571,
+          35.1192
+        ]
+      },
+      "country": "SY",
+      "countryful": "Syria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-10T10:30:00+01:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-18T15:10:02.112453+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871425,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.908,
+          39.2822
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-18T15:07:27.797706+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871421,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.8932,
+          39.2682
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 46,
+      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871423,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.894,
+          39.2599
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 11,
+      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871424,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9467,
+          39.2661
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871422,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.8984,
+          39.2648
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Αντίσσης",
+      "firedate": "2026-11-11T00:00:00+01:00",
+      "area_ha": 2,
+      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871420,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          9.2611,
+          36.5582
+        ]
+      },
+      "country": "TN",
+      "countryful": "Tunisia",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-18T11:21:00+01:00",
+      "area_ha": 3,
+      "lastupdate": "2026-11-18T15:00:09.018400+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871419,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          8.8488,
+          36.2689
+        ]
+      },
+      "country": "TN",
+      "countryful": "Tunisia",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-18T00:58:00+01:00",
+      "area_ha": 48,
+      "lastupdate": "2026-11-18T14:59:39.853404+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871418,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          7.801,
+          36.3556
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-17T14:35:00+01:00",
+      "area_ha": 13,
+      "lastupdate": "2026-11-18T14:58:40.905604+01:00",
+      "lastfiredate": {}
+    },
     {
       "id": 871417,
       "centroid": {
@@ -995,204 +1553,6 @@
       "firedate": "2026-11-06T14:26:00+01:00",
       "area_ha": 14,
       "lastupdate": "2026-11-13T07:37:36.016004+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871360,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          26.8646,
-          38.2234
-        ]
-      },
-      "country": "TR",
-      "countryful": "Türkiye",
-      "province": "İzmir",
-      "commune": "N.A.",
-      "firedate": "2026-10-26T00:00:00+01:00",
-      "area_ha": 2,
-      "lastupdate": "2026-11-12T14:43:00.730593+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871359,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          26.8548,
-          38.2266
-        ]
-      },
-      "country": "TR",
-      "countryful": "Türkiye",
-      "province": "İzmir",
-      "commune": "N.A.",
-      "firedate": "2026-10-19T10:43:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-11-12T14:42:19.115610+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871358,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          26.8481,
-          38.2286
-        ]
-      },
-      "country": "TR",
-      "countryful": "Türkiye",
-      "province": "İzmir",
-      "commune": "N.A.",
-      "firedate": "2026-10-23T07:07:00+02:00",
-      "area_ha": 1,
-      "lastupdate": "2026-11-12T14:42:10.527519+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871357,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          26.8562,
-          38.2312
-        ]
-      },
-      "country": "TR",
-      "countryful": "Türkiye",
-      "province": "İzmir",
-      "commune": "N.A.",
-      "firedate": "2026-10-23T07:07:00+02:00",
-      "area_ha": 15,
-      "lastupdate": "2026-11-12T14:41:58.421035+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871356,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          26.8355,
-          38.7199
-        ]
-      },
-      "country": "TR",
-      "countryful": "Türkiye",
-      "province": "İzmir",
-      "commune": "N.A.",
-      "firedate": "2026-10-11T10:49:00+02:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-12T14:40:51.499012+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871355,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -2.4228,
-          37.2118
-        ]
-      },
-      "country": "ES",
-      "countryful": "España",
-      "province": "Almería",
-      "commune": "Velefique",
-      "firedate": "2026-11-02T13:03:00+01:00",
-      "area_ha": 45,
-      "lastupdate": "2026-11-12T09:36:53.054136+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871354,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          4.4346,
-          36.8657
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-09T21:12:00+01:00",
-      "area_ha": 5,
-      "lastupdate": "2026-11-12T07:36:22.891811+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871353,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          6.8458,
-          36.5683
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-10T12:12:00+01:00",
-      "area_ha": 9,
-      "lastupdate": "2026-11-12T07:35:13.762053+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871352,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          6.8464,
-          36.5708
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-10T12:12:00+01:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-12T07:35:00.329804+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871351,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          6.9909,
-          36.6377
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-11T10:04:00+01:00",
-      "area_ha": 8,
-      "lastupdate": "2026-11-12T07:34:33.727370+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871350,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          13.2245,
-          38.0479
-        ]
-      },
-      "country": "IT",
-      "countryful": "Italia",
-      "province": "Palermo",
-      "commune": "Monreale",
-      "firedate": "2026-10-28T11:51:00+01:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-12T07:30:54.657139+01:00",
       "lastfiredate": {}
     }
   ]
