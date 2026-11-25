@@ -1,12 +1,300 @@
 {
   "schemaversie": "1.0",
-  "opgehaald_utc": "2026-11-24T16:02:57Z",
-  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-18T00%3A00%3A00&lastupdate__lte=2026-11-24T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
-  "venster_vanaf": "2026-11-18",
-  "venster_tot_en_met": "2026-11-24",
-  "aantal_records": 148,
+  "opgehaald_utc": "2026-11-25T15:50:53Z",
+  "brondata_url": "https://api.effis.emergency.copernicus.eu/rest/2/burntareas/current?lastupdate__gte=2026-11-19T00%3A00%3A00&lastupdate__lte=2026-11-25T23%3A59%3A59&ordering=-lastupdate%2C-area_ha&limit=1000",
+  "venster_vanaf": "2026-11-19",
+  "venster_tot_en_met": "2026-11-25",
+  "aantal_records": 152,
   "opmerking": "Compacte bronselectie zonder polygonen; de originele EFFIS-response bevat ook volledige brandperimeters.",
   "resultaten": [
+    {
+      "id": 871585,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.5457,
+          37.0134
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-22T11:49:00+01:00",
+      "area_ha": 6,
+      "lastupdate": "2026-11-25T09:29:31.668832+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871584,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          6.5343,
+          36.9952
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-19T13:42:00+01:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-25T09:28:16.410158+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871582,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          22.7481,
+          37.3922
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Αργολίδα, Αρκαδία",
+      "commune": "Τοπική Κοινότητα Μελιγούς",
+      "firedate": "2026-11-21T11:21:00+01:00",
+      "area_ha": 13,
+      "lastupdate": "2026-11-25T09:15:56.436828+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871583,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          17.1449,
+          39.2026
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Crotone",
+      "commune": "Crotone",
+      "firedate": "2026-11-22T11:04:00+01:00",
+      "area_ha": 8,
+      "lastupdate": "2026-11-25T09:15:56.436828+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871581,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.0067,
+          36.7801
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-21T21:01:00+01:00",
+      "area_ha": 51,
+      "lastupdate": "2026-11-25T08:47:40.555377+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871580,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          5.6447,
+          36.5242
+        ]
+      },
+      "country": "DZ",
+      "countryful": "Algeria",
+      "province": "N.A.",
+      "commune": "N.A.",
+      "firedate": "2026-11-18T13:01:00+01:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-25T08:45:25.742082+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871579,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9718,
+          39.145
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Τοπική Κοινότητα Μεσοτόπου",
+      "firedate": "2026-11-21T00:00:00+01:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-25T08:40:28.323742+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871578,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9641,
+          39.1461
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T11:21:00+01:00",
+      "area_ha": 6,
+      "lastupdate": "2026-11-25T08:40:00.313123+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871577,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9134,
+          39.2136
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Τοπική Κοινότητα Σιγρίου",
+      "firedate": "2026-11-21T00:00:00+01:00",
+      "area_ha": 2,
+      "lastupdate": "2026-11-25T08:39:35.274480+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871576,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.8769,
+          39.2191
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Τοπική Κοινότητα Σιγρίου",
+      "firedate": "2026-11-21T00:00:00+01:00",
+      "area_ha": 2,
+      "lastupdate": "2026-11-25T08:39:14.722998+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871575,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9666,
+          39.1813
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T12:06:00+01:00",
+      "area_ha": 1,
+      "lastupdate": "2026-11-25T08:38:38.567054+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871574,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9633,
+          39.1797
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T12:06:00+01:00",
+      "area_ha": 10,
+      "lastupdate": "2026-11-25T08:38:14.928005+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871573,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9651,
+          39.1826
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T12:06:00+01:00",
+      "area_ha": 10,
+      "lastupdate": "2026-11-25T08:37:20.736695+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871572,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9606,
+          39.185
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T12:06:00+01:00",
+      "area_ha": 14,
+      "lastupdate": "2026-11-25T08:37:03.587192+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871571,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          25.9433,
+          39.1913
+        ]
+      },
+      "country": "EL",
+      "countryful": "Ελλάδα ",
+      "province": "Λέσβος, Λήμνος",
+      "commune": "Δημοτική Κοινότητα Ερεσού",
+      "firedate": "2026-11-21T00:00:00+01:00",
+      "area_ha": 13,
+      "lastupdate": "2026-11-25T08:36:33.108225+01:00",
+      "lastfiredate": {}
+    },
+    {
+      "id": 871570,
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          14.9546,
+          38.0281
+        ]
+      },
+      "country": "IT",
+      "countryful": "Italia",
+      "province": "Messina",
+      "commune": "San Piero Patti",
+      "firedate": "2026-11-22T11:04:00+01:00",
+      "area_ha": 4,
+      "lastupdate": "2026-11-25T08:32:11.726144+01:00",
+      "lastfiredate": {}
+    },
     {
       "id": 871569,
       "centroid": {
@@ -926,12 +1214,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871516,
+      "id": 871517,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          0.1787,
-          42.9335
+          0.1777,
+          42.9342
         ]
       },
       "country": "FR",
@@ -944,12 +1232,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871517,
+      "id": 871516,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          0.1777,
-          42.9342
+          0.1787,
+          42.9335
         ]
       },
       "country": "FR",
@@ -1052,12 +1340,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871510,
+      "id": 871511,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          0.194,
-          42.9393
+          0.1715,
+          42.935
         ]
       },
       "country": "FR",
@@ -1070,12 +1358,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871511,
+      "id": 871510,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          0.1715,
-          42.935
+          0.194,
+          42.9393
         ]
       },
       "country": "FR",
@@ -1164,8 +1452,8 @@
       "centroid": {
         "type": "Point",
         "coordinates": [
-          3.1605,
-          39.9367
+          3.1621,
+          39.9377
         ]
       },
       "country": "ES",
@@ -1173,7 +1461,7 @@
       "province": "Mallorca",
       "commune": "Pollença",
       "firedate": "2026-11-22T19:38:00+01:00",
-      "area_ha": 50,
+      "area_ha": 185,
       "lastupdate": "2026-11-23T10:04:56.137090+01:00",
       "lastfiredate": {}
     },
@@ -2366,12 +2654,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871431,
+      "id": 871432,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          23.9005,
-          50.1992
+          23.8991,
+          50.1999
         ]
       },
       "country": "UA",
@@ -2384,12 +2672,12 @@
       "lastfiredate": {}
     },
     {
-      "id": 871432,
+      "id": 871431,
       "centroid": {
         "type": "Point",
         "coordinates": [
-          23.8991,
-          50.1999
+          23.9005,
+          50.1992
         ]
       },
       "country": "UA",
@@ -2453,222 +2741,6 @@
       "firedate": "2026-11-05T13:48:00+01:00",
       "area_ha": 22,
       "lastupdate": "2026-11-19T07:53:55.003406+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871426,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          35.9571,
-          35.1192
-        ]
-      },
-      "country": "SY",
-      "countryful": "Syria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-10T10:30:00+01:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-18T15:10:02.112453+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871425,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.908,
-          39.2822
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 4,
-      "lastupdate": "2026-11-18T15:07:27.797706+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871421,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.8932,
-          39.2682
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 46,
-      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871423,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.894,
-          39.2599
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 11,
-      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871424,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.9467,
-          39.2661
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 3,
-      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871422,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.8984,
-          39.2648
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 2,
-      "lastupdate": "2026-11-18T15:06:57.177066+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871420,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          9.2611,
-          36.5582
-        ]
-      },
-      "country": "TN",
-      "countryful": "Tunisia",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-18T11:21:00+01:00",
-      "area_ha": 3,
-      "lastupdate": "2026-11-18T15:00:09.018400+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871419,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          8.8488,
-          36.2689
-        ]
-      },
-      "country": "TN",
-      "countryful": "Tunisia",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-18T00:58:00+01:00",
-      "area_ha": 48,
-      "lastupdate": "2026-11-18T14:59:39.853404+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871418,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          7.801,
-          36.3556
-        ]
-      },
-      "country": "DZ",
-      "countryful": "Algeria",
-      "province": "N.A.",
-      "commune": "N.A.",
-      "firedate": "2026-11-17T14:35:00+01:00",
-      "area_ha": 13,
-      "lastupdate": "2026-11-18T14:58:40.905604+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871417,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.914,
-          39.2441
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-11T00:00:00+01:00",
-      "area_ha": 33,
-      "lastupdate": "2026-11-18T08:49:17.147058+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871416,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          25.9425,
-          39.246
-        ]
-      },
-      "country": "EL",
-      "countryful": "Ελλάδα ",
-      "province": "Λέσβος, Λήμνος",
-      "commune": "Δημοτική Κοινότητα Αντίσσης",
-      "firedate": "2026-11-07T11:27:00+01:00",
-      "area_ha": 54,
-      "lastupdate": "2026-11-18T08:48:18.951277+01:00",
-      "lastfiredate": {}
-    },
-    {
-      "id": 871415,
-      "centroid": {
-        "type": "Point",
-        "coordinates": [
-          -6.6521,
-          38.408
-        ]
-      },
-      "country": "ES",
-      "countryful": "España",
-      "province": "Badajoz",
-      "commune": "Burguillos del Cerro",
-      "firedate": "2026-11-04T12:25:00+01:00",
-      "area_ha": 3,
-      "lastupdate": "2026-11-18T08:42:27.670527+01:00",
       "lastfiredate": {}
     }
   ]
